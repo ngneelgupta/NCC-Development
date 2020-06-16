@@ -1,0 +1,144 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Home>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@using System.Text.RegularExpressions;
+@{
+    Layout = "master.cshtml";
+}
+
+<section class="dashboard-banner">
+    <div class="banner-overlay">
+        <div class="container text-center">
+            <img src="/images/multimedia.png" data-toggle="modal" data-target="#exampleModalCenter" onclick="playVid()">
+            <h2 class="video-heading">@Model.BannerHeading</h2>
+        </div>
+    </div>
+</section>
+
+
+<!-- About National Cannabis start -->
+<section class="dashboard-second-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="common-heading">@Html.Raw(Model.AboutNccheading)</h2>
+                @Html.Raw(Model.AboutNccdescription)
+            </div>
+        </div>
+        <div class="row national-cannabis-col">
+            @if (Model.AboutNcc != null)
+            {
+                foreach (ImageHeadingDescriptionAndLinkNC item in Model.AboutNcc)
+                {
+                    var link = item.Link;
+                    <div class="col-md-4">
+                        <div class="cannabis-box">
+                            <img src="@(item.Image!=null?item.Image.Url:string.Empty)">
+                            <div class="cannabis-inner text-center">
+                                <h3>@item.Heading</h3>
+                                @Html.Raw(item.Description)
+                                <a href="@(link!=null?link.Url:string.Empty)" class="cannabis-view-btn">@(link != null ? link.Name : string.Empty)</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>
+
+<!-- national cannabis end -->
+<!-- quick contact start -->
+<section class="dashboard-third-wrapper">
+    <div class="container">
+        <div class="row mb-2">
+            <div class="col-12 text-center">
+                <h2 class="common-heading">@Html.Raw(Model.QuickConnectHeading)</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-7">
+                <img src="@(Model.QuickConnectImage!=null?Model.QuickConnectImage.Url:string.Empty)">
+            </div>
+            <div class="col-lg-5">
+                <h4>@Html.Raw(Model.PatientHcpheading)</h4>
+                @if (Model.QuickConnectDetails != null)
+                {
+                    foreach (TitleHeadingAndSmallDescriptionNC item in Model.QuickConnectDetails)
+                    {
+                        var link = item.Link;
+                        <div class="connect-box-form">
+                            <a href="@(link!=null?link.Url:string.Empty)">
+                                <div class="connect-box-left">
+                                    <h3>@item.Title</h3>
+                                </div>
+                                <div class="connect-box-right">
+                                    <h3>@item.Heading</h3>
+                                    <p>@item.SmallDescription</p>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</section>
+<!-- quick contact end -->
+<!-- Blog Section -->
+<section class="dashboard-fourth-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="common-heading">@Html.Raw(Model.LatestBlogsHeading)</h2>
+            </div>
+        </div>
+        <div class="row blog-row">
+            <div class="col-lg-4">
+                <h2 class="heading-blue-28px">@Html.Raw(Model.ReadTopArticlesHeading)</h2>
+                <p>@Model.ReadTopArticlesDescription</p>
+                @if (Model.AllBlogsButton != null)
+                {
+                    <a href="@Model.AllBlogsButton.Url" class="learn-more-link" target="@Model.AllBlogsButton.Target"> @Model.AllBlogsButton.Name</a>
+                }
+
+            </div>
+            @if (Model.LatestBlogs != null)
+            {
+                foreach (BlogPost item in Model.LatestBlogs)
+                {
+                    string description = item.BlogDescription != null ? item.BlogDescription.ToString() : "";
+                    description = Regex.Replace(description, "<.*?>", string.Empty).Trim();
+                    description = description.Length > 80 ? description.Substring(0, 80) + "..." : description;
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card">
+                            <img class="card-img-top" src="@(item.BlogImage!=null?item.BlogImage.Url:string.Empty)" alt="Card image">
+                            <div class="card-body">
+                                <div class="blog-date">@item.BlogPostDate.ToString("dd MMM")</div>
+                                <h4 class="card-title">@item.BlogTitle</h4>
+                                <p class="card-text">@description</p>
+                                <a href="@item.Url" class="learn-more-link">View Detail</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>
+
+<div class="modal fade videoModal" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="pauseVid()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <video id="myVideo" width="100%" controls>
+                    <source src="@(Model.BannerVideo!=null?Model.BannerVideo.Url:string.Empty)" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </div>
+</div>

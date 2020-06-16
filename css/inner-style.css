@@ -1,0 +1,928 @@
+.patient-banner {
+	background: url(../images/patient-video-thumb.jpg) top 0px center no-repeat;
+	background: url(../images/patients-banner.png) top center no-repeat;
+    background-size: cover;
+    height: 89vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.patient-banner img {
+	width: 6%;
+	cursor: pointer;
+}
+
+.heading-24 {
+	color: #464646;
+	font-size: 24px;
+	font-weight: 700;
+	line-height: 30px;
+}
+
+.patient-commitment p {	
+	font-size: 20px;
+	line-height: 28px;
+	color: #464646;
+}
+.commitment-left {
+	width: 90%;
+	float: left;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 30px;
+}
+
+.commitment-left img {
+	margin: 0 20px 0 0;
+}
+
+.patient-commitments-row {
+	margin-top: 40px;
+}
+
+.commitment-right {
+	width: 90%;
+	float: right;
+	background: url(../images/commitment-bg.jpg) top center no-repeat;
+	background-size: cover;
+	padding: 20px;
+	border-bottom: 6px solid #4dbfb0;
+	box-shadow: 0px 0px 18px 2px #e1e1e1;
+}
+
+.amenties-col {
+	width: 100%;
+	float: left;
+	margin: 30px 0 0 0;
+}
+
+.amenties-col img {
+	margin: 0 0px 0 10px;
+	width: 6%;
+	float: left;
+}
+
+.amenties-col p {
+	width: 80%;
+	float: right;
+}
+
+.commitment-right .patient-commitment {
+	margin: 60px 0 0 0;
+	display: inline-block;
+	width: 100%;
+    float: left;
+}
+
+.patient-commitment a {
+	margin-left: 40px;
+}
+
+.patient-wrapper-third {
+	padding: 30px 0;
+}
+
+.treatment-inner {
+	border: 1px solid #d1cece;
+	padding: 20px;
+	display: flex;
+	align-items: center;
+	margin: 30px 0 20px;
+	height: 140px;
+}
+
+.treatment-inner:hover {	
+	border-bottom: 6px solid #4dbfb0;
+	box-shadow: 0px 0px 18px 2px #e1e1e1;
+}
+
+.treatment-inner img {
+	margin-right: 30px;
+	width: 25%;
+}
+
+.treatment-inner p {
+	font-size: 17px;
+	color: #464646;
+	line-height: 24px;
+}
+.patient-last-wrapper p {
+	font-size: 16px;
+	color: #464646;
+	margin: 10px 0;
+}
+
+.heading-22 {
+	color: #464646;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 28px;
+}
+
+.patient-last-wrapper a {
+    text-align: center;
+    padding: 8px 5px!important;
+    width: 100%;
+}
+
+.demo-100 {
+    background: url(../images/patient-video-thumb.jpg) top center no-repeat;
+    background-size: cover;
+    padding: 25px 0;
+    background-position-y: 22%;
+    margin-top: 30px;
+}
+.demo-100 .col-sm-6 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.demo-heading {
+	font-size: 35px;
+	font-weight: 700;
+	color: #0067a5;
+}
+/*----------HCP Page CSS-----------------*/
+
+.hcp-banner {
+	background: url(../images/hcp-banner.png) top center no-repeat;
+	background-size: cover;
+}
+
+.hcp-banner p {
+	color: #464646!important;
+}
+
+.hcp-member-100 {
+	background: url(../images/hcp-member-bg.png) top center no-repeat;
+	background-size: cover;
+	padding: 30px 0 60px;
+	margin: 0px 0 0;
+}
+
+.hcp-inner {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 30px;
+}
+
+.hcp-inner img {
+	margin-right: 30px;
+}
+
+.hcp-inner h2 {
+	font-size: 25px;
+	color: #4dbfb0;
+	font-weight: 700;
+}
+
+.registraion-steps {
+	width: 100%;
+	float: left;
+	margin-top: 30px;
+	display: flex;
+	align-items: center;
+	position: relative;
+}
+
+.registraion-steps:nth-child(3):after {
+	display: none;
+}
+
+.registraion-steps img {
+	width: 23%;
+    float: left;
+    margin: 0 40px 0 0;
+    position: relative;
+}
+
+.registraion-steps:after {
+	position: absolute;
+    content: "";
+    background: #4dbfb0;
+    width: 5px;
+    height: 75px;
+    left: 51px;
+    right: 0;
+    bottom: -70px;
+}
+
+/*-----------About Css----------*/
+.about-banner {
+	background: url(../images/about-banner.png) top center no-repeat;
+	background-size: cover;
+}
+
+.about-second-wrapper {
+	background: url(../images/who-we-are-banner.jpg) top center no-repeat;
+	background-size: cover;
+	margin-top: 0;
+	padding: 30px 0 30px;
+}
+.about-second-wrapper .hcp-inner {
+	flex-direction: column;
+	margin: 0px;
+}
+.about-second-wrapper .hcp-inner img {
+    margin: 0px 0 20px 0;
+}
+.about-second-wrapper .hcp-inner h2 {
+	width: 100%;
+	text-align: center;
+}
+.history-row {
+	margin: 30px -15px;
+}
+
+.history-row img {
+	width: 100%;
+}
+
+.about-third-wrapper {
+	padding: 30px 0;
+}
+
+.about-third-wrapper p {
+	color: #464646;
+	font-size: 20px;
+	line-height: 30px;
+	text-align: left;
+	padding: 0 0px;
+}
+
+.about-fourth-wrapper {
+	background: url(../images/know-more-bg.png) top center no-repeat;
+	background-size: cover;
+	padding: 20px 0 30px;
+}
+ 
+.heading-28 {
+	font-size: 28px;
+	font-weight: 700;
+	line-height: 40px;
+	color: #000;
+}
+
+.about-fourth-wrapper .card {
+	border-bottom: 5px solid #4dbfb0;
+}
+
+.about-fourth-wrapper .card-body {
+	padding: 10px 15px;
+}
+
+.about-fourth-wrapper .card:hover {
+	box-shadow: 0px 0px 18px 2px #a5a5a5;
+	border-bottom: 5px solid #0067a5;
+}
+
+
+ul.timeline {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px 30px;
+}
+ul.timeline > li {
+  width: calc( 100% / 6 );
+}
+ul.timeline > li:nth-of-type(odd) > .content {
+  -webkit-transform: translateY(calc(-100% - 24px));
+          transform: translateY(calc(-100% - 24px));
+}
+ul .year {
+	color: #fff;
+    background: #0067a5;
+    display: block;
+    position: relative;
+    padding-left: 24px;
+    line-height: 24px;
+    font-weight: 600;
+    font-size: 15px;
+}
+ul .year::before {
+  content: "";
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  background: #4dbfb0;
+  border-radius: 50%;
+  left: -24px;
+  top: calc( (40 - 24) / 2 * -1px );
+}
+ul .year.new {
+  border-radius: 0 24px 24px 0;
+}
+ul .year.new::after {
+  content: "";
+  width: 5px;
+  height: 5px;
+  display: block;
+  border: 20px solid #0067a5;
+  box-sizing: border-box;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  position: absolute;
+  right: -30px;
+  top: -9.5px;
+}
+ul .content {
+  border-left: 8px solid #4dbfb0;
+  margin-left: -8px;
+  padding: 15px 0;
+  padding-right: 24px;
+}
+ul .content > li {
+  padding-left: 20px;
+  border-bottom: 4px solid #83c5e6;
+  padding-bottom: 8px;
+  position: relative;
+  margin-left: -8px;
+}
+ul .content > li:last-of-type {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+ul .content > li::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #eef4f7;
+  left: 2px;
+  top: 8px;
+}
+
+
+
+/*------------FAQ Css Start----------*/
+.faq-banner {
+	background: url(../images/faq-banner.png) top center no-repeat;
+	background-size: cover;
+}
+
+.faq-wrapper {
+	padding: 70px 0;
+}
+
+#accordionEx .card-header {
+	background: #fff;
+	padding: 20px 15px;
+}
+
+#accordionEx .card {
+	margin: 0 0 20px 0;
+	box-shadow: 0px 0px 8px 2px #e1e1e1;
+}
+
+#accordionEx .card-header h5 {
+	color: #000;
+    font-size: 20px;
+}
+
+#accordionEx .card-header h5 .fas {
+	float: right;
+	font-size: 28px;
+}
+
+#accordionEx .card-header a:hover h5 {
+	color: #0067a5;
+}
+
+#accordionEx .card-header h5 span {
+	font-size: 24px;
+}
+
+.md-accordion .card .card-header a:not(.collapsed) .rotate-icon {
+	-webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+#accordionEx p {
+	font-size: 18px;
+}
+
+/*----------Our Team Css---------*/
+.team-banner {
+	background: url(../images/team-banner.png) top center no-repeat;
+	background-size: cover;
+}
+.common-banner {
+	height: 70vh;
+	display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.common-banner p {
+	width: 50%;
+	color: #fff;
+}
+
+.our-team-col .card {
+    box-shadow: 0px 0px 21px 4px #ececec;
+    width: 90%;
+    margin: 60px auto 0;
+}
+
+.our-team-col .card-img-top {
+	width: 70%;
+	margin: 20px auto 0;
+	border-radius: 50%;
+}
+
+.our-team-col .card-title {
+	width: 100%;
+}
+
+.our-team-col {
+	margin-bottom: 30px;
+}
+
+/*----------Contact Css------------*/
+.contact-banner {
+	background: url(../images/contact-banner.png) top center no-repeat;
+	background-size: cover;
+}
+
+.contact-row {
+	background: #fff;
+	margin: -150px -15px 70px;
+    box-shadow: 0px 8px 16px 0px #cecece;
+}
+
+.contact-form {
+	width: 100%;
+	padding: 50px;
+}
+.contact-row legend {
+	font-size: 22px;
+	font-weight: 700;
+	color: #0067a5;
+	width: 100%;
+}
+.contact-form .form-group {
+	margin: 20px 0 0;
+}
+
+.contact-form label {
+	font-size: 17px;
+	color: #464646;
+	width: 100%;
+}
+
+.contact-form input, .contact-form textarea {
+	border: 0px;
+	border-bottom: 1px solid #ccc;
+	border-radius: 0px;
+	padding: 10px 0;
+	width: 100%;
+}
+
+
+.contact-form input:focus, .contact-form textarea:focus{
+	outline: 0;
+	box-shadow: none;
+	border-bottom: 1px solid #0067a5;
+}
+
+.contact-info {
+	width: 100%;
+	float: left;
+	background: #dfecf9;
+	padding: 50px 40px;
+	height: 100%;
+}
+
+.conatct-info-col {
+	width: 100%;
+	float: left;
+	margin-top: 50px;
+}
+
+.contact-heading {
+	width: 22%;
+	float: left;
+	font-size: 17px;
+	font-weight: 700;
+	color: #000;
+}
+
+.contact-detail {
+	width: 76%;
+	float: right;
+	font-size: 17px;
+	color: #000;
+}
+.contact-detail a {
+	font-size: 17px;
+	color: #000;	
+}
+.contact-detail a:hover {
+	text-decoration: underline;
+}
+
+.conatct-info-col.social-media a {
+	margin-right: 20px; 
+}
+
+.contact-banner .carousel-caption {
+	margin: -25px 0 0 0;
+}
+
+/*----------eligibility form css-------------*/
+.eligibility-banner {
+	background: url(../images/contact-banner.png) top center no-repeat;
+	background-size: cover;
+}
+.eligibility-info {
+	width: 100%;
+	height: 100%;
+	background: url(../images/national-can-img-02.jpg) top center no-repeat;
+	background-size: 108%;
+}
+
+
+/*----------Our Clinic Css-------------*/
+.clinic-banner {
+	background: url(../images/clinic-banner.jpg) top center no-repeat;
+	background-size: cover;
+}
+
+.clinic-banner p {
+	color: #000;
+}
+
+.clinic-second-wrapper {
+	background: url(../images/team-darker-shades.jpg) top -338px center no-repeat;
+    background-size: cover;
+}
+
+.clinic-second-wrapper .common-heading:after {
+	background: #fff;
+}
+
+.clinic-amenities .card {
+	width: 92%;
+	margin: 50px auto 0;
+	border-bottom: 5px solid transparent;
+	box-shadow: none;
+}
+
+.clinic-locations {
+	padding: 50px 0;
+	height: 100%;
+}
+
+.location-from input {
+	border: 0px;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0px;
+    padding: 0px 0;
+    width: 100%;
+}
+
+.location-from input:focus {
+    outline: 0;
+    box-shadow: none;
+    border-bottom: 1px solid #0067a5;
+}
+
+.clinic-search-btn {
+	display: flex;
+	justify-content: flex-end;
+	height: 100%
+}
+
+.location-from button {
+	margin: 8px 0 0 0;
+}
+
+.clinic-address {
+	width: 100%;
+	float: left;
+	height: 100%;
+	background: #0067a5;
+	padding: 30px 20px 0;
+}
+.address-col {
+	width: 100%;
+	float: left;
+	margin: 0 0 30px 0;
+}
+.clinic-heading {
+	font-size: 18px;
+	font-weight: 600;
+	color: #fff;
+}
+
+.address-inner {
+	width: 100%;
+	float: left;
+	margin: 15px 0 0 0;
+}
+
+.address-heading {
+	font-size: 15px;
+	color: #fff;
+	font-weight: 600;
+}
+.address-detail, .address-detail a {
+	font-size: 15px;
+	color: #fff;
+	font-weight: 300;
+}
+.clinic-map-row {
+	height: 100%;
+}
+
+.clinic-map-row iframe {
+	width: 100%;
+	height: 100%;
+}
+
+/*------------Blog Css------------*/
+.blog-banner {
+	background: url(../images/blog-banner.jpg) top center no-repeat;
+	background-size: cover;
+}
+
+.clinic-amenities .card:hover {
+	box-shadow: 0px 8px 16px 0px #cecece;
+}
+
+/*-------Blog Detail Css--------*/
+.blog-detail-banner {
+	background: url(../images/blog-detail-banner.png) top center no-repeat;
+	background-size: cover;	
+}
+
+.blog-detail-wrapper {
+	padding: 30px 0 60px;
+}
+
+.blog-details .card-title {
+	width: 100%;
+	border-bottom: 0;
+	font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.post-data-text, .post-data-text a{
+    font-size: 16px;
+    color: #000;
+    margin: 0 0 10px 0
+}
+
+.post-data-text a:hover {
+	text-decoration: underline;
+}
+
+.blog-details .card-body p {
+	font-size: 17px;
+}
+
+.blog-details ul {
+	list-style: disc;
+	margin: 0px 0 30px 20px;
+}
+
+.blog-details li {
+	font-size: 18px;
+	padding: 10px 0;
+}
+
+.leave-reply {
+    margin: 20px 0 0 0;
+    padding: 30px;
+    box-shadow: 0px 2px 8px 0px #cecece;
+}
+
+.about-fourth-wrapper .card {
+	width: 100%;
+	margin-top: 20px;
+}
+.latest-blog-wrapper .card:hover {
+	border: 0;
+}
+
+.leave-reply legend {
+	width: 100%;
+    border-bottom: 0;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #1767a5;
+    text-align: center;
+}
+
+.recent-post {
+    width: 100%;
+    float: left;
+    margin: 0 0 20px 0;
+}
+.recent-post h3 {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 18px;
+    color: #0067a5;
+}
+.recent-post ul li {
+    -webkit-box-shadow: 0px 2px 8px 0px #cecece;
+    box-shadow: 0px 2px 8px 0px #cecece;
+    padding: 8px 20px;
+    margin: 20px 0;
+}
+.recent-post ul li a {
+    color: #464646;
+    font-size: 19px;
+}
+
+
+
+
+
+
+/*--------Patient Form Css--------*/
+.patient-form-banner {
+	background: url(../images/patient-form-banner.png) top center no-repeat;
+	background-size: cover;
+}	
+
+.patient-form-banner .carousel-caption {
+	align-items: flex-end;
+}
+
+.banner-heading {
+	width: 50%;
+}
+
+.patient-form-flow {
+	padding: 10px 0px 60px;
+}
+
+.circle-blue {
+	width: 140px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 140px;
+	background-color: #0067a5;
+	margin: 0 auto;
+	border-radius: 100%;
+	box-shadow: 0px 2px 8px 0px #cecece;
+	position: relative;
+}
+
+.circle-blue::after {
+    position: absolute;
+    content: "";
+    width: 128px;
+    height: 5px;
+    background-color: #0067a5;
+    z-index: -1;
+    left: 100%;
+}
+
+.circle-blue img {
+	width: 42%;
+}
+
+.circle-grey {
+	background-color: #ababab;
+	position: relative;
+}
+
+.circle-grey::after {
+	width: 384px;
+    background-color: #ababab;
+    left: auto;
+    right: auto;
+}
+
+.patient-form-flow .col-md-4:last-child .circle-grey:after {
+	width: 128px;
+	right: 100%;
+}
+
+.patient-form-flow h2 {
+	font-size: 22px;
+	color: #ababab;
+	font-weight: 500;
+	margin-top: 15px;
+}
+
+.form-accordian  {
+	padding-bottom: 30px;
+}
+.form-accordian .card {
+	margin-bottom: 20px;
+}
+.form-accordian .card .card-header {
+	background: #0067a5;
+}
+
+.form-accordian .card-header h5 {
+	color: #fff;
+}
+
+.form-accordian .card-header h5 .fas {
+	float: right;
+}
+
+.patient-form label {
+    font-weight: 700;
+    text-transform: uppercase;
+    width: 100%;
+    margin: 0 0 5px;
+    font-size: 14px;
+}
+
+.custom-radio {
+	margin-top: 6px;
+}
+
+.custom-radio label, .custom-checkbox label{
+	font-size: 14px;
+	line-height: 25px;
+	text-transform: unset;
+	font-weight: 400
+}
+
+.note {
+	font-size: 13px;
+	margin-bottom: 5px;
+}
+
+.form-accordian .learn-more-link {
+	margin: 30px 0 0 0;
+	float: none;
+}
+
+.personal-history .circle-grey, .personal-history .circle-grey:after {
+	background: #4dbfb0;
+}
+
+.personal-history .circle-grey-2, .personal-history .circle-grey-2:after {
+	background: #ababab;
+}
+
+.additional-info .circle-grey-2 {
+	background: #0067a5;
+}
+
+.additional-info .circle-grey-2, .additional-info .circle-grey-2:after {
+	background: #0067a5;
+}
+
+
+/*--------Referral Form Css--------*/
+.referral-form-banner {
+	background: url(../images/patient-form-banner.png) top center no-repeat;
+	background-size: cover;
+}	
+
+.referral-form-banner .carousel-caption {
+	align-items: flex-end;
+}
+
+/*------Research Paper Css--------*/
+.resarch-banner {
+	background: url(../images/about-banner.png) top center no-repeat;
+    background-size: cover;
+}
+
+.research-paper-row .card {
+	margin-top: 40px;
+	border-bottom: 5px solid #fff;
+}
+
+.research-paper-row .card:hover {
+	border-bottom: 5px solid #0067a5;
+}
+
+.pdf-icon {
+	width: 100%;
+	height: 200px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #f7f7f7;
+}
+
+.research-paper-row img {
+	margin: 0 auto;
+	width: auto;
+}
+
+.research-paper-row .learn-more-link {
+	margin: 0px;
+}
+

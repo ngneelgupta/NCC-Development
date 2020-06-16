@@ -568,7 +568,30 @@ Umbraco.Web.HealthCheck.NotificationMethods.EmailNotificationMethod, Umbraco.Web
 
 Umbraco.Core.Models.PublishedContent.PublishedElementModel
 
+Umbraco.Web.PublishedModels.ImageHeadingDescriptionAndLinkNC, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.PublishedModels.NavigationNC, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.PublishedModels.SocialMediaNC, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.PublishedModels.TitleHeadingAndSmallDescriptionNC, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 
 Umbraco.Core.Models.PublishedContent.PublishedContentModel
+
+Umbraco.Web.PublishedModels.Banner, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.PublishedModels.BlogCategories, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.PublishedModels.BlogCategory, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.PublishedModels.BlogPost, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.PublishedModels.BlogPostComment, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.PublishedModels.Blogs, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.PublishedModels.File, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.PublishedModels.Folder, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.PublishedModels.GlobalSetting, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.PublishedModels.Home, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.PublishedModels.Image, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.PublishedModels.Master, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.PublishedModels.Member, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.PublishedModels.Navigation, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.PublishedModels.PageNotFound, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.PublishedModels.SettingFolder, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+
+Umbraco.Core.Deploy.IServiceConnector
 
 

@@ -1,0 +1,72 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+<!-- Top Header Start -->
+@{
+    var Homenode = Model.Root();
+    var navigation = Homenode.FirstChild<SettingFolder>().FirstChild<Navigation>() as Navigation;
+    var GlobalSetting = Homenode.FirstChild<SettingFolder>().FirstChild<GlobalSetting>() as GlobalSetting;
+}
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-right">
+                <ul class="contact-head">
+                    <li><a href="mailto:@GlobalSetting.EmailId" target="_blank"><i class="fas fa-envelope"></i>@GlobalSetting.EmailId</a></li>
+                    <li><a href="tel:@GlobalSetting.PhoneNumber" target="_blank"><i class="fas fa-phone-volume"></i>@GlobalSetting.PhoneNumber</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- navigation start -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <!-- Brand -->
+        <a class="navbar-brand" href="/"><img src="@(GlobalSetting.WebsiteLogo!=null?GlobalSetting.WebsiteLogo.Url:string.Empty)"></a>
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <img src="/images/list.svg" class="menu-bar">
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav ml-auto">
+                @if (navigation.HeaderNavigation != null)
+                {
+                    var i = 1;
+                    foreach (NavigationNC item in navigation.HeaderNavigation)
+                    {
+                        var dropmenu = item.Urls;
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop@(i)" data-toggle="dropdown">
+                                @item.NavTitle
+                            </a>
+                            @if (dropmenu != null)
+                            {
+                                <div class="dropdown-menu">
+                                    @foreach (var menuitem in dropmenu)
+                                    {
+                                        <a class="dropdown-item" href="@menuitem.Url">@menuitem.Name</a>
+                                    }
+                                </div>
+                            }
+                        </li>
+                    }
+                }
+                @if (navigation.BlogsUrl != null)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" href="@navigation.BlogsUrl.Url">@navigation.BlogsUrl.Name</a>
+                    </li>
+                }
+                @if (navigation.CheckEligibilityButton != null)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link contact-link" href="@navigation.CheckEligibilityButton.Url">@navigation.CheckEligibilityButton.Name</a>
+                    </li>
+                }
+
+            </ul>
+        </div>
+    </div>
+</nav>

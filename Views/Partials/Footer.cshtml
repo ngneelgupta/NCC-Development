@@ -1,0 +1,49 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+    var Homenode = Model.Root();
+    var navigation = Homenode.FirstChild<SettingFolder>().FirstChild<Navigation>() as Navigation;
+    var GlobalSetting = Homenode.FirstChild<SettingFolder>().FirstChild<GlobalSetting>() as GlobalSetting;
+}
+<footer>
+    <div class="container">
+        <div class="row">
+            @if (navigation.FooterNavigation != null)
+            {
+                foreach (NavigationNC item in navigation.FooterNavigation)
+                {
+                    <div class="col-md-3">
+                        <div class="foot-head">@item.NavTitle</div>
+                        @if (item.Urls != null)
+                        {
+                            <div class="foot-link">
+                                @foreach (var dropmenu in item.Urls)
+                                {
+                                    <a href="@dropmenu.Url">@dropmenu.Name</a>
+                                }
+                            </div>
+                        }
+                    </div>
+                }
+            }
+
+            <div class="col-md-3">
+                <img src="@(GlobalSetting.WebsiteLogoBlack!=null?GlobalSetting.WebsiteLogoBlack.Url:string.Empty)" class="footer-logo">
+                @if (GlobalSetting.SocialMedia != null)
+                {
+                    <div class="social-media">
+                        <h5>Social Media</h5>
+                        @foreach (SocialMediaNC item in GlobalSetting.SocialMedia)
+                        {
+                            var socaillink = item.SocialMediaUrl;
+                            if (socaillink != null)
+                            {
+                                <a href="@socaillink.Url"><img src="@(item.SocialIconImage!=null?item.SocialIconImage.Url:string.Empty)"></a>
+                            }
+
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</footer>

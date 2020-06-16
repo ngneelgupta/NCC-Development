@@ -1,0 +1,560 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body, h1, h2, h3, h4, h5, h6, p, span, ul, ol {
+	padding: 0;
+	margin: 0;
+	font-family: 'Muli', sans-serif;
+	list-style: none;
+}
+
+p {
+	font-size: 20px;
+	line-height: 28px;
+	color: #464646;
+}
+
+a, button {
+	text-decoration: none;
+	transition: 0.5s ease-in-out;
+}
+
+button:focus {
+	outline: 0;
+}
+
+a:hover, button:hover {
+	text-decoration: none;
+	transition: 0.5s ease-in-out;
+}
+
+header {
+	background-color: #fff;
+	font-size: 14px;
+    font-weight: 400;
+    padding: 8px 0px 0px;
+}
+
+header a:hover {
+	text-decoration: underline;
+}
+
+.contact-head li {
+	display: inline-block;
+	margin: 0 0 0 20px;
+}
+
+.contact-head li .fas {
+	padding-right: 7px;
+}
+
+.contact-head li a {
+	color: #0067a5;
+}
+
+.navbar  {
+	padding: 0px;
+}
+
+li.nav-item {
+    padding: 0 25px;
+    position: relative;
+}
+
+li.nav-item:last-child {
+	padding-right: 0px;
+} 
+
+a.nav-link {
+    font-size: 17px;
+    font-weight: 400;
+    padding: 8px 0!important;
+    position: relative;
+    color: #464646;
+}
+
+a.nav-link:hover {
+	color: #4dbfb0;
+}
+
+a.nav-link.active {
+	color: #0067a5;
+}
+
+a.contact-link {
+	border: 1px solid #0067a5;
+    background-color: #0067a5;
+    color: #fff;
+    padding: 7px 24px!important;
+    border-radius: 24px;
+}
+
+a.contact-link:hover, .learn-more-link:hover {
+	border: 1px solid #4dbfb0;
+    background-color: #4dbfb0;
+    color: #fff;	
+}
+
+.navbar-toggler {
+	width: 8%;
+	outline: 0;
+}
+
+.navbar-toggler img {
+	width: 100%;
+}
+
+.navbar-brand img {
+	margin-top: -25px;
+}
+
+.dropdown-menu {
+	border-radius: 0px;
+    box-shadow: 0px 2px 13px #0000001F;
+    border: none;
+    min-width: 146px;
+    left: 15px;
+}
+
+.dropdown-item {
+	padding: 8px 15px;
+}
+
+.dropdown-item:hover {
+	background: none;
+	color: #0067a5;
+}
+
+video{
+	width: 100%;
+}
+
+#banner {
+	height: 65vh;
+	display: flex;
+	align-items: center;
+}
+
+.carousel-caption {
+    position: relative;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.banner-heading {
+	font-size: 40px;
+    color: #0067a5;
+    font-weight: 700;
+    line-height: 57px;
+}
+
+.carousel-caption p {
+	font-size: 23px;
+	color: #464646;
+	line-height: 36px;
+	font-weight: 400;
+	margin: 15px 0 0;
+}
+
+.hcp-banner-img {
+	width: 100%;
+	box-shadow: 0px 0px 18px 2px #e1e1e1;
+}
+
+.learn-more-link {
+    display: inline-block;
+    margin-top: 30px;
+    color: #fff;
+    padding: 8px 30px!important;
+    background: #0067a5;
+    font-size: 18px;
+    font-weight: 400;
+    border: 1px solid #0067a5;
+    letter-spacing: 0.16px;
+    border-radius: 5px;
+    line-height: 30px;
+}
+
+.carousel-control-prev, .carousel-control-next {
+	display: none;
+}
+
+.common-heading {
+	font-size: 40px;
+	font-weight: 700;
+	line-height: 52px;
+	color: #0067a5;
+	display: inline-block;
+	position: relative;	
+	margin: 0px 0 40px;
+}
+
+.common-heading span {
+	color: #4dbfb0;
+}
+
+.common-heading:after {
+	content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -10px;
+    width: 88%;
+    height: 4px;
+    margin: 0 auto;
+    background: #0067a5;
+}
+
+.dashboard-second-wrapper {
+	padding: 30px 0;
+}
+
+.dashboard-second-wrapper p {
+	color: #464646;
+	font-size: 20px;
+	line-height: 30px;
+	text-align: left;
+	padding: 0 0px;
+}
+
+.national-cannabis-col img{
+	width: 100%;
+	height: 350px;
+}
+
+.cannabis-inner {
+	width: 100%;
+	float: left;
+	padding: 20px 15px 30px;
+}
+
+.cannabis-inner h3 {
+	font-size: 22px;
+	color: #000;
+	line-height: 30px;
+	position: relative;
+	display: inline-block;
+}
+
+.cannabis-inner h3:before {
+    content: '';
+    position: absolute;
+    left: -51px;
+    bottom: 12px;
+    width: 35%;
+    height: 2px;
+    margin: 0 auto;
+    background: #000;
+}
+
+.cannabis-inner p {
+	font-size: 16px;
+	color: #464646;
+	line-height: 24px;
+	text-align: left;
+	position: relative;
+	margin: 15px 0;
+	padding: 0;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cannabis-view-btn {
+	font-size: 16px;
+    color: #464646;
+    line-height: 24px;
+    text-align: left;
+    position: relative;
+    float: left;
+    padding: 0 0 0 11%;
+}
+
+.cannabis-view-btn:before {
+	content: '';
+    position: absolute;
+    left: 1px;
+    bottom: 10px;
+    width: 22%;
+    height: 2px;
+    margin: 0 auto;
+    background: #000;
+}
+
+.cannabis-view-btn:hover {
+	color: #0067a5;
+}
+
+.cannabis-view-btn:hover:before {
+	background-color: #0067a5;
+}
+
+.national-cannabis-col .cannabis-box {
+	width: 100%;
+	float: left;
+	margin-top: 50px;
+}
+.national-cannabis-col .cannabis-box:hover {
+    box-shadow: 0px 0px 18px 2px #e1e1e1;
+}
+
+.dashboard-third-wrapper{
+	background: url(../images/cannabis-contact-bg.jpg) top center no-repeat;
+	background-size: cover;
+	padding: 40px 0;
+}
+
+.dashboard-third-wrapper img {
+	width: 100%;
+	margin: 20px 0 0 0;
+}
+
+.dashboard-third-wrapper h4 {
+	font-size: 35px;
+	font-weight: 600;
+	color: #0067a5;
+	text-align: center;
+}
+.dashboard-third-wrapper h4 span {
+	color: #4dbfb0;
+}
+.connect-box-form {
+	width: 100%;
+	float: left;
+	margin: 30px 0 0 0;
+	height: 110px;
+	box-shadow: 0px 0px 18px 2px #e1e1e1;
+    border-radius: 22px 0 0 22px;
+}
+.connect-box-left {
+	width: 28%;
+	float: left;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	box-sizing: border-box;	
+	padding: 10px 15px;
+	background-color: #0067a5;	
+	border-radius: 22px 0 0 22px;
+}
+.connect-box-left h3 {
+	font-size: 25px;
+	color: #fff;
+	line-height: 32px;
+	font-weight: 600;
+	text-align: center;
+}
+.connect-box-right {
+	width: 72%;
+	float: left;
+	height: 100%;
+	box-sizing: border-box;
+	background-color: #fff;
+	padding: 0px 15px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+.connect-box-right h3 {
+	font-size: 26px;
+	line-height: 30px;
+	color: #0067a5;
+	font-weight: 600;
+	text-align: center;
+	margin: 0 0 5px 0;
+}
+.connect-box-right p {
+	font-size: 16px;
+	line-height: 20px;
+	color: #464646;
+}
+
+.connect-box-form:last-child .connect-box-left {
+	background-color: #4dbfb0;
+}
+
+.connect-box-form:last-child .connect-box-right h3 {
+	color: #4dbfb0;
+}
+.dashboard-fourth-wrapper {
+	padding: 30px 0 60px;
+}
+
+.heading-blue-28px {
+	font-size: 28px;
+	font-weight: 600;
+	color: #0067a5;
+	line-height: 36px;
+	margin: 0 0 15px 0;
+}
+.card {
+	border: 0px;
+	box-shadow: 0px 0px 18px 2px #e1e1e1;
+}
+.blog-date {
+    padding: 10px 10px;
+    position: relative;
+    background-color: #0067a5;
+    color: #fff;
+    width: 64px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 26px;
+    margin: -60px 0 20px -20px;
+}
+
+.card-title {
+	font-size: 22px;
+	color: #0067a5;
+	font-weight: 600;
+	width: 80%;
+	padding-bottom: 10px;
+	border-bottom: 4px solid #0067a5;
+}
+.card-text {
+	font-size: 18px!important;
+	color: #464646;
+	line-height: 26px;
+}
+.card-body .learn-more-link {
+	margin: 30px 0px -41px 0px;
+    float: right;
+}
+
+.blog-row {
+	display: flex;
+	align-items: center;
+}
+.blog-row .col-lg-4 {
+	margin: 30px 0 0 0;
+}
+
+footer {
+	background: url(../images/footer-bg.jpg) top center no-repeat;
+	background-size: cover;
+	padding: 50px 0;
+	background-position: 0% 30%;
+}
+
+.foot-head {
+	font-size: 22px;
+	color: #464646;
+	font-weight: 600;
+	position: relative;
+	margin: 0 0 20px 0;
+}
+
+.foot-head:after {
+	position: absolute;
+	content: "";
+	background: #000;
+	height: 2px;
+	width: 35px;
+	top: 100%;
+	left: 0;
+	bottom: 15px;
+}
+.foot-link a {
+	font-size: 18px;
+	color: #464646;
+	display: block;
+	padding: 5px 0;
+}
+
+.foot-link a:hover {
+	font-weight: 700;
+	padding-left: 5px;
+	color: #4dbfb0;
+}
+
+.social-media {
+	width: 100%;
+	float: left;
+	margin: 20px 0 0 0;
+}
+.social-media h5 {
+	font-size: 18px;
+	font-weight: 600;
+	margin: 0 0 10px 0;
+	color: #464646;
+}
+.social-media a {
+	margin: 0 10px 0 0;
+	display: inline-block;
+}
+
+.footer-logo {
+	width: 100%;
+}
+
+.dashboard-banner {
+/*	background: url(../images/homepage-banner-2.jpg) top -46px center no-repeat;*/
+	background: url(../images/Ncc.gif) top -46px center no-repeat;
+    background-size: cover;
+    height: 90vh;
+}
+
+.banner-overlay {
+	background: rgba(149,168,210,0.3);
+    padding: 50px 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.banner-overlay img {
+	width: 7%;
+	cursor: pointer;
+}
+
+.videoModal .modal-body {
+	padding: 0px 10px 3px;
+}
+
+.modal-dialog {
+    max-width: 1199px;
+}
+
+.videoModal .modal-header{
+	padding: 0px;
+	border: 0px;
+}
+
+.videoModal .close {
+    background: #fff;
+    color: #000;
+    font-size: 22px;
+    font-weight: 700;
+    border-radius: 50%;
+    padding: 5px 9px;
+    margin: -26px -18px 0 auto;
+    opacity: 1;
+    border: 2px solid;
+}
+
+.video-heading {
+	font-size: 40px;
+	font-weight: 700;
+	color: #e9faff;
+	margin: 30px 0 0 0;
+	line-height: 55px;
+}
+
+
+
+
+
+
+
