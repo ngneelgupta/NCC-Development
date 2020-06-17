@@ -1,0 +1,170 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.About>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "master.cshtml";
+}
+
+<!-- banner section -->
+<section class="about-banner common-banner" style="background: url(@(Model.BannerImage!=null?Model.BannerImage.Url:string.Empty)) top center no-repeat;background-size: cover;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="carousel-caption">
+                    <h1 class="banner-heading text-white">@Model.BannerHeading</h1>
+                    @Html.Raw(Model.BannerDescription)
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Ncc member Start -->
+<section class="hcp-member-100 about-second-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="common-heading">@Html.Raw(Model.WhoWeAreHeading)</h2>
+            </div>
+        </div>
+        <div class="row">
+            @if (Model.WhoWeAre != null)
+            {
+                foreach (ImageAndHeadingNC item in Model.WhoWeAre)
+                {
+                    <div class="col-md-4 hcp-inner">
+                        <img src="@(item.Image!=null?item.Image.Url:string.Empty)">
+                        <h2 class="text-dark">@Html.Raw(item.Heading)</h2>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>
+
+<!-- About National Cannabis start -->
+<section class="about-third-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="common-heading">@Html.Raw(Model.AboutUsHeading)</h2>
+                @Html.Raw(Model.AboutUsDescription)
+            </div>
+        </div>
+        <div class="row history-row">
+            <div class="col-12">
+                <h2 class="heading-24">History</h2>
+                @if (Model.Timeline != null)
+                {
+                    <ul class="timeline">
+                        @foreach (TimelineNC item in Model.Timeline)
+                        {
+                            <li>
+                                <span class="year">@item.Year</span>
+                                @if (item.Timeline != null)
+                                {
+                                    <ul class="content">
+                                        @foreach (HeadingAndSubHeadingNC ite in item.Timeline)
+                                        {
+                                            <li><b>@ite.Years</b> <br>@ite.Detail</li>
+                                        }
+                                    </ul>
+                                }
+
+                            </li>
+                        }
+                        <li><span class="year new">Sustained Growth</span></li>
+                    </ul>
+                }
+
+            </div>
+        </div>
+        <div class="row patient-commitments-row">
+            <div class="col-12 text-center">
+                <h2 class="common-heading">@Html.Raw(Model.CoreValuesHeading)</h2>
+            </div>
+            @if (Model.CoreValues != null)
+            {
+                foreach (var item in Model.CoreValues)
+                {
+                    <div class="col-md-6">
+                        <div class="patient-commitment">
+                            <div class="commitment-left">
+                                <img src="/images/right-icon.png"><p>@item</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>
+
+<!-- Blog Section -->
+<section class="about-fourth-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="common-heading"><span>Know</span> More</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-sm-6">
+                <div class="card">
+                    <a href="our-team.html">
+                        <img class="card-img-top" src="/images/know-more-img-01.png" alt="Card image">
+                        <div class="card-body">
+                            <h4 class="heading-28 text-center">Our Team</h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="card">
+                    <a href="hcp.html">
+                        <img class="card-img-top" src="/images/know-more-img-01.png" alt="Card image">
+                        <div class="card-body">
+                            <h4 class="heading-28 text-center">Our Doctors</h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="card">
+                    <a href="clinic.html">
+                        <img class="card-img-top" src="/images/know-more-img-01.png" alt="Card image">
+                        <div class="card-body">
+                            <h4 class="heading-28 text-center">Our Clinic</h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="card">
+                    <a href="blog.html">
+                        <img class="card-img-top" src="/images/know-more-img-01.png" alt="Card image">
+                        <div class="card-body">
+                            <h4 class="heading-28 text-center">Our Blogs</h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    var vid = document.getElementById("myVideo");
+    function pauseVid() {
+        vid.pause();
+    }
+    (function () {
+        $(window).on('load resize', function () {
+            if ($(this).width() < 767) {
+                return $('.timeline > li').css('margin-top', '');
+            } else {
+                return $('.timeline > li').css('margin-top', $('.timeline > li').height());
+            }
+        });
+    }).call(this);
+
+</script>
+
