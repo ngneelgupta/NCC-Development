@@ -1,0 +1,81 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Blogs>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@using System.Text.RegularExpressions;
+@{
+    Layout = "master.cshtml";
+    var blogs = Model.Children.Where(x => x.IsDocumentType("blogPost"));
+
+}
+
+<!-- banner section -->
+<section class="blog-banner common-banner" style="background: url(@(Model.BannerImage!=null?Model.BannerImage.Url:string.Empty)) top center no-repeat;background-size: cover;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="carousel-caption">
+                    <h1 class="banner-heading text-white">@Model.BannerHeading</h1>
+                    @Html.Raw(Model.BannerDescription)
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About National Cannabis start -->
+<section class="about-third-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="common-heading"><span>Latest</span> Blogs</h2>
+            </div>
+        </div>
+        <div class="row clinic-amenities">
+            @if (blogs != null)
+            {
+                foreach (BlogPost item in blogs)
+                {
+                    string description = item.BlogDescription != null ? item.BlogDescription.ToString() : "";
+                    description = Regex.Replace(description, "<.*?>", string.Empty).Trim();
+                    description = description.Length > 80 ? description.Substring(0, 80) + "..." : description;
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card">
+                            <a href="@item.Url">
+                                <img class="card-img-top" src="@(item.BlogImage!=null?item.BlogImage.Url:string.Empty)" alt="Card image">
+                                <div class="card-body">
+                                    <h4 class="card-title">@item.BlogTitle</h4>
+                                    <p class="card-text">@description</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+            }
+            <div class="col-12 text-center">
+                <button type="button" class="learn-more-link" id="view-more">View More</button>
+            </div>
+        </div>
+        <div class="row clinic-amenities" id="toggle" style="display:none;">
+            
+            <div class="col-12 text-center">
+                <button type="button" class="learn-more-link" id="view-less">View Less</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+        $("#view-more").click(function () {
+            $("#view-more").hide();
+            $("#view-less").show();
+            $("#toggle").show();
+        });
+
+        $("#view-less").click(function () {
+            $("#view-more").show();
+            $("#view-less").hide();
+            $("#toggle").hide();
+        });
+    })
+</script>
