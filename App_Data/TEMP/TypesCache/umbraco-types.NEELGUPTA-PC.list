@@ -78,7 +78,7 @@ Umbraco.Core.Compose.ManifestWatcherComposer, Umbraco.Core, Version=8.0.0.0, Cul
 Umbraco.Core.Compose.RelateOnCopyComposer, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Core.Compose.RelateOnTrashComposer, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Core.Services.Implement.KeyValueService+InitializeMigration, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-NCC.BusinessLogic.ContactFormController, App_Code.yug9vdq5, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+NCC.BusinessLogic.ContactFormController, App_Code.-e19ebkc, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Controllers.UmbProfileController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Controllers.UmbLoginStatusController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Controllers.UmbRegisterController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -343,7 +343,7 @@ Umbraco.Web.PropertyEditors.ValueConverters.RteMacroRenderingValueConverter, Umb
 
 Umbraco.Web.Mvc.PluginController
 
-NCC.BusinessLogic.ContactFormController, App_Code.yug9vdq5, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+NCC.BusinessLogic.ContactFormController, App_Code.-e19ebkc, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Controllers.UmbProfileController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Controllers.UmbLoginStatusController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Controllers.UmbRegisterController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -428,7 +428,7 @@ Umbraco.ModelsBuilder.Umbraco.ModelsBuilderBackOfficeController, Umbraco.ModelsB
 
 Umbraco.Web.Mvc.SurfaceController
 
-NCC.BusinessLogic.ContactFormController, App_Code.yug9vdq5, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+NCC.BusinessLogic.ContactFormController, App_Code.-e19ebkc, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Controllers.UmbProfileController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Controllers.UmbLoginStatusController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Controllers.UmbRegisterController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -571,8 +571,12 @@ Umbraco.Web.HealthCheck.NotificationMethods.EmailNotificationMethod, Umbraco.Web
 
 Umbraco.Core.Models.PublishedContent.PublishedElementModel
 
+Umbraco.Web.PublishedModels.AddressNC, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.PublishedModels.FAqnc, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PublishedModels.HeadingAndSubHeadingNC, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PublishedModels.ImageAndHeadingNC, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.PublishedModels.ImageAndLinkNC, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.PublishedModels.ImageHeadingAndDescriptionNC, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PublishedModels.ImageHeadingDescriptionAndLinkNC, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PublishedModels.NavigationNC, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PublishedModels.SocialMediaNC, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -588,16 +592,20 @@ Umbraco.Web.PublishedModels.BlogCategory, Umbraco.Web.PublishedModels, Version=0
 Umbraco.Web.PublishedModels.BlogPost, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PublishedModels.BlogPostComment, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PublishedModels.Blogs, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.PublishedModels.Clinic, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.PublishedModels.FAQ, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PublishedModels.File, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PublishedModels.Folder, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PublishedModels.GlobalSetting, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PublishedModels.Home, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PublishedModels.Image, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.PublishedModels.KnowMore, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PublishedModels.Master, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PublishedModels.Member, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PublishedModels.Navigation, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PublishedModels.PageNotFound, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PublishedModels.SettingFolder, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.PublishedModels.Team, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 
 Umbraco.Core.Deploy.IServiceConnector
 

@@ -1,0 +1,59 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.FAQ>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "master.cshtml";
+}
+
+<!-- banner section -->
+<section class="faq-banner common-banner" style="background: url(@(Model.BannerImage!=null?Model.BannerImage.Url:string.Empty)) top center no-repeat;background-size: cover;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="carousel-caption">
+                    <h1 class="banner-heading">@Model.BannerHeading</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- faQ Section Start -->
+<section class="faq-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!--Accordion wrapper-->
+                <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+                    @if (Model.FrequentlyAskedQuestions != null)
+                    {
+                        var i = 1;
+                        foreach (FAqnc item in Model.FrequentlyAskedQuestions)
+                        {
+                            <div class="card">
+                                <div class="card-header" role="tab" id="headingOne@(i)">
+                                    <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne@(i)" aria-expanded="true"
+                                       aria-controls="collapseOne@(i)">
+                                        <h5 class="mb-0">
+                                            <span>Questions: </span>@item.Heading
+                                            <i class="fas fa-chevron-circle-down rotate-icon"></i>
+                                        </h5>
+                                    </a>
+                                </div>
+                                <div id="collapseOne@(i)" class="collapse @(i==1?"show":string.Empty)" role="tabpanel" aria-labelledby="headingOne@(i)"
+                                     data-parent="#accordionEx">
+                                    <div class="card-body">
+                                        @Html.Raw(item.Description)
+                                    </div>
+                                </div>
+
+                            </div>
+                            i++;
+                        }
+                    }
+                </div>
+                <!-- Accordion wrapper -->
+            </div>
+        </div>
+    </div>
+</section>
+

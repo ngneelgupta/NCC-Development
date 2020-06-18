@@ -1,0 +1,146 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Clinic>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "master.cshtml";
+}
+
+<!-- banner section -->
+<section class="clinic-banner common-banner" style="background: url(@(Model.BannerImage!=null?Model.BannerImage.Url:string.Empty)) top center no-repeat;background-size: cover;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="carousel-caption">
+                    <h1 class="banner-heading">@Model.BannerHeading</h1>
+                    @Html.Raw(Model.BannerDescription)
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Ncc member Start -->
+<section class="clinic-second-wrapper about-second-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="common-heading text-white">Our Clinic</h2>
+            </div>
+        </div>
+        <div class="row">
+            @if (Model.OurClinic != null)
+            {
+                foreach (ImageAndHeadingNC item in Model.OurClinic)
+                {
+                    <div class="col-md-4 hcp-inner">
+                        <img src="@(item.Image!=null?item.Image.Url:string.Empty)">
+                        <h2 class="text-white">@item.Heading</h2>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>
+
+<!-- About National Cannabis start -->
+<section class="about-third-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="common-heading">@Html.Raw(Model.AmenitiesHeading)</h2>
+                @Html.Raw(Model.AmenitiesDescription)
+            </div>
+        </div>
+        <div class="row clinic-amenities">
+            @if (Model.AmenitiesInClinic != null)
+            {
+                foreach (ImageHeadingAndDescriptionNC item in Model.AmenitiesInClinic)
+                {
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card">
+                            <img class="card-img-top" src="@(item.Image!=null?item.Image.Url:string.Empty)" alt="Card image">
+                            <div class="card-body">
+                                <h4 class="card-title">@item.Heading</h4>
+                                <p class="card-text">@item.Description</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>
+
+<!-- Clinic Locations -->
+<section class="clinic-locations">
+    <div class="container">
+        @*<form action="" class="location-from">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="email">State</label>
+                            <input type="email" id="email">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="email">City</label>
+                            <input type="email" id="email">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="email">Post Code</label>
+                            <input type="email" id="email">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <button type="button" class="learn-more-link">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </form>*@
+        <div class="row clinic-map-row">
+            <div class="col-md-9">
+                @Html.Raw(Model.Map)
+            </div>
+            <div class="col-md-3">
+                <div class="clinic-address">
+                    @if (Model.Address != null)
+                    {
+                        foreach (AddressNC item in Model.Address)
+                        {
+                            <div class="address-col">
+                                <h2 class="clinic-heading">@item.Title</h2>
+                                @if (!string.IsNullOrEmpty(item.Address))
+                                {
+                                    <div class="address-inner">
+                                        <div class="address-heading">Address</div>
+                                        <div class="address-detail">
+                                            @item.Address
+                                        </div>
+                                    </div>
+                                }
+                                @if (!string.IsNullOrEmpty(item.PhoneNumber))
+                                {
+                                    <div class="address-inner">
+                                        <div class="address-heading">Phone Number</div>
+                                        <div class="address-detail"><a href="tel:@item.PhoneNumber">@item.PhoneNumber</a></div>
+                                    </div>
+                                }
+                                @if (!string.IsNullOrEmpty(item.Email))
+                                {
+                                    <div class="address-inner">
+                                        <div class="address-heading">Email</div>
+                                        <div class="address-detail"><a href="mailto:@item.Email">@item.Email</a> </div>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

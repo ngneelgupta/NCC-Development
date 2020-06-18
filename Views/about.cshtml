@@ -104,50 +104,29 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <h2 class="common-heading"><span>Know</span> More</h2>
+                <h2 class="common-heading">@Html.Raw(Model.KnowMoreHeading)</h2>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-3 col-sm-6">
-                <div class="card">
-                    <a href="our-team.html">
-                        <img class="card-img-top" src="/images/know-more-img-01.png" alt="Card image">
-                        <div class="card-body">
-                            <h4 class="heading-28 text-center">Our Team</h4>
+            @if (Model.KnowMoreContent != null)
+            {
+                foreach (ImageAndLinkNC item in Model.KnowMoreContent)
+                {
+                    if (item.Link != null)
+                    {
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card">
+                                <a href="@item.Link.Url">
+                                    <img class="card-img-top" src="@(item.Image!=null?item.Image.Url:string.Empty)" alt="Card image">
+                                    <div class="card-body">
+                                        <h4 class="heading-28 text-center">@item.Link.Name</h4>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="card">
-                    <a href="hcp.html">
-                        <img class="card-img-top" src="/images/know-more-img-01.png" alt="Card image">
-                        <div class="card-body">
-                            <h4 class="heading-28 text-center">Our Doctors</h4>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="card">
-                    <a href="clinic.html">
-                        <img class="card-img-top" src="/images/know-more-img-01.png" alt="Card image">
-                        <div class="card-body">
-                            <h4 class="heading-28 text-center">Our Clinic</h4>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="card">
-                    <a href="blog.html">
-                        <img class="card-img-top" src="/images/know-more-img-01.png" alt="Card image">
-                        <div class="card-body">
-                            <h4 class="heading-28 text-center">Our Blogs</h4>
-                        </div>
-                    </a>
-                </div>
-            </div>
+                    }
+                }
+            }
         </div>
     </div>
 </section>

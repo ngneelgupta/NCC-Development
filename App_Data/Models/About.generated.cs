@@ -22,7 +22,7 @@ namespace Umbraco.Web.PublishedModels
 {
 	/// <summary>About</summary>
 	[PublishedModel("about")]
-	public partial class About : Master, IBanner
+	public partial class About : Master, IBanner, IKnowMore
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -114,5 +114,19 @@ namespace Umbraco.Web.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("bannerImage")]
 		public IPublishedContent BannerImage => Banner.GetBannerImage(this);
+
+		///<summary>
+		/// Know More Content
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("knowMoreContent")]
+		public IEnumerable<ImageAndLinkNC> KnowMoreContent => KnowMore.GetKnowMoreContent(this);
+
+		///<summary>
+		/// Heading
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("knowMoreHeading")]
+		public string KnowMoreHeading => KnowMore.GetKnowMoreHeading(this);
 	}
 }
