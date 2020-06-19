@@ -60,6 +60,13 @@ namespace Umbraco.Web.PublishedModels
 		public string EmailId => this.Value<string>("emailId");
 
 		///<summary>
+		/// Enable Ssl
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("enableSsl")]
+		public bool EnableSsl => this.Value<bool>("enableSsl");
+
+		///<summary>
 		/// Favicon
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
@@ -81,6 +88,34 @@ namespace Umbraco.Web.PublishedModels
 		public string GoogleHeadTagScript => this.Value<string>("googleHeadTagScript");
 
 		///<summary>
+		/// Mail Host
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("mailHost")]
+		public string MailHost => this.Value<string>("mailHost");
+
+		///<summary>
+		/// Mail Sender Display Name
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("mailSenderDisplayName")]
+		public string MailSenderDisplayName => this.Value<string>("mailSenderDisplayName");
+
+		///<summary>
+		/// Mail Sender Password
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("mailSenderPassword")]
+		public string MailSenderPassword => this.Value<string>("mailSenderPassword");
+
+		///<summary>
+		/// Mail Sender User Name
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("mailSenderUserName")]
+		public string MailSenderUserName => this.Value<string>("mailSenderUserName");
+
+		///<summary>
 		/// Map
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
@@ -93,6 +128,20 @@ namespace Umbraco.Web.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("phoneNumber")]
 		public string PhoneNumber => this.Value<string>("phoneNumber");
+
+		///<summary>
+		/// Port Number
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("portNumber")]
+		public string PortNumber => this.Value<string>("portNumber");
+
+		///<summary>
+		/// Receiver Email Id
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("receiverEmailId")]
+		public string ReceiverEmailId => this.Value<string>("receiverEmailId");
 
 		///<summary>
 		/// Social Media

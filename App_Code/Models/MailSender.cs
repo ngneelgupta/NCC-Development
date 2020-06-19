@@ -2,7 +2,7 @@
 using System.Configuration;
 using System.Net.Configuration;
 using System.Net.Mail;
-namespace Mintworks.Models
+namespace NCC.Models
 {
     public class MailSender
     {

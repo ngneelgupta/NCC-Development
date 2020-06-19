@@ -1,0 +1,34 @@
+
+
+/**umb_name:Heading 1*/
+h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px
+}
+
+/**umb_name:Heading 2*/
+h2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px
+}
+
+/**umb_name:Heading 3*/
+h3{}
+
+/**umb_name:Heading 4*/
+h4{}
+
+/**umb_name:Heading 5*/
+h5{}
+
+/**umb_name:Heading 6*/
+h6{}
+
+/**umb_name:Title_Text*/
+.Title_Text{font-family: 'Roboto', sans-serif;font-size:16px}
+
+/**umb_name:Subtitle_Text*/
+.Subtitle_Text{font-family: 'Roboto', sans-serif;font-size:14px}
+
+/**umb_name:Normal_Text*/
+.Normal_Text{font-family: 'Roboto', sans-serif;font-size:11px}

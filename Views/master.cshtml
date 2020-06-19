@@ -32,7 +32,7 @@
     <!-- stylesheet link -->
     <link rel="stylesheet" type="text/css" href="/css/homepage-style.css">
     <link rel="stylesheet" type="text/css" href="/css/inner-style.css">
-
+    <link href="/css/form.css" rel="stylesheet" />
     <!-- Responsive stylesheet link -->
     <link rel="stylesheet" type="text/css" href="/css/responsive.css">
 
@@ -56,9 +56,12 @@
     @Html.Partial("Header")
     @RenderBody()
     @Html.Partial("Footer")
-    <!-- Modal -->
-   
-    
+    <div class="loader loading-div" style="display: none;"></div>
+    <div class="loader loading-img" style="display: none;">
+        <img src="/images/loader.gif" />
+    </div>
+
+
     <!-- bootstrap 4 jquery script-->
 
     <script src="/scripts/bootstrap.min.js"></script>

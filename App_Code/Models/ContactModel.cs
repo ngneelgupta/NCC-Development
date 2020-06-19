@@ -12,9 +12,8 @@ public class ContactModel
     public string Email { get; set; }
     public string PhoneNumber { get; set; }
     public string Message { get; set; }
-    public string IndustryList { get; set; }
-    public string CountryList { get; set; }
-    public string intrestedIn { get; set; }
+    public string disease { get; set; }
+    public string GlobalsettingId { get; set; }
     public string NodeId { get; set; }
     
 }

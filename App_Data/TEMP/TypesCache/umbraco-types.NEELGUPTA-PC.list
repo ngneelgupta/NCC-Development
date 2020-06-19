@@ -78,7 +78,6 @@ Umbraco.Core.Compose.ManifestWatcherComposer, Umbraco.Core, Version=8.0.0.0, Cul
 Umbraco.Core.Compose.RelateOnCopyComposer, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Core.Compose.RelateOnTrashComposer, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Core.Services.Implement.KeyValueService+InitializeMigration, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-NCC.BusinessLogic.ContactFormController, App_Code.-e19ebkc, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Controllers.UmbProfileController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Controllers.UmbLoginStatusController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Controllers.UmbRegisterController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -279,6 +278,7 @@ Umbraco.ModelsBuilder.Validation.MediaTypeModelValidator, Umbraco.ModelsBuilder,
 Umbraco.ModelsBuilder.Validation.MemberTypeModelValidator, Umbraco.ModelsBuilder, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.ModelsBuilder.Umbraco.ModelsBuilderComposer, Umbraco.ModelsBuilder, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.ModelsBuilder.Umbraco.ModelsBuilderBackOfficeController, Umbraco.ModelsBuilder, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+NCC.BusinessLogic.ContactFormController, App_Code.fyvfkd41, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 
 Umbraco.Core.Composing.IComposer
 
@@ -343,11 +343,11 @@ Umbraco.Web.PropertyEditors.ValueConverters.RteMacroRenderingValueConverter, Umb
 
 Umbraco.Web.Mvc.PluginController
 
-NCC.BusinessLogic.ContactFormController, App_Code.-e19ebkc, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Controllers.UmbProfileController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Controllers.UmbLoginStatusController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Controllers.UmbRegisterController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Controllers.UmbLoginController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+NCC.BusinessLogic.ContactFormController, App_Code.fyvfkd41, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 
 Umbraco.Web.Mvc.IRenderMvcController
 
@@ -428,11 +428,11 @@ Umbraco.ModelsBuilder.Umbraco.ModelsBuilderBackOfficeController, Umbraco.ModelsB
 
 Umbraco.Web.Mvc.SurfaceController
 
-NCC.BusinessLogic.ContactFormController, App_Code.-e19ebkc, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Controllers.UmbProfileController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Controllers.UmbLoginStatusController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Controllers.UmbRegisterController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Controllers.UmbLoginController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+NCC.BusinessLogic.ContactFormController, App_Code.fyvfkd41, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 
 Umbraco.Core.Dashboards.IDashboard
 
@@ -593,6 +593,7 @@ Umbraco.Web.PublishedModels.BlogPost, Umbraco.Web.PublishedModels, Version=0.0.0
 Umbraco.Web.PublishedModels.BlogPostComment, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PublishedModels.Blogs, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PublishedModels.Clinic, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.PublishedModels.ContactUs, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PublishedModels.FAQ, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PublishedModels.File, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PublishedModels.Folder, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null

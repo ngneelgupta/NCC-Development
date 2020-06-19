@@ -1,0 +1,120 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.ContactUs>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "master.cshtml";
+    var Homenode = Model.Root();
+    var GlobalSetting = Homenode.FirstChild<SettingFolder>().FirstChild<GlobalSetting>() as GlobalSetting;
+}
+
+<!-- banner section -->
+<section class="contact-banner common-banner" style="background: url(@(Model.BannerImage!=null?Model.BannerImage.Url:string.Empty)) top center no-repeat;background-size: cover;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="carousel-caption">
+                    <h1 class="banner-heading text-white">@Model.BannerHeading</h1>
+                    @Html.Raw(Model.BannerDescription)
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section>
+    <div class="container">
+        <div class="row contact-row">
+            <div class="col-lg-7">
+                <form id="expertTalk" action="" class="contact-form">
+                    <input type="hidden" value="@GlobalSetting.Id" id="globalsettingId" />
+                    <input type="hidden" value="@Model.Id" id="NodeId" />
+                    <div class="row">
+                        <div class="col-12">
+                            <legend>@Model.SendYourRequestHeading</legend>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name">@Model.NameText:</label>
+                                <input type="text" class="form-control" placeholder="@Model.NamePlaceholderText" id="ContactName" name="ContactName">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="emil">@Model.EmailText:</label>
+                                <input type="email" class="form-control" placeholder="@Model.EmailPlaceholderText" id="Email" name="Email">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="phone">@Model.PhoneNumberText:</label>
+                                <input type="text" class="form-control" placeholder="@Model.PhoneNumberPlaceholderText" name="PhoneNumber" id="PhoneNumber">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="disease">@Model.DiseaseText:</label>
+                                <input type="text" class="form-control" placeholder="@Model.DiseasePlaceholderText" name="disease" id="disease">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="message">@Model.MessageText:</label>
+                                <textarea placeholder="@Model.MessagePlaceholderText" rows="1" name="message" id="message"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 text-center">
+                            <div class="form-group submit-btn">
+                                <button type="button" class="learn-more-link">@Model.SubmitButtonText</button>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="alert alert-success" role="alert" style="display:none">
+
+                            </div>
+                            <div class="alert alert-danger" role="alert" style="display:none">
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-5 pr-0">
+                <div class="contact-info">
+                    <legend>Contact Information</legend>
+                    <div class="conatct-info-col">
+                        <div class="contact-heading">Address :</div>
+                        <div class="contact-detail">@Html.Raw(GlobalSetting.Address)</div>
+                    </div>
+                    <div class="conatct-info-col">
+                        <div class="contact-heading">Phone :</div>
+                        <div class="contact-detail"><a href="tel:@GlobalSetting.PhoneNumber">@GlobalSetting.PhoneNumber</a></div>
+                    </div>
+                    <div class="conatct-info-col">
+                        <div class="contact-heading">E-mail :</div>
+                        <div class="contact-detail"><a href="mailto:@GlobalSetting.EmailId">@GlobalSetting.EmailId</a></div>
+                    </div>
+                    @if (GlobalSetting.SocialMedia != null)
+                    {
+                        <div class="conatct-info-col social-media">
+                            @foreach (SocialMediaNC item in GlobalSetting.SocialMedia)
+                            {
+                                var socaillink = item.SocialMediaUrl;
+                                if (socaillink != null)
+                                {
+                                    <a href="@socaillink.Url"><img src="@(item.SocialIconImage!=null?item.SocialIconImage.Url:string.Empty)"></a>
+                                }
+                            }
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="map">
+    @Html.Raw(Model.Map)
+</section>
+<script src="/scripts/Contactuspage.js"></script>
+
