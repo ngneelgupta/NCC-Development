@@ -22,7 +22,7 @@ namespace Umbraco.Web.PublishedModels
 {
 	/// <summary>Patient Form</summary>
 	[PublishedModel("patientForm")]
-	public partial class PatientForm : Master
+	public partial class PatientForm : Master, IBanner
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -44,5 +44,40 @@ namespace Umbraco.Web.PublishedModels
 		{ }
 
 		// properties
+
+		///<summary>
+		/// Steps to get cannabis
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("stepsToGetCannabis")]
+		public IEnumerable<ImageAndHeadingNC> StepsToGetCannabis => this.Value<IEnumerable<ImageAndHeadingNC>>("stepsToGetCannabis");
+
+		///<summary>
+		/// Heading
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("stepsToGetCannabisHeading")]
+		public string StepsToGetCannabisHeading => this.Value<string>("stepsToGetCannabisHeading");
+
+		///<summary>
+		/// Banner Description
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("bannerDescription")]
+		public IHtmlString BannerDescription => Banner.GetBannerDescription(this);
+
+		///<summary>
+		/// Banner heading
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("bannerHeading")]
+		public string BannerHeading => Banner.GetBannerHeading(this);
+
+		///<summary>
+		/// Banner Image
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("bannerImage")]
+		public IPublishedContent BannerImage => Banner.GetBannerImage(this);
 	}
 }

@@ -69,14 +69,14 @@ namespace NCC.BusinessLogic.Models
         public bool agreetoall { get; set; }
         public bool understandthat { get; set; }
         public string patientname { get; set; }
-        public DateTime patientdate { get; set; }
+        public DateTime? patientdate { get; set; }
         public string sourceofdecision { get; set; }
         public string decisionmakername { get; set; }
         public string decisionmakerrealtion { get; set; }
-        public DateTime decisionmakerdate { get; set; }
+        public DateTime? decisionmakerdate { get; set; }
         public string witness { get; set; }
         public string witnessrelation { get; set; }
-        public DateTime witnessdate { get; set; }
+        public DateTime? witnessdate { get; set; }
     }
 
     public class CurrentMedical
@@ -85,6 +85,6 @@ namespace NCC.BusinessLogic.Models
         public string speciality { get; set; }
         public string Phoneno { get; set; }
         public string practiceaddress { get; set; }
-        public DateTime conclusion { get; set; }
+        public DateTime? conclusion { get; set; }
     }
 }

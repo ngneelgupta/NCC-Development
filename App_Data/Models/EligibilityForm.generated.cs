@@ -130,7 +130,7 @@ namespace Umbraco.Web.PublishedModels
 		public string PhoneNumberText => this.Value<string>("phoneNumberText");
 
 		///<summary>
-		/// sendYourRequestHeading
+		/// Heading
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("sendYourRequestHeading")]

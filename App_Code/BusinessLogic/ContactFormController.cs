@@ -257,7 +257,7 @@ namespace NCC.BusinessLogic
 
                     return Json(new ContactFormResult()
                     {
-                        message = patientNode.Id.ToString(),
+                        message = "Patient Register Successfully.",
                         result = true
                     }, JsonRequestBehavior.AllowGet);
                 }

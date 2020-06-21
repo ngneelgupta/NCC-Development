@@ -1,0 +1,168 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Patients>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "master.cshtml";
+}
+
+<!-- banner section -->
+<section class="patient-banner" style="background: url(@(Model.BannerImage!=null?Model.BannerImage.Url:string.Empty)) top center no-repeat;background-size: cover;">
+    <div class="banner-overlay">
+        <img src="/images/multimedia.png" data-toggle="modal" data-target="#patient-video" onclick="playVideo()">
+        <h2 class="video-heading">@Model.BannerHeading</h2>
+    </div>
+</section>
+
+<!-- About National Cannabis start -->
+<section class="dashboard-second-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="common-heading">@Html.Raw(Model.HowNcchelpsHeading)</h2>
+                @Html.Raw(Model.HowNcchelpsDescription)
+            </div>
+        </div>
+        <div class="row patient-commitments-row">
+            <div class="col-md-6">
+                <div class="patient-commitment">
+                    <h2 class="heading-24">@Model.NccCommitmentsToPatientsHeading</h2>
+                    @if (Model.NccCommitmentsToPatients != null)
+                    {
+                        foreach (var item in Model.NccCommitmentsToPatients)
+                        {
+                            <div class="commitment-left">
+                                <img src="/images/right-icon.png"><p>@item</p>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="commitment-right">
+                    <h2 class="heading-24">@Model.OurClinicsAmentiesHeading</h2>
+                    @if (Model.OurClinicsAmenties != null)
+                    {
+                        foreach (ImageAndHeadingNC item in Model.OurClinicsAmenties)
+                        {
+                    <div class="amenties-col">
+                        <img src="@(item.Image!=null?item.Image.Url:string.Empty)">
+                        <p>@Html.Raw(item.Heading)</p>
+                    </div>
+                        }
+                    }
+                    <div class="patient-commitment">
+                        <p>Check nearest access point <a href="#" class="learn-more-link">Click here</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Treatment Start -->
+<section class="patient-wrapper-third">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="common-heading">@Html.Raw(Model.StepsToGetTheTreatmentHeading)</h2>
+            </div>
+        </div>
+        <div class="row">
+            @if (Model.StepsToGetTheTreatment != null)
+            {
+                foreach (ImageAndHeadingNC item in Model.StepsToGetTheTreatment)
+                {
+                    <div class="col-lg-4 col-md-6">
+                        <div class="treatment-inner">
+                            <img src="@(item.Image!=null?item.Image.Url:string.Empty)">
+                            <p>@Html.Raw(item.Heading)</p>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>
+
+<!-- form Section -->
+<section class="patient-last-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-7">
+                        <h2 class="heading-22">@Model.PatientRegistrationHeading</h2>
+                        <p>@Model.PatientRegistrationDescription</p>
+                    </div>
+                    @if (Model.PatientRegistrationButton != null)
+                    {
+                    <div class="col-md-4">
+                        <a href="@Model.PatientRegistrationButton.Url" target="@Model.PatientRegistrationButton.Target" class="learn-more-link">@Model.EligibilityFormButton.Name</a>
+                    </div>
+                    }
+                    
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h2 class="heading-22">@Model.EligibilityHeading</h2>
+                        <p>@Model.EligibilityDescription</p>
+                    </div>
+                    @if (Model.EligibilityFormButton != null)
+                    {
+                        <div class="col-md-4">
+                            <a href="@Model.EligibilityFormButton.Url" target="@Model.EligibilityFormButton.Target" class="learn-more-link">@Model.EligibilityFormButton.Name</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Demo -->
+<section class="demo-100 text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 ">
+                <h2 class="demo-heading">@Model.FAqheading</h2>
+            </div>
+            @if (Model.FaqButton != null)
+            {
+                <div class="col-sm-6">
+                    <a href="@Model.FaqButton.Url" target="@Model.FaqButton.Target" class="learn-more-link mt-0">@Model.FaqButton.Name</a>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade videoModal" id="patient-video" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="pauseVid()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <video id="myVideo" width="100%" controls>
+                    <source src="@(Model.BannerVideo!=null?Model.BannerVideo.Url:string.Empty)" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var vid = document.getElementById("myVideo");
+    function playVideo() {
+        vid.play();
+    }
+    function pauseVid() {
+        vid.pause();
+    }
+
+</script>

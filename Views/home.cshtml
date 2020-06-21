@@ -5,7 +5,7 @@
     Layout = "master.cshtml";
 }
 
-<section class="dashboard-banner">
+<section class="dashboard-banner" style="background: url(@(Model.BannerImage!=null?Model.BannerImage.Url:string.Empty)) top center no-repeat;background-size: cover;">
     <div class="banner-overlay">
         <div class="container text-center">
             <img src="/images/multimedia.png" data-toggle="modal" data-target="#exampleModalCenter" onclick="playVid()">

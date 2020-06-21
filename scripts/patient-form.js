@@ -188,7 +188,7 @@
                 "additionalInfo": additionalInfo
             }
 
-            console.log(formData);
+            $('.loader').show();
 
             $.ajax({
                 url: "/umbraco/surface/ContactForm/RegisterPatient",
@@ -196,7 +196,24 @@
                 dataType: "json",
                 data: { "model": formData },
                 success: function (response) {
-                    console.log(response);
+                    
+                    if (response.result) {
+                        $('.loader').hide();
+                        $(".alert-success").text(response.message);
+                        $(".alert-success").slideDown("slow");
+                        setTimeout(function () {
+                            location.reload(true);
+                        }, 3000);
+
+                    }
+                    else {
+                        $('.loader').hide();
+                        $(".alert-danger").text("Recode save failure !!");
+                        $(".alert-danger").slideDown("slow");
+                    }
+                    setTimeout(function () {
+                        $(".alert").slideUp("slow");
+                    }, 5000);
                 }
             });
         }
