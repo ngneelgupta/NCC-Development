@@ -1,0 +1,139 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.HCP>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@using System.Text.RegularExpressions;
+@{
+    Layout = "master.cshtml";
+    var homepage = Model.Root() as Home;
+}
+
+<!-- banner section -->
+<section class="hcp-banner common-banner" style="background: url(@(Model.BannerImage!=null?Model.BannerImage.Url:string.Empty)) top center no-repeat;background-size: cover;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="carousel-caption">
+                    <h1 class="banner-heading">@Model.BannerHeading</h1>
+                    @Html.Raw(Model.BannerDescription)
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Ncc member Start -->
+<section class="hcp-member-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="common-heading">@Html.Raw(Model.NCcmemberHeading)</h2>
+            </div>
+        </div>
+        <div class="row">
+            @if (Model.NCcmember != null)
+            {
+                foreach (ImageAndHeadingNC item in Model.NCcmember)
+                {
+                    <div class="col-md-4 hcp-inner">
+                        <img src="@(item.Image!=null?item.Image.Url:string.Empty)">
+                        <h2 class="text-dark">@Html.Raw(item.Heading)</h2>
+                    </div>
+                }
+            }
+
+        </div>
+    </div>
+</section>
+
+<!-- About National Cannabis start -->
+<section class="dashboard-second-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="common-heading">@Html.Raw(Model.RegistrationProcessAndBenefitsHeading)</h2>
+                @Html.Raw(Model.RegistrationProcessAndBenefitsDescription)
+            </div>
+        </div>
+        <div class="row patient-commitments-row">
+            <div class="col-md-6">
+                <div class="patient-commitment">
+                    <h2 class="heading-24">@Model.WhatYouWillGetAfterRegistrationHeading</h2>
+
+                    @if (Model.WhatYouWillGetAfterRegistration != null)
+                    {
+                        foreach (var item in Model.WhatYouWillGetAfterRegistration)
+                        {
+                            <div class="commitment-left">
+                                <img src="/images/right-icon.png"><p>@item</p>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="commitment-right">
+                    <h2 class="heading-24">@Model.StepsSimpleRegistrationHeading</h2>
+                    @if (Model.StepsSimpleRegistration != null)
+                    {
+                        foreach (ImageAndHeadingNC item in Model.StepsSimpleRegistration)
+                        {
+                            <div class="registraion-steps">
+                                <img src="@(item.Image!=null?item.Image.Url:string.Empty)">
+                                <p>@Html.Raw(item.Heading)</p>
+                            </div>
+                        }
+                    }
+                    @if (Model.ReferPatientButton != null)
+                    {
+                        <div class="patient-commitment text-center">
+                            <a href="@Model.ReferPatientButton.Url" target="@Model.ReferPatientButton.Target" class="learn-more-link">@Model.ReferPatientButton.Name</a>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Section -->
+<section class="dashboard-fourth-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="common-heading">@Html.Raw(homepage.LatestBlogsHeading)</h2>
+            </div>
+        </div>
+        <div class="row blog-row">
+            <div class="col-lg-4">
+                <h2 class="heading-blue-28px">@Html.Raw(homepage.ReadTopArticlesHeading)</h2>
+                <p>@homepage.ReadTopArticlesDescription</p>
+                @if (homepage.AllBlogsButton != null)
+                {
+                    <a href="@homepage.AllBlogsButton.Url" class="learn-more-link" target="@homepage.AllBlogsButton.Target"> @homepage.AllBlogsButton.Name</a>
+                }
+
+            </div>
+            @if (homepage.LatestBlogs != null)
+            {
+                foreach (BlogPost item in homepage.LatestBlogs)
+                {
+                    string description = item.BlogDescription != null ? item.BlogDescription.ToString() : "";
+                    description = Regex.Replace(description, "<.*?>", string.Empty).Trim();
+                    description = description.Length > 80 ? description.Substring(0, 80) + "..." : description;
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card">
+                            <img class="card-img-top" src="@(item.BlogImage!=null?item.BlogImage.Url:string.Empty)" alt="Card image">
+                            <div class="card-body">
+                                <div class="blog-date">@item.BlogPostDate.ToString("dd MMM")</div>
+                                <h4 class="card-title">@item.BlogTitle</h4>
+                                <p class="card-text">@description</p>
+                                <a href="@item.Url" class="learn-more-link">View Detail</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>
+

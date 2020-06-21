@@ -1,0 +1,92 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.ResearchPaper>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "master.cshtml";
+}
+
+<!-- banner section -->
+<section class="resarch-banner common-banner" style="background: url(@(Model.BannerImage!=null?Model.BannerImage.Url:string.Empty)) top center no-repeat;background-size: cover;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="carousel-caption">
+                    <h1 class="banner-heading text-white">@Model.BannerHeading</h1>
+                    @Html.Raw(Model.BannerDescription)
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About National Cannabis start -->
+<section class="about-third-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="common-heading">@Html.Raw(Model.ResearchPaperHeading)</h2>
+                @Html.Raw(Model.ResearchPaperDescription)
+            </div>
+        </div>
+        <div class="row research-paper-row">
+            @if (Model.ResearchPapers != null)
+            {
+                foreach (ResearchPaperNC item in Model.ResearchPapers)
+                {
+                    var link = item.PdfFile;
+                    if (link != null)
+                    {
+                        <div class="col-md-4 col-sm-6">
+                            <div class="card">
+                                <div class="pdf-icon">
+                                    <a href="@link.Url" target="_blank">
+                                        <img class="card-img-top" src="/images/pdf-icon.png" alt="Card image">
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <div class="blog-date">@item.ResearchPaperDate.ToString("dd MMM")</div>
+                                    <h4 class="card-title">@item.Title</h4>
+                                    <p class="card-text">@item.SmallDescription</p>
+                                    <a href="@link.Url" download="@link.Url" class="learn-more-link">Download</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                }
+            }
+        </div>
+    </div>
+</section>
+
+<!-- Blog Section -->
+<section class="about-fourth-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="common-heading">@Html.Raw(Model.KnowMoreHeading)</h2>
+            </div>
+        </div>
+        <div class="row">
+            @if (Model.KnowMoreContent != null)
+            {
+                foreach (ImageAndLinkNC item in Model.KnowMoreContent)
+                {
+                    if (item.Link != null)
+                    {
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card">
+                                <a href="@item.Link.Url">
+                                    <img class="card-img-top" src="@(item.Image!=null?item.Image.Url:string.Empty)" alt="Card image">
+                                    <div class="card-body">
+                                        <h4 class="heading-28 text-center">@item.Link.Name</h4>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+        </div>
+    </div>
+</section>
+
