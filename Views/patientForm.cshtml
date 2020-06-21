@@ -1,0 +1,1007 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.PatientForm>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "master.cshtml";
+}
+
+<input type="hidden" id="PatientFormNodeId" value="@Model.Id" />
+
+<!-- banner section -->
+<section class="patient-form-banner common-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="carousel-caption">
+                    <h1 class="banner-heading text-white">Patient Registration</h1>
+                    <p>Text: NCC welcomes HCPs to partner with us. You will have access to our latest material, ongoing events and the privilege to directly refer your patients to us.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Treatment Start -->
+<section class="patient-wrapper-third">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="common-heading"><span>Steps</span> to get cannabis</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="treatment-inner">
+                    <img src="/images/treatment-step-icon-01.png">
+                    <p>Fill-up the Referral & New Patient form and submit it</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="treatment-inner">
+                    <img src="/images/treatment-step-icon-02.png">
+                    <p>Once we recieve the Referral and Patient Form we will contact you to schedule an appointment</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="treatment-inner">
+                    <img src="/images/treatment-step-icon-03.png">
+                    <p>After your consultaion with our Doctor, should treatment be recommended, the NCC team will start</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="treatment-inner">
+                    <img src="/images/treatment-step-icon-04.png">
+                    <p>Once approval has been obtained you will be required to atend a prescription appoinment</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="treatment-inner">
+                    <img src="/images/treatment-step-icon-05.png">
+                    <p>NCC will provide monitoring and ongoing suport throughout your treatment time with our clinic</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="treatment-inner">
+                    <img src="/images/treatment-step-icon-01.png">
+                    <p>NCC will keep GP up-to-date regarding your ongoing treatment</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="FocusSection"></div>
+
+<!-- Presonal Details -->
+<div class="presonal-details-block">
+    <section class="patient-form-flow">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <div class="circle-blue">
+                        <img src="/images/process-icon-01.png">
+                    </div>
+                    <h2 style="color: #0067a5;">Presonal Details</h2>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="circle-blue circle-grey">
+                        <img src="/images/process-icon-02.png">
+                    </div>
+                    <h2>Personal Medical <br>History</h2>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="circle-blue circle-grey circle-grey-2">
+                        <img src="/images/process-icon-03.png">
+                    </div>
+                    <h2>Additional Information</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!--Accordion wrapper-->
+                    <div class="accordion md-accordion form-accordian" id="personalDetailAccordian" role="tablist" aria-multiselectable="true">
+
+                        <!-- Accordion card -->
+                        <div class="card">
+                            <div class="card-header" role="tab" id="headingOne1">
+                                <a data-toggle="collapse" data-parent="#personalDetailAccordian" href="#collapseOne1" aria-expanded="true"
+                                   aria-controls="collapseOne1">
+                                    <h5 class="mb-0">
+                                        Patient's Personal Details
+                                        <i class="fas fa-angle-down rotate-icon"></i>
+                                    </h5>
+                                </a>
+                            </div>
+                            <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
+                                 data-parent="#personalDetailAccordian">
+                                <div class="card-body">
+                                    <form class="patient-form">
+                                        <div class="row">
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Title *</label>
+                                                    <input type="text" class="form-control" name="title" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Surname *</label>
+                                                    <input type="text" class="form-control" name="surname" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Given Name(s) *</label>
+                                                    <input type="text" class="form-control" name="given-name" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Preferred Name *</label>
+                                                    <input type="text" class="form-control" name="preferred-name" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Date of Birth *</label>
+                                                    <input type="date" class="form-control" name="birth-date" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Phone *</label>
+                                                    <input type="text" class="form-control" name="phone" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Email *</label>
+                                                    <input type="email" class="form-control" name="email" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>ABORIGINAL OR TORRES STRAIT ISLANDER *</label>
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="customRadio1" name="example1">
+                                                        <label class="custom-control-label" for="customRadio1">Yes</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="customRadio2" name="example1">
+                                                        <label class="custom-control-label" for="customRadio2">No</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-7 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Occupation *</label>
+                                                    <input type="text" class="form-control" name="occupation" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Address *</label>
+                                                    <textarea class="form-control" name="address" rows="2" required></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Suburb</label>
+                                                    <input type="text" class="form-control" name="suburb">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>State *</label>
+                                                    <select class="form-control" required>
+                                                        <option value="New South Wales">New South Wales</option>
+                                                        <option value="Queensland">Queensland</option>
+                                                        <option value="South Australia">South Australia</option>
+                                                        <option value="Tasmania">Tasmania</option>
+                                                        <option value="Victoria">Victoria</option>
+                                                        <option value="Western Australia">Western Australia</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Postcode *</label>
+                                                    <input type="text" class="form-control" name="postcode" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Home Phone</label>
+                                                    <input type="text" class="form-control" name="home-phone">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Work Phone</label>
+                                                    <input type="text" class="form-control" name="work-phone">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Mobile</label>
+                                                    <input type="text" class="form-control" name="mobile">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Email</label>
+                                                    <input type="email" class="form-control" name="email2">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Medicare Number *</label>
+                                                    <input type="text" class="form-control" name="medicare" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Ref No. *</label>
+                                                    <input type="text" class="form-control" name="ref-no" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Medicare Expiry *</label>
+                                                    <input type="text" class="form-control" name="medicare-expiry" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>DVA no. *</label>
+                                                    <input type="text" class="form-control" name="dva" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Expiry Date *</label>
+                                                    <input type="date" class="form-control" name="expiry-date" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Native Language</label>
+                                                    <input type="text" class="form-control" name="native-language">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label>IF OTHER THAN LANGUAGE WELL YOU REQUIRE A CERTIFIED TRANSLATOR</label>
+                                                    <input type="text" class="form-control" name="certificate">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <p class="note">PLEASE PROVIDE TWO EMERGENCY CONTACTS (IF PISSOBLE):</p>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Emergency contact 1</label>
+                                                    <input type="text" class="form-control" name="contact-1">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Relationship</label>
+                                                    <input type="text" class="form-control" name="relationship-1">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Phone number</label>
+                                                    <input type="text" class="form-control" name="p-no-1">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Emergency contact 2</label>
+                                                    <input type="text" class="form-control" name="contact-2">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Relationship</label>
+                                                    <input type="text" class="form-control" name="relationship-2">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Phone number</label>
+                                                    <input type="text" class="form-control" name="p-no-2">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <label>Employment status</label>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="full-emp" name="employment">
+                                                        <label class="custom-control-label" for="full-emp">Full Time Employed</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="unemployed" name="employment">
+                                                        <label class="custom-control-label" for="unemployed">Unemployed</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="partTimeEmp" name="employment">
+                                                        <label class="custom-control-label" for="partTimeEmp">Part Time Employed</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="retired" name="employment">
+                                                        <label class="custom-control-label" for="retired">Retired</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="self-emp" name="employment">
+                                                        <label class="custom-control-label" for="self-emp">Self Employed</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="fullTymStu" name="employment">
+                                                        <label class="custom-control-label" for="fullTymStu">Full Time Student</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="partTimeStu" name="employment">
+                                                        <label class="custom-control-label" for="partTimeStu">Part Time Student</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="other" name="employment">
+                                                        <label class="custom-control-label" for="other">Other</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <button type="button" class="learn-more-link">Next </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- Accordion wrapper -->
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Personal History -->
+<div class="personal-history-block" style="display:none">
+    <section class="patient-form-flow personal-history" id="personalHistory">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <div class="circle-blue">
+                        <img src="/images/process-icon-01.png">
+                    </div>
+                    <h2 style="color: #0067a5;">Presonal Details</h2>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="circle-blue circle-grey">
+                        <img src="/images/process-icon-02.png">
+                    </div>
+                    <h2 style="color: #4dbfb0;">Personal Medical <br>History</h2>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="circle-blue circle-grey circle-grey-2">
+                        <img src="/images/process-icon-03.png">
+                    </div>
+                    <h2>Additional Information</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!--Accordion wrapper-->
+                    <div class="accordion md-accordion form-accordian" id="personalDetailAccordian" role="tablist" aria-multiselectable="true">
+
+                        <!-- Accordion card -->
+                        <div class="card">
+                            <div class="card-header" role="tab" id="headingOne1">
+                                <a data-toggle="collapse" data-parent="#personalDetailAccordian" href="#collapseOne1" aria-expanded="true"
+                                   aria-controls="collapseOne1">
+                                    <h5 class="mb-0">
+                                        Personal Medical History
+                                        <i class="fas fa-angle-down rotate-icon"></i>
+                                    </h5>
+                                </a>
+                            </div>
+                            <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
+                                 data-parent="#personalDetailAccordian">
+                                <div class="card-body">
+                                    <form class="patient-form">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <label>DO YOU CURRENTLY EXPERIENCE, OR HAVE A HISTORY OF, ANY OF THE FOLLOWING MEDICAL CONDITION? <br>pLEASE tick all that apply. </label>
+                                            </div>
+                                            <div class="col-md-5 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="chronic" name="example1">
+                                                        <label class="custom-control-label" for="chronic">Chronic Pain</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-7 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
+                                                        <label class="custom-control-label" for="customCheck">Anxiety</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="Traumatic" name="example1">
+                                                        <label class="custom-control-label" for="Traumatic">PTSD (Past Traumatic Stress Disorder )</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-7 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="insomania" name="example1">
+                                                        <label class="custom-control-label" for="insomania">Insomania</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="Scierosis" name="example1">
+                                                        <label class="custom-control-label" for="Scierosis">Multiple Scierosis</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-7 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="Arthritis" name="example1">
+                                                        <label class="custom-control-label" for="Arthritis">Arthritis</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="Fibromyalgia" name="example1">
+                                                        <label class="custom-control-label" for="Fibromyalgia">Fibromyalgia</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-7 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="Depress" name="example1">
+                                                        <label class="custom-control-label" for="Depress">Depress</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="CrohnDisease" name="example1">
+                                                        <label class="custom-control-label" for="CrohnDisease">Crohn's Disease</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-7 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="Gastrointestinal" name="example1">
+                                                        <label class="custom-control-label" for="Gastrointestinal">Gastrointestinal Disorder</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="Stress" name="example1">
+                                                        <label class="custom-control-label" for="Stress">Stress</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-7 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="CINV" name="example1">
+                                                        <label class="custom-control-label" for="CINV">CINV (Chemotherapy Induced Nausea and Vomiting)</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="Seizures" name="example1">
+                                                        <label class="custom-control-label" for="Seizures">Seizures</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-7 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="other1" name="example1">
+                                                        <label class="custom-control-label" for="other1">Other ? Please Spec</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label>If other, Please Specify..</label>
+                                                    <input type="text" class="form-control" name="other-condition">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <label>
+                                                    THIS IS A LIST OF POTENTIAL CONTRAINDICATIONS; PLEASE TICK THE ONES YOU HAVE A HISTORY OF OR
+                                                    ARE CURRENTLY EXPERIENCING:
+                                                </label>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="Psychasis" name="currently">
+                                                        <label class="custom-control-label" for="Psychasis">Active Psychasis</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="mood" name="currently">
+                                                        <label class="custom-control-label" for="mood">Mood Disorder</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="Cardio" name="currently">
+                                                        <label class="custom-control-label" for="Cardio">Cardio Pulmonary Disease</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="Anxiety" name="currently">
+                                                        <label class="custom-control-label" for="Anxiety">Anxiety</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="drug" name="currently">
+                                                        <label class="custom-control-label" for="drug">Drug dependence or substance abuse</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="Bipolar" name="currently">
+                                                        <label class="custom-control-label" for="Bipolar">Bipolar Disorder</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <p class="note">PLEASE LIST ALL PAST MEDICATIONS TAKEN FOR YOUR CONDITIONS AND THE LENGTH OF TIME TAKEN OR TRAILED:</p>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Name of Medication</label>
+                                                    <input type="text" class="form-control" name="Medication">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Length of time</label>
+                                                    <input type="text" class="form-control" name="time">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Name of Medication</label>
+                                                    <input type="text" class="form-control" name="Medication2">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Length of time</label>
+                                                    <input type="text" class="form-control" name="time2">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Name of Medication</label>
+                                                    <input type="text" class="form-control" name="Medication3">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Length of time</label>
+                                                    <input type="text" class="form-control" name="time3">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Name of Medication</label>
+                                                    <input type="text" class="form-control" name="Medication4">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Length of time</label>
+                                                    <input type="text" class="form-control" name="time4">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Name of Medication</label>
+                                                    <input type="text" class="form-control" name="Medication5">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Length of time</label>
+                                                    <input type="text" class="form-control" name="time5">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <button type="button" class="learn-more-link">Next </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- Accordion wrapper -->
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Additional Information -->
+<div class="additional-info-block" style="display:none">
+    <section class="patient-form-flow personal-history additional-info" id="additionalInfo">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <div class="circle-blue">
+                        <img src="/images/process-icon-01.png">
+                    </div>
+                    <h2 style="color: #0067a5;">Presonal Details</h2>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="circle-blue circle-grey">
+                        <img src="/images/process-icon-02.png">
+                    </div>
+                    <h2 style="color: #4dbfb0;">Personal Medical <br>History</h2>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="circle-blue circle-grey circle-grey-2">
+                        <img src="/images/process-icon-03.png">
+                    </div>
+                    <h2 style="color: #0067a5;">Additional Information</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!--Accordion wrapper-->
+                    <div class="accordion md-accordion form-accordian" id="personalDetailAccordian" role="tablist" aria-multiselectable="true">
+
+                        <!-- Accordion card -->
+                        <div class="card">
+                            <div class="card-header" role="tab" id="headingOne1">
+                                <a data-toggle="collapse" data-parent="#personalDetailAccordian" href="#collapseOne1" aria-expanded="true"
+                                   aria-controls="collapseOne1">
+                                    <h5 class="mb-0">
+                                        Additional Information
+                                        <i class="fas fa-angle-down rotate-icon"></i>
+                                    </h5>
+                                </a>
+                            </div>
+                            <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
+                                 data-parent="#personalDetailAccordian">
+                                <div class="card-body">
+                                    <form class="patient-form">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <p class="note">PLEASE LIST ALl CURRENT MEDICAL AND SPECIALIST PRACTITIONERS THAT YOU ARE UNDER THE CARE OF IN THE SPACE BELOW</p>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Practitioner Name</label>
+                                                    <input type="text" class="form-control" name="practitioner">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Speciality</label>
+                                                    <input type="text" class="form-control" name="speciality">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Phone Number</label>
+                                                    <input type="text" class="form-control" name="Phone-no">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Practice Address</label>
+                                                    <input type="text" class="form-control" name="practice-address">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>APROXIMATE DATE OF LAST CONSULTAION</label>
+                                                    <input type="date" class="form-control" name="conclusion">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Practitioner Name</label>
+                                                    <input type="text" class="form-control" name="practitioner2">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Speciality</label>
+                                                    <input type="text" class="form-control" name="speciality2">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Phone Number</label>
+                                                    <input type="text" class="form-control" name="Phone-no2">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Practice Address</label>
+                                                    <input type="text" class="form-control" name="practice-address2">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>APROXIMATE DATE OF LAST CONSULTAION</label>
+                                                    <input type="date" class="form-control" name="conclusion2">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Practitioner Name</label>
+                                                    <input type="text" class="form-control" name="practitioner3">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Speciality</label>
+                                                    <input type="text" class="form-control" name="speciality3">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Phone Number</label>
+                                                    <input type="text" class="form-control" name="Phone-no3">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Practice Address</label>
+                                                    <input type="text" class="form-control" name="practice-address3">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>APROXIMATE DATE OF LAST CONSULTAION</label>
+                                                    <input type="date" class="form-control" name="conclusion3">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Accordion card -->
+                        <div class="card">
+                            <div class="card-header" role="tab" id="heading2">
+                                <a data-toggle="collapse" data-parent="#personalDetailAccordian" href="#collapse2" aria-expanded="true"
+                                   aria-controls="collapse2">
+                                    <h5 class="mb-0">
+                                        Additional Details
+                                        <i class="fas fa-angle-down rotate-icon"></i>
+                                    </h5>
+                                </a>
+                            </div>
+                            <div id="collapse2" class="collapse" role="tabpanel" aria-labelledby="heading2"
+                                 data-parent="#personalDetailAccordian">
+                                <div class="card-body">
+                                    <form class="patient-form">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <label>BY SUBMITTING THIS FORM:</label>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="conditions" name="submitting" required>
+                                                        <label class="custom-control-label" for="conditions">Accept NC Terms and Conditions *</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="history" name="submitting1">
+                                                        <label class="custom-control-label" for="history">Agree to all National Canabinoid Clinic to acess your medical history records if needed.</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="assessment" name="submitting2">
+                                                        <label class="custom-control-label" for="assessment">Understand that assessment by our doctors does not ensure approval and access to medical cannabis.</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Patient Full Name *</label>
+                                                    <input type="text" class="form-control" name="patient-name" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Date (DD/MM/YY) *</label>
+                                                    <input type="date" class="form-control" name="patient-date" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <p class="note">In the instance that you are not able to physicaly provide a signature than substitute descision maker may step in. If you have signed the above declaration, then you can ignore this section. The signature below indicates theat the patient has agred to the above declaration.</p>
+                                            </div>
+                                            <div class="col-12">
+                                                <label>SOURCE OF DECISION-MAKING AUTHORITY (TICK ONE)</label>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="mood1" name="currently1">
+                                                        <label class="custom-control-label" for="mood1">Patient own consent</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="Tribunal" name="currently1">
+                                                        <label class="custom-control-label" for="Tribunal">Tribunal Appointed Guardian</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="Directive" name="currently1">
+                                                        <label class="custom-control-label" for="Directive">Attorney/s for Health matters Enduring Power of Attorney or Advice Health Directive</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="Statutory" name="currently1">
+                                                        <label class="custom-control-label" for="Statutory">Statutory Health Attorney</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <p class="note">If none of the above, the adult guardianhad provided consent</p>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Decision maker name</label>
+                                                    <input type="text" class="form-control" name="decisionMaker">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Relation</label>
+                                                    <input type="text" class="form-control" name="decisionMakerrealtion">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Date</label>
+                                                    <input type="date" class="form-control" name="decisionMakerdate">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Witness</label>
+                                                    <input type="text" class="form-control" name="witness">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Relation</label>
+                                                    <input type="text" class="form-control" name="witnessrelation">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Date</label>
+                                                    <input type="date" class="form-control" name="witnessdate">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <button type="button" class="learn-more-link">Submit </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Accordion wrapper -->
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
