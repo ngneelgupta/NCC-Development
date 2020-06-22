@@ -620,3 +620,6 @@ Umbraco.Web.PublishedModels.ResearchPaper, Umbraco.Web.PublishedModels, Version=
 Umbraco.Web.PublishedModels.SettingFolder, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PublishedModels.Team, Umbraco.Web.PublishedModels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 
+Umbraco.Core.Deploy.IServiceConnector
+
+
