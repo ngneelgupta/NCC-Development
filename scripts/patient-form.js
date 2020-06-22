@@ -1,7 +1,7 @@
 ﻿$(function () {
     var personalDetails = {}, personalHistory = {}, additionalInfo = {};
 
-    $(".presonal-details-block button.learn-more-link").click(function () {
+    $(".presonal-details-block button.next-btn").click(function () {
         var isValid = CheckPersonalDetailsFormValidate();
         if (isValid) {
             let emergencycontact = [];
@@ -26,7 +26,7 @@
             }
 
             personalDetails = {
-                "title": $(".presonal-details-block .patient-form input[name=title]").val(),
+                "title": $(".presonal-details-block .patient-form select.title-select").val(),
                 "surname": $(".presonal-details-block .patient-form input[name=surname]").val(),
                 "givenname": $(".presonal-details-block .patient-form input[name='given-name']").val(),
                 "preferredname": $(".presonal-details-block .patient-form input[name='preferred-name']").val(),
@@ -37,7 +37,7 @@
                 "occupation": $(".presonal-details-block .patient-form input[name=occupation]").val(),
                 "address": $(".presonal-details-block .patient-form textarea[name=address]").val(),
                 "suburb": $(".presonal-details-block .patient-form input[name=suburb]").val(),
-                "state": $(".presonal-details-block .patient-form select").val(),
+                "state": $(".presonal-details-block .patient-form select.state-select").val(),
                 "postcode": $(".presonal-details-block .patient-form input[name=postcode]").val(),
                 "homephone": $(".presonal-details-block .patient-form input[name='home-phone']").val(),
                 "workphone": $(".presonal-details-block .patient-form input[name='work-phone']").val(),
@@ -60,7 +60,7 @@
         }
     });
 
-    $(".personal-history-block button.learn-more-link").click(function () {
+    $(".personal-history-block button.next-btn").click(function () {
         let currentlyExperience = [];
         $(".personal-history-block .patient-form input[type=checkbox]:checked").each(function () {
             currentlyExperience.push($(this).parent().find('label').text());
@@ -124,7 +124,7 @@
         GoToSection('#FocusSection');
     });
 
-    $(".additional-info-block button.learn-more-link").click(function () {
+    $(".additional-info-block button.next-btn").click(function () {
         let isValid = CheckAdditionalInfoFormValidate();
 
         if (isValid) {
@@ -218,15 +218,61 @@
             });
         }
     });
+
+    $(".personal-history-block button.prev-btn").click(function () {
+        $(".presonal-details-block").removeAttr('style');
+        $(".personal-history-block").hide();
+        GoToSection('#FocusSection');
+    });
+
+    $(".additional-info-block button.prev-btn").click(function () {
+        $(".personal-history-block").removeAttr('style');
+        $(".additional-info-block").hide();
+        GoToSection('#FocusSection');
+    });
+
+    $(".accept-only-num").keypress(function (e) {
+        if (e.which !== 8 && e.which !== 0 && (e.which < 48 || e.which > 57)) {
+            return false;
+        }
+    });
 });
+
+function validateEmail(email) {
+    var re = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return re.test(email);
+}
+function validatephone(phone) {
+    var re = /^((\[0-9]{10})|([0-9]{10}))$/;
+    return re.test(phone);
+}
 
 function CheckPersonalDetailsFormValidate() {
     let isValid = true;
+    $(".presonal-details-block .patient-form input").removeClass('error');
     $(".presonal-details-block .patient-form input:required").each(function () {
         if ($(this).val() == "" || $(this).val() == null || $(this).val().length <= 0) {
             $(this).focus();
             isValid = false;
             return false;
+        }
+
+        else if ($(this).attr('type') == 'email') {
+            if (!validateEmail($(this).val().trim())) {
+                $(this).addClass("error");
+                $(this).focus();
+                isValid = false;
+                return false;
+            }
+        }
+
+        else if ($(this).attr('name') == 'phone') {
+            if (!validatephone($(this).val().trim())) {
+                $(this).addClass("error");
+                $(this).focus();
+                isValid = false;
+                return false;
+            }
         }
     });
 

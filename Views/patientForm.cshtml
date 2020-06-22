@@ -100,7 +100,12 @@
                                             <div class="col-md-3 col-sm-6">
                                                 <div class="form-group">
                                                     <label>Title *</label>
-                                                    <input type="text" class="form-control" name="title" required>
+                                                    <select class="form-control title-select" required>
+                                                        <option value="Mr"> Mr.</option>
+                                                        <option value="Mrs">Mrs.</option>
+                                                        <option value="Miss">Miss</option>
+                                                        <option value="Third Gender">Third Gender</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="col-md-3 col-sm-6">
@@ -130,7 +135,7 @@
                                             <div class="col-md-4 col-sm-6">
                                                 <div class="form-group">
                                                     <label>Phone *</label>
-                                                    <input type="text" class="form-control" name="phone" required>
+                                                    <input type="text" class="form-control accept-only-num" name="phone" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-4 col-sm-6">
@@ -166,14 +171,14 @@
                                             </div>
                                             <div class="col-md-4 col-sm-6">
                                                 <div class="form-group">
-                                                    <label>Suburb</label>
+                                                    <label>Suburb *</label>
                                                     <input type="text" class="form-control" name="suburb" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-4 col-sm-6">
                                                 <div class="form-group">
                                                     <label>State *</label>
-                                                    <select class="form-control" required>
+                                                    <select class="form-control state-select" required>
                                                         <option value="New South Wales">New South Wales</option>
                                                         <option value="Queensland">Queensland</option>
                                                         <option value="South Australia">South Australia</option>
@@ -186,25 +191,25 @@
                                             <div class="col-md-4 col-sm-6">
                                                 <div class="form-group">
                                                     <label>Postcode *</label>
-                                                    <input type="text" class="form-control" name="postcode" required>
+                                                    <input type="text" class="form-control accept-only-num" name="postcode" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-3 col-sm-6">
                                                 <div class="form-group">
                                                     <label>Home Phone</label>
-                                                    <input type="text" class="form-control" name="home-phone">
+                                                    <input type="text" class="form-control accept-only-num" name="home-phone">
                                                 </div>
                                             </div>
                                             <div class="col-md-3 col-sm-6">
                                                 <div class="form-group">
                                                     <label>Work Phone</label>
-                                                    <input type="text" class="form-control" name="work-phone">
+                                                    <input type="text" class="form-control accept-only-num" name="work-phone">
                                                 </div>
                                             </div>
                                             <div class="col-md-3 col-sm-6">
                                                 <div class="form-group">
                                                     <label>Mobile</label>
-                                                    <input type="text" class="form-control" name="mobile">
+                                                    <input type="text" class="form-control accept-only-num" name="mobile">
                                                 </div>
                                             </div>
                                             <div class="col-md-3 col-sm-6">
@@ -362,7 +367,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-12">
-                                                <button type="button" class="learn-more-link">Next </button>
+                                                <button type="button" class="learn-more-link next-btn">Next </button>
                                             </div>
                                         </div>
                                     </form>
@@ -668,7 +673,8 @@
                                                 </div>
                                             </div>
                                             <div class="col-12">
-                                                <button type="button" class="learn-more-link">Next </button>
+                                                <button type="button" class="learn-more-link prev-btn">Previous </button>
+                                                <button type="button" class="learn-more-link next-btn">Next </button>
                                             </div>
                                         </div>
                                     </form>
@@ -967,7 +973,8 @@
                                                 </div>
                                             </div>
                                             <div class="col-12">
-                                                <button type="button" class="learn-more-link">Submit </button>
+                                                <button type="button" class="learn-more-link prev-btn">Previous </button>
+                                                <button type="button" class="learn-more-link next-btn">Submit </button>
                                             </div>
                                             <div class="col-sm-12">
                                                 <div class="alert alert-success" role="alert" style="display:none">
