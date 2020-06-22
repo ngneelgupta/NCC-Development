@@ -1,0 +1,205 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.ReferralForm>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "master.cshtml";
+}
+
+<!-- banner section -->
+<section class="patient-form-banner common-banner" style="background: url(@(Model.BannerImage!=null?Model.BannerImage.Url:string.Empty)) top center no-repeat;background-size: cover;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="carousel-caption">
+                    <h1 class="banner-heading text-white">@Model.BannerHeading</h1>
+                    @Html.Raw(Model.BannerDescription)
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="patient-wrapper-third">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="common-heading">@Html.Raw(Model.StepsToGetCannabisHeading)</h2>
+            </div>
+        </div>
+        <div class="row">
+            @if (Model.StepsToGetCannabis != null)
+            {
+                foreach (ImageAndHeadingNC item in Model.StepsToGetCannabis)
+                {
+                    <div class="col-lg-4 col-md-6">
+                        <div class="treatment-inner">
+                            <img src="@(item.Image!=null?item.Image.Url:string.Empty)">
+                            <p>@Html.Raw(item.Heading)</p>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>
+
+<section class="patient-form-flow">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <div class="circle-blue">
+                    <img src="images/process-icon-01.png">
+                </div>
+                <h2 style="color: #0067a5;">Presonal Details</h2>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="circle-blue circle-grey">
+                    <img src="images/process-icon-02.png">
+                </div>
+                <h2>Personal History<br>Details</h2>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="circle-blue circle-grey circle-grey-2">
+                    <img src="images/process-icon-03.png">
+                </div>
+                <h2>Practitioner Details</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!--Accordion wrapper-->
+                <div class="accordion md-accordion form-accordian" id="personalDetailAccordian" role="tablist" aria-multiselectable="true">
+
+                    <!-- Accordion card -->
+                    <div class="card">
+                        <div class="card-header" role="tab" id="headingOne1">
+                            <a data-toggle="collapse" data-parent="#personalDetailAccordian" href="#collapseOne1" aria-expanded="true"
+                               aria-controls="collapseOne1">
+                                <h5 class="mb-0">
+                                    Patient's Personal Details
+                                    <i class="fas fa-angle-down rotate-icon"></i>
+                                </h5>
+                            </a>
+                        </div>
+                        <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
+                             data-parent="#personalDetailAccordian">
+                            <div class="card-body">
+                                <form class="patient-form">
+                                    <div class="row">
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <label>Title</label>
+                                                <input type="text" class="form-control" name="title">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <label>First Name</label>
+                                                <input type="text" class="form-control" name="f_name">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <label>Last Name</label>
+                                                <input type="text" class="form-control" name="l_name">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <label>Gender</label>
+                                                <select class="form-control">
+                                                    <option selected="selected">Select any</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                    <option value="Unisex">Unisex</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <label>Date of Birth</label>
+                                                <input type="text" class="form-control" name="birth-date">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <label>Phone</label>
+                                                <input type="text" class="form-control" name="phone">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <label>Email</label>
+                                                <input type="email" class="form-control" name="email">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Address</label>
+                                                <textarea class="form-control" name="address" rows="2"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <label>Suburb</label>
+                                                <input type="text" class="form-control" name="suburb">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <label>State</label>
+                                                <select class="form-control">
+                                                    <option value="New South Wales">New South Wales</option>
+                                                    <option value="Queensland">Queensland</option>
+                                                    <option value="South Australia">South Australia</option>
+                                                    <option value="Tasmania">Tasmania</option>
+                                                    <option value="Victoria">Victoria</option>
+                                                    <option value="Western Australia">Western Australia</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <label>Postcode</label>
+                                                <input type="text" class="form-control" name="postcode">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <label>Medicare Number</label>
+                                                <input type="text" class="form-control" name="medicare">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <label>Ref No.</label>
+                                                <input type="text" class="form-control" name="ref-no">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <label>Medicare Expiry</label>
+                                                <input type="text" class="form-control" name="medicare-expiry">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="button" class="learn-more-link" id="next-button" onclick="myFunction()">Next </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- Accordion wrapper -->
+            </div>
+        </div>
+    </div>
+</section>
+
