@@ -926,3 +926,13 @@ ul .content > li::before {
 	margin: 0px;
 }
 
+.about-fourth-wrapper .card-img-top, .about-third-wrapper .clinic-amenities .card-img-top {
+    height: 195px;
+}
+
+
+
+
+
+
+
