@@ -284,7 +284,16 @@ function CheckPersonalDetailsFormValidate() {
     }
 
     if (isValid) {
-        isValid = $(".presonal-details-block .patient-form select").val();
+        $(".presonal-details-block .patient-form select").each(function () {
+            if ($(this).val() == "" || $(this).val() == null) {
+                $(this).focus();
+                isValid = false;
+                return false;
+            }
+        });
+    }
+
+    if (isValid) {
         if ($(".presonal-details-block .patient-form textarea").val() == "" || $(".presonal-details-block .patient-form textarea").val().length <= 0) {
             $(".presonal-details-block .patient-form textarea").focus();
             isValid = false;

@@ -316,7 +316,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("personalMedicalHistoryDoYouCurrentlyExperienceOrHaveAHistoryOfAnyOfTheFollowingMedicalCondition")]
-		public IEnumerable<string> PersonalMedicalHistoryDoYouCurrentlyExperienceOrHaveAhistoryOfAnyOfTheFollowingMedicalCondition => this.Value<IEnumerable<string>>("personalMedicalHistoryDoYouCurrentlyExperienceOrHaveAHistoryOfAnyOfTheFollowingMedicalCondition");
+		public IEnumerable<TextNC> PersonalMedicalHistoryDoYouCurrentlyExperienceOrHaveAhistoryOfAnyOfTheFollowingMedicalCondition => this.Value<IEnumerable<TextNC>>("personalMedicalHistoryDoYouCurrentlyExperienceOrHaveAHistoryOfAnyOfTheFollowingMedicalCondition");
 
 		///<summary>
 		/// If Other

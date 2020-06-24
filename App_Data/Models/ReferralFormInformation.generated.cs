@@ -53,13 +53,6 @@ namespace Umbraco.Web.PublishedModels
 		public string Address => this.Value<string>("address");
 
 		///<summary>
-		/// BY SUBMITTING THIS FORM
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("bYSUBMITTINGTHISFORM")]
-		public IEnumerable<string> BYsubmittingthisform => this.Value<IEnumerable<string>>("bYSUBMITTINGTHISFORM");
-
-		///<summary>
 		/// Date of Birth
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
@@ -71,7 +64,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("dOESTHEPATIENTSUFFERFROMANYOFTHESECONDITIONS")]
-		public IEnumerable<string> DOesthepatientsufferfromanyoftheseconditions => this.Value<IEnumerable<string>>("dOESTHEPATIENTSUFFERFROMANYOFTHESECONDITIONS");
+		public IEnumerable<TextNC> DOesthepatientsufferfromanyoftheseconditions => this.Value<IEnumerable<TextNC>>("dOESTHEPATIENTSUFFERFROMANYOFTHESECONDITIONS");
 
 		///<summary>
 		/// DOES YOUR PATIENT HAVE A CURRENT CARE PLAN IN PLACE?
@@ -114,6 +107,13 @@ namespace Umbraco.Web.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("iFYOURPATIENTDOESNOTHAVEACURRENTCAREPLANINPLACEWOULDYOUCONSENTFOROURNCCDOCTORTOINITIATEONE")]
 		public bool IFyourpatientdoesnothaveacurrentcareplaninplacewouldyouconsentforournccdoctortoinitiateone => this.Value<bool>("iFYOURPATIENTDOESNOTHAVEACURRENTCAREPLANINPLACEWOULDYOUCONSENTFOROURNCCDOCTORTOINITIATEONE");
+
+		///<summary>
+		/// I here by refer the above named patient to a doctor and/or specialist at national cannabis clinics
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("iHereByReferTheAboveNamedPatientToADoctorAndOrSpecialistAtNationalCannabisClinics")]
+		public bool IHereByReferTheAboveNamedPatientToAdoctorAndOrSpecialistAtNationalCannabisClinics => this.Value<bool>("iHereByReferTheAboveNamedPatientToADoctorAndOrSpecialistAtNationalCannabisClinics");
 
 		///<summary>
 		/// Last Name
@@ -240,6 +240,13 @@ namespace Umbraco.Web.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("suburb")]
 		public string Suburb => this.Value<string>("suburb");
+
+		///<summary>
+		/// Support this patient to be treated with medicinal cannabis if needed
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("supportThisPatientToBeTreatedWithMedicinalCannabisIfNeeded")]
+		public bool SupportThisPatientToBeTreatedWithMedicinalCannabisIfNeeded => this.Value<bool>("supportThisPatientToBeTreatedWithMedicinalCannabisIfNeeded");
 
 		///<summary>
 		/// TITLE

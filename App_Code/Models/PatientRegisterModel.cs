@@ -3,12 +3,13 @@ using System.Collections.Generic;
 
 namespace NCC.BusinessLogic.Models
 {
-    public class PatientRegisterDataModel
+    public class RegisterDataModel
     {
         public int NodeId { get; set; }
         public PersonalDetails personalDetails { get; set; }
         public PersonalHistory personalHistory { get; set; }
         public AdditionalInfo additionalInfo { get; set; }
+        public PractitionerDetails practitionerDetails { get; set; }
     }
 
     public class PersonalDetails
@@ -39,6 +40,11 @@ namespace NCC.BusinessLogic.Models
         public string certificate { get; set; }
         public List<EmergencyContact> emergencycontact { get; set; }
         public string employment { get; set; }
+
+        //Referral Form
+        public string f_name { get; set; }
+        public string l_name { get; set; }
+        public string gender { get; set; }
     }
 
     public class EmergencyContact
@@ -54,6 +60,14 @@ namespace NCC.BusinessLogic.Models
         public string othercondition { get; set; }
         public string potentialcontraindications { get; set; }
         public List<PastMedication> pastmedication { get; set; }
+
+        //Referral Form
+        public List<string> patientsuffercondition { get; set; }
+        public bool currentcareplan { get; set; }
+        public string referralpastmedication { get; set; }
+        public string reasonreferral { get; set; }
+        public bool review { get; set; }
+        public bool initiate { get; set; }
     }
 
     public class PastMedication
@@ -86,5 +100,19 @@ namespace NCC.BusinessLogic.Models
         public string Phoneno { get; set; }
         public string practiceaddress { get; set; }
         public DateTime? conclusion { get; set; }
+    }
+
+    public class PractitionerDetails
+    {
+        public string full_name { get; set; }
+        public string pract_type { get; set; }
+        public string Phoneno { get; set; }
+        public string email { get; set; }
+        public string address { get; set; }
+        public string provider_no { get; set; }
+        public string healthlink_no { get; set; }
+        public bool conditions { get; set; }
+        public bool history { get; set; }
+        public DateTime date { get; set; }
     }
 }

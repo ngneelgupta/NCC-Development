@@ -2,6 +2,18 @@
 @using ContentModels = Umbraco.Web.PublishedModels;
 @{
     Layout = "master.cshtml";
+    var child = Model.Children;
+}
+
+@foreach(ReferralFormInformation data in child)
+{
+
+}
+
+<input type="hidden" id="ReferralFormNodeId" value="@Model.Id" />
+
+@section pageJs{
+    <script src="/scripts/referral-form.js"></script>
 }
 
 <!-- banner section -->
@@ -42,164 +54,574 @@
     </div>
 </section>
 
-<section class="patient-form-flow">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 text-center">
-                <div class="circle-blue">
-                    <img src="/images/process-icon-01.png">
+<div id="FocusSection"></div>
+
+<!-- Presonal Details -->
+<div class="presonal-details-block">
+    <section class="patient-form-flow">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <div class="circle-blue">
+                        <img src="/images/process-icon-01.png">
+                    </div>
+                    <h2 style="color: #0067a5;">Presonal Details</h2>
                 </div>
-                <h2 style="color: #0067a5;">Presonal Details</h2>
-            </div>
-            <div class="col-md-4 text-center">
-                <div class="circle-blue circle-grey">
-                    <img src="/images/process-icon-02.png">
+                <div class="col-md-4 text-center">
+                    <div class="circle-blue circle-grey">
+                        <img src="/images/process-icon-02.png">
+                    </div>
+                    <h2>Personal History<br>Details</h2>
                 </div>
-                <h2>Personal History<br>Details</h2>
-            </div>
-            <div class="col-md-4 text-center">
-                <div class="circle-blue circle-grey circle-grey-2">
-                    <img src="/images/process-icon-03.png">
+                <div class="col-md-4 text-center">
+                    <div class="circle-blue circle-grey circle-grey-2">
+                        <img src="/images/process-icon-03.png">
+                    </div>
+                    <h2>Practitioner Details</h2>
                 </div>
-                <h2>Practitioner Details</h2>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <!--Accordion wrapper-->
-                <div class="accordion md-accordion form-accordian" id="personalDetailAccordian" role="tablist" aria-multiselectable="true">
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!--Accordion wrapper-->
+                    <div class="accordion md-accordion form-accordian" id="personalDetailAccordian" role="tablist" aria-multiselectable="true">
 
-                    <!-- Accordion card -->
-                    <div class="card">
-                        <div class="card-header" role="tab" id="headingOne1">
-                            <a data-toggle="collapse" data-parent="#personalDetailAccordian" href="#collapseOne1" aria-expanded="true"
-                               aria-controls="collapseOne1">
-                                <h5 class="mb-0">
-                                    Patient's Personal Details
-                                    <i class="fas fa-angle-down rotate-icon"></i>
-                                </h5>
-                            </a>
-                        </div>
-                        <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
-                             data-parent="#personalDetailAccordian">
-                            <div class="card-body">
-                                <form class="patient-form">
-                                    <div class="row">
-                                        <div class="col-md-3 col-sm-6">
-                                            <div class="form-group">
-                                                <label>Title</label>
-                                                <input type="text" class="form-control" name="title">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 col-sm-6">
-                                            <div class="form-group">
-                                                <label>First Name</label>
-                                                <input type="text" class="form-control" name="f_name">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 col-sm-6">
-                                            <div class="form-group">
-                                                <label>Last Name</label>
-                                                <input type="text" class="form-control" name="l_name">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 col-sm-6">
-                                            <div class="form-group">
-                                                <label>Gender</label>
-                                                <select class="form-control">
-                                                    <option selected="selected">Select any</option>
-                                                    <option value="Male">Male</option>
-                                                    <option value="Female">Female</option>
-                                                    <option value="Unisex">Unisex</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 col-sm-6">
-                                            <div class="form-group">
-                                                <label>Date of Birth</label>
-                                                <input type="text" class="form-control" name="birth-date">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 col-sm-6">
-                                            <div class="form-group">
-                                                <label>Phone</label>
-                                                <input type="text" class="form-control" name="phone">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 col-sm-6">
-                                            <div class="form-group">
-                                                <label>Email</label>
-                                                <input type="email" class="form-control" name="email">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>Address</label>
-                                                <textarea class="form-control" name="address" rows="2"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 col-sm-6">
-                                            <div class="form-group">
-                                                <label>Suburb</label>
-                                                <input type="text" class="form-control" name="suburb">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 col-sm-6">
-                                            <div class="form-group">
-                                                <label>State</label>
-                                                <select class="form-control">
-                                                    <option value="New South Wales">New South Wales</option>
-                                                    <option value="Queensland">Queensland</option>
-                                                    <option value="South Australia">South Australia</option>
-                                                    <option value="Tasmania">Tasmania</option>
-                                                    <option value="Victoria">Victoria</option>
-                                                    <option value="Western Australia">Western Australia</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 col-sm-6">
-                                            <div class="form-group">
-                                                <label>Postcode</label>
-                                                <input type="text" class="form-control" name="postcode">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 col-sm-6">
-                                            <div class="form-group">
-                                                <label>Medicare Number</label>
-                                                <input type="text" class="form-control" name="medicare">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 col-sm-6">
-                                            <div class="form-group">
-                                                <label>Ref No.</label>
-                                                <input type="text" class="form-control" name="ref-no">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 col-sm-6">
-                                            <div class="form-group">
-                                                <label>Medicare Expiry</label>
-                                                <input type="text" class="form-control" name="medicare-expiry">
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <button type="button" class="learn-more-link" id="next-button" onclick="myFunction()">Next </button>
-                                        </div>
-                                    </div>
-                                </form>
+                        <!-- Accordion card -->
+                        <div class="card">
+                            <div class="card-header" role="tab" id="headingOne1">
+                                <a data-toggle="collapse" data-parent="#personalDetailAccordian" href="#collapseOne1" aria-expanded="true"
+                                   aria-controls="collapseOne1">
+                                    <h5 class="mb-0">
+                                        Patient's Personal Details
+                                        <i class="fas fa-angle-down rotate-icon"></i>
+                                    </h5>
+                                </a>
                             </div>
+                            <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
+                                 data-parent="#personalDetailAccordian">
+                                <div class="card-body">
+                                    <form class="patient-form">
+                                        <div class="row">
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Title *</label>
+                                                    <select class="form-control title-select" required>
+                                                        <option value="Mr"> Mr.</option>
+                                                        <option value="Mrs">Mrs.</option>
+                                                        <option value="Miss">Miss</option>
+                                                        <option value="Third Gender">Third Gender</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>First Name *</label>
+                                                    <input type="text" class="form-control" name="f_name" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Last Name *</label>
+                                                    <input type="text" class="form-control" name="l_name" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Gender *</label>
+                                                    <select class="form-control gender-select">
+                                                        <option value="">Select any</option>
+                                                        <option value="Male">Male</option>
+                                                        <option value="Female">Female</option>
+                                                        <option value="Unisex">Unisex</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Date of Birth *</label>
+                                                    <input type="date" class="form-control" name="birth-date" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Phone *</label>
+                                                    <input type="text" class="form-control accept-only-num" name="phone" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Email *</label>
+                                                    <input type="email" class="form-control" name="email" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Address *</label>
+                                                    <textarea class="form-control" name="address" rows="2" required></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Suburb*</label>
+                                                    <input type="text" class="form-control" name="suburb" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>State *</label>
+                                                    <select class="form-control state-select" required>
+                                                        <option value="New South Wales">New South Wales</option>
+                                                        <option value="Queensland">Queensland</option>
+                                                        <option value="South Australia">South Australia</option>
+                                                        <option value="Tasmania">Tasmania</option>
+                                                        <option value="Victoria">Victoria</option>
+                                                        <option value="Western Australia">Western Australia</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Postcode *</label>
+                                                    <input type="text" class="form-control accept-only-num" name="postcode" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Medicare Number *</label>
+                                                    <input type="text" class="form-control" name="medicare" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Ref No. *</label>
+                                                    <input type="text" class="form-control" name="ref-no" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Medicare Expiry *</label>
+                                                    <input type="text" class="form-control" name="medicare-expiry" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <button type="button" class="learn-more-link next-btn">Next </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
                         </div>
 
                     </div>
-
+                    <!-- Accordion wrapper -->
                 </div>
-                <!-- Accordion wrapper -->
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</div>
 
+<!-- Personal History -->
+<div class="personal-history-block" style="display:none">
+    <section class="patient-form-flow personal-history" id="personalHistory">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <div class="circle-blue">
+                        <img src="/images/process-icon-01.png">
+                    </div>
+                    <h2 style="color: #0067a5;">Presonal Details</h2>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="circle-blue circle-grey">
+                        <img src="/images/process-icon-02.png">
+                    </div>
+                    <h2 style="color: #4dbfb0;">Personal History<br>Details</h2>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="circle-blue circle-grey circle-grey-2">
+                        <img src="/images/process-icon-03.png">
+                    </div>
+                    <h2>Practitioner Details</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!--Accordion wrapper-->
+                    <div class="accordion md-accordion form-accordian" id="personalDetailAccordian" role="tablist" aria-multiselectable="true">
+
+                        <!-- Accordion card -->
+                        <div class="card">
+                            <div class="card-header" role="tab" id="headingOne1">
+                                <a data-toggle="collapse" data-parent="#personalDetailAccordian" href="#collapseOne1" aria-expanded="true"
+                                   aria-controls="collapseOne1">
+                                    <h5 class="mb-0">
+                                        Personal History Details
+                                        <i class="fas fa-angle-down rotate-icon"></i>
+                                    </h5>
+                                </a>
+                            </div>
+                            <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
+                                 data-parent="#personalDetailAccordian">
+                                <div class="card-body">
+                                    <form class="patient-form">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <label>DOES THE PATIENT SUFFER FROM ANY OF THESE CONDITIONS?</label>
+                                            </div>
+                                            <div class="col-md-5 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="chronic" name="example1">
+                                                        <label class="custom-control-label" for="chronic">Chronic Pain</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-7 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
+                                                        <label class="custom-control-label" for="customCheck">Anxiety</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="Traumatic" name="example1">
+                                                        <label class="custom-control-label" for="Traumatic">PTSD (Past Traumatic Stress Disorder )</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-7 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="insomania" name="example1">
+                                                        <label class="custom-control-label" for="insomania">Insomania</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="Scierosis" name="example1">
+                                                        <label class="custom-control-label" for="Scierosis">Multiple Scierosis</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-7 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="Arthritis" name="example1">
+                                                        <label class="custom-control-label" for="Arthritis">Arthritis</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="Fibromyalgia" name="example1">
+                                                        <label class="custom-control-label" for="Fibromyalgia">Fibromyalgia</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-7 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="Depress" name="example1">
+                                                        <label class="custom-control-label" for="Depress">Depress</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="CrohnDisease" name="example1">
+                                                        <label class="custom-control-label" for="CrohnDisease">Crohn's Disease</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-7 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="Gastrointestinal" name="example1">
+                                                        <label class="custom-control-label" for="Gastrointestinal">Gastrointestinal Disorder</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="Stress" name="example1">
+                                                        <label class="custom-control-label" for="Stress">Stress</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-7 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="CINV" name="example1">
+                                                        <label class="custom-control-label" for="CINV">CINV (Chemotherapy Induced Nausea and Vomiting)</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="Seizures" name="example1">
+                                                        <label class="custom-control-label" for="Seizures">Seizures</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-7 col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="other" name="example1">
+                                                        <label class="custom-control-label" for="other">Other ? Please Spec</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label>If other, Please Specify..</label>
+                                                    <input type="text" class="form-control" name="other-condition">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-7 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>PLEASE LIST ALL PAST MEDICATIONS FOR THE PATIENT AND THE LENGTH TRIED:</label>
+                                                    <textarea class="form-control" rows="1" name="past-medication"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>REASON FOR REFERRAL:</label>
+                                                    <textarea class="form-control" rows="1" name="reason-referral"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label>DOES YOUR PATIENT HAVE A CURRENT CARE PLAN IN PLACE?</label>
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="yes" name="currently">
+                                                        <label class="custom-control-label" for="yes">Yes</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="no" name="currently">
+                                                        <label class="custom-control-label" for="no">No</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label>WOULD YOU LIKE US TO DO A CARE PLAN REVIEW FOR YOUR PATIENT?</label>
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="review" name="review">
+                                                        <label class="custom-control-label" for="review">Yes</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="review-no" name="review">
+                                                        <label class="custom-control-label" for="review-no">No</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label>IF YOUR PATIENT DOES NOT HAVE A CURRENT CARE PLAN IN PLACE WOULD YOU CONSENT FOR OUR NCC DOCTOR TO INITIATE ONE? </label>
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="initiate-yes" name="initiate">
+                                                        <label class="custom-control-label" for="initiate-yes">Yes</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="initiate-no" name="initiate">
+                                                        <label class="custom-control-label" for="initiate-no">No</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <button type="button" class="learn-more-link prev-btn">Previous </button>
+                                                <button type="button" class="learn-more-link next-btn">Next </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- Accordion wrapper -->
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Practitioner Details -->
+<div class="practitioner-details-block" style="display:none">
+    <section class="patient-form-flow personal-history additional-info" id="additionalInfo">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <div class="circle-blue">
+                        <img src="/images/process-icon-01.png">
+                    </div>
+                    <h2 style="color: #0067a5;">Presonal Details</h2>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="circle-blue circle-grey">
+                        <img src="/images/process-icon-02.png">
+                    </div>
+                    <h2 style="color: #4dbfb0;">Personal History<br>Details</h2>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="circle-blue circle-grey circle-grey-2">
+                        <img src="/images/process-icon-03.png">
+                    </div>
+                    <h2 style="color: #0067a5;">Practitioner Details</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!--Accordion wrapper-->
+                    <div class="accordion md-accordion form-accordian" id="personalDetailAccordian" role="tablist" aria-multiselectable="true">
+
+                        <!-- Accordion card -->
+                        <div class="card">
+                            <div class="card-header" role="tab" id="headingOne1">
+                                <a data-toggle="collapse" data-parent="#personalDetailAccordian" href="#collapseOne1" aria-expanded="true"
+                                   aria-controls="collapseOne1">
+                                    <h5 class="mb-0">
+                                        Practitioner Details
+                                        <i class="fas fa-angle-down rotate-icon"></i>
+                                    </h5>
+                                </a>
+                            </div>
+                            <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
+                                 data-parent="#personalDetailAccordian">
+                                <div class="card-body">
+                                    <form class="patient-form">
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Full Name</label>
+                                                    <input type="text" class="form-control" name="full_name">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Practitioner Type</label>
+                                                    <input type="text" class="form-control" name="pract_type">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Phone Number</label>
+                                                    <input type="text" class="form-control accept-only-num" name="Phone-no">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Email</label>
+                                                    <input type="email" class="form-control" name="email">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Address</label>
+                                                    <textarea class="form-control" rows="1" name="address"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Provider Number</label>
+                                                    <input type="text" class="form-control accept-only-num" name="provider_no">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Healthlink Number</label>
+                                                    <input type="text" class="form-control" name="healthlink_no">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Accordion card -->
+                        <div class="card">
+                            <div class="card-header" role="tab" id="heading2">
+                                <a data-toggle="collapse" data-parent="#personalDetailAccordian" href="#collapse2" aria-expanded="true"
+                                   aria-controls="collapse2">
+                                    <h5 class="mb-0">
+                                        Referral Details
+                                        <i class="fas fa-angle-down rotate-icon"></i>
+                                    </h5>
+                                </a>
+                            </div>
+                            <div id="collapse2" class="collapse" role="tabpanel" aria-labelledby="heading2"
+                                 data-parent="#personalDetailAccordian">
+                                <div class="card-body">
+                                    <form class="patient-form">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <label>BY SUBMITTING THIS FORM:</label>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="conditions" name="submitting">
+                                                        <label class="custom-control-label" for="conditions"> SUPPORT THIS PATIENT TO BE TREATED WITH MEDICINAL CANNABIS IF NEEDED. *</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="history" name="submitting1">
+                                                        <label class="custom-control-label" for="history">I HEREBY REFER THE ABOVE-NAMED PATIENT TO A DOCTOR AND/OR SPECIALIST AT NATIONAL CANNABINOID CLINICS.</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Date (DD/MM/YY) *</label>
+                                                    <input type="date" class="form-control" name="date" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <button type="button" class="learn-more-link prev-btn">Previous </button>
+                                                <button type="button" class="learn-more-link next-btn">Submit </button>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <div class="alert alert-success" role="alert" style="display:none"></div>
+                                                <div class="alert alert-danger" role="alert" style="display:none"></div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Accordion wrapper -->
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

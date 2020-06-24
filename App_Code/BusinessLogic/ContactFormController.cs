@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 /// Summary description for ContactFormController
 /// </summary>
 ///
-namespace NCC.BusinessLogic
+namespace NCC.BusinessLogics
 {
     public class ContactFormController : SurfaceController
     {
@@ -138,7 +138,7 @@ namespace NCC.BusinessLogic
         }
 
         [HttpPost]
-        public ActionResult RegisterPatient(PatientRegisterDataModel model)
+        public ActionResult RegisterPatient(RegisterDataModel model)
         {
             try
             {
@@ -212,7 +212,21 @@ namespace NCC.BusinessLogic
                             }
                         }
 
-                        patientNode.SetValue("personalMedicalHistoryDoYouCurrentlyExperienceOrHaveAHistoryOfAnyOfTheFollowingMedicalCondition", model.personalHistory.currentlyexperience);
+                        //Patient Suffer Condition
+                        List<Dictionary<string, object>> currentlyexperience = new List<Dictionary<string, object>>();
+                        if (model.personalHistory.currentlyexperience != null && model.personalHistory.currentlyexperience.Count > 0)
+                        {
+                            foreach (var item in model.personalHistory.currentlyexperience)
+                            {
+                                currentlyexperience.Add(new Dictionary<string, object>(){
+                                { "key", Guid.NewGuid() },
+                                { "ncContentTypeAlias", "textNC" },
+                                { "content", item }
+                            });
+                            }
+                        }
+
+                        patientNode.SetValue("personalMedicalHistoryDoYouCurrentlyExperienceOrHaveAHistoryOfAnyOfTheFollowingMedicalCondition", JsonConvert.SerializeObject(currentlyexperience)); //NC
                         patientNode.SetValue("personalMedicalHistoryIfOther", model.personalHistory.othercondition);
                         patientNode.SetValue("personalMedicalHistoryPotentialContraindications", model.personalHistory.potentialcontraindications);
                         patientNode.SetValue("personalMedicalHistoryListOfAllPastMedicationsTakenForYourConditionsAndTheLengthOfTimeTakenOrTrailed", JsonConvert.SerializeObject(pastmedication)); //NC
@@ -266,6 +280,102 @@ namespace NCC.BusinessLogic
                     return Json(new ContactFormResult()
                     {
                         message = "Please fill the patient registration form !!",
+                        result = false
+                    }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new ContactFormResult()
+                {
+                    message = ex.Message,
+                    result = false
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult ReferralForm(RegisterDataModel model)
+        {
+            try
+            {
+                if (model != null)
+                {
+                    var contentService = Services.ContentService;
+                    var resultNode = contentService.GetById(model.NodeId);
+
+                    var patientNode = contentService.CreateAndSave(model.personalDetails.f_name + " " + model.personalDetails.l_name, model.NodeId, "referralFormInformation");
+
+                    if (model.personalDetails != null)
+                    {
+                        patientNode.SetValue("tITLE", model.personalDetails.title);
+                        patientNode.SetValue("firstName", model.personalDetails.f_name);
+                        patientNode.SetValue("lastName", model.personalDetails.l_name);
+                        patientNode.SetValue("gender", model.personalDetails.gender);
+                        patientNode.SetValue("dateOfBirth", model.personalDetails.birthdate);
+                        patientNode.SetValue("phone", model.personalDetails.phone);
+                        patientNode.SetValue("email", model.personalDetails.email);
+                        patientNode.SetValue("address", model.personalDetails.address);
+                        patientNode.SetValue("suburb", model.personalDetails.suburb);
+                        patientNode.SetValue("state", model.personalDetails.state);
+                        patientNode.SetValue("postcode", model.personalDetails.postcode);
+                        patientNode.SetValue("medicareNumber", model.personalDetails.medicare);
+                        patientNode.SetValue("refNo", model.personalDetails.refno);
+                        patientNode.SetValue("medicareExpiry", model.personalDetails.medicareexpiry);
+                    }
+
+                    if (model.personalHistory != null)
+                    {
+                        //Patient Suffer Condition
+                        List<Dictionary<string, object>> patientsuffercondition = new List<Dictionary<string, object>>();
+                        if (model.personalHistory.patientsuffercondition != null && model.personalHistory.patientsuffercondition.Count > 0)
+                        {
+                            foreach (var item in model.personalHistory.patientsuffercondition)
+                            {
+                                patientsuffercondition.Add(new Dictionary<string, object>(){
+                                { "key", Guid.NewGuid() },
+                                { "ncContentTypeAlias", "textNC" },
+                                { "content", item }
+                            });
+                            }
+                        }
+
+                        patientNode.SetValue("dOESTHEPATIENTSUFFERFROMANYOFTHESECONDITIONS", JsonConvert.SerializeObject(patientsuffercondition)); //NC
+                        patientNode.SetValue("iFOTHERPLEASESPECIFY", model.personalHistory.othercondition);
+                        patientNode.SetValue("pLEASELISTALLPASTMEDICATIONSFORTHEPATIENTANDTHELENGTHTRIED", model.personalHistory.referralpastmedication);
+                        patientNode.SetValue("rEASONFORREFERRAL", model.personalHistory.reasonreferral);
+                        patientNode.SetValue("dOESYOURPATIENTHAVEACURRENTCAREPLANINPLACE", model.personalHistory.currentcareplan);
+                        patientNode.SetValue("wOULDYOULIKEUSTODOACAREPLANREVIEWFORYOURPATIENT", model.personalHistory.review);
+                        patientNode.SetValue("iFYOURPATIENTDOESNOTHAVEACURRENTCAREPLANINPLACEWOULDYOUCONSENTFOROURNCCDOCTORTOINITIATEONE", model.personalHistory.initiate);
+                    }
+
+                    if (model.practitionerDetails != null)
+                    {
+                        patientNode.SetValue("practitionerDetailsFullName", model.practitionerDetails.full_name); 
+                        patientNode.SetValue("practitionerDetailsPractitionerType", model.practitionerDetails.pract_type); 
+                        patientNode.SetValue("practitionerDetailsPhoneNumber", model.practitionerDetails.Phoneno);  
+                        patientNode.SetValue("practitionerDetailsEmail", model.practitionerDetails.email);  
+                        patientNode.SetValue("practitionerDetailsAddress", model.practitionerDetails.address);
+                        patientNode.SetValue("practitionerDetailsProviderNumber", model.practitionerDetails.provider_no);
+                        patientNode.SetValue("practitionerDetailsHealthLinkNumber", model.practitionerDetails.healthlink_no);
+                        patientNode.SetValue("supportThisPatientToBeTreatedWithMedicinalCannabisIfNeeded", model.practitionerDetails.conditions);
+                        patientNode.SetValue("iHereByReferTheAboveNamedPatientToADoctorAndOrSpecialistAtNationalCannabisClinics", model.practitionerDetails.history);
+                        patientNode.SetValue("referralDate", model.practitionerDetails.date);
+                    }
+
+                    contentService.SaveAndPublish(patientNode);
+
+                    return Json(new ContactFormResult()
+                    {
+                        message = "Referral form register Successfully.",
+                        result = true
+                    }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new ContactFormResult()
+                    {
+                        message = "Please fill the referral form information !!",
                         result = false
                     }, JsonRequestBehavior.AllowGet);
                 }
