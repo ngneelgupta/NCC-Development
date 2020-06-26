@@ -33,7 +33,7 @@ namespace NCC.BusinessLogic.Models
         public string workemail { get; set; }
         public string medicare { get; set; }
         public string refno { get; set; }
-        public string medicareexpiry { get; set; }
+        public DateTime medicareexpiry { get; set; }
         public string dva { get; set; }
         public DateTime expirydate { get; set; }
         public string nativelanguage { get; set; }
