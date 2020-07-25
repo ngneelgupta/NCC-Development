@@ -32,28 +32,22 @@
                         <div class="col-12">
                             <legend>@Model.SendYourRequestHeading</legend>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
                                 <label for="name">@Model.NameText:</label>
                                 <input type="text" class="form-control" placeholder="@Model.NamePlaceholderText" id="ContactName" name="ContactName">
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
                                 <label for="emil">@Model.EmailText:</label>
                                 <input type="email" class="form-control" placeholder="@Model.EmailPlaceholderText" id="Email" name="Email">
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
                                 <label for="phone">@Model.PhoneNumberText:</label>
                                 <input type="text" class="form-control" placeholder="@Model.PhoneNumberPlaceholderText" name="PhoneNumber" id="PhoneNumber">
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="disease">@Model.DiseaseText:</label>
-                                <input type="text" class="form-control" placeholder="@Model.DiseasePlaceholderText" name="disease" id="disease">
                             </div>
                         </div>
                         <div class="col-sm-12">
@@ -81,6 +75,15 @@
             <div class="col-lg-5 pr-0">
                 <div class="contact-info">
                     <legend>Contact Information</legend>
+                    <div class="conatct-info-col">
+                        <h3>Call today to schedule an appointment.</h3>
+                        <p>Please contact us directly with any questions, comments, or enquiries you may have.</p>
+                        <p>Feel free to fax any documents to (02) 8080-8113</p>
+                    </div>
+                    <div class="conatct-info-col">
+                        <div class="contact-heading">Hours :</div>
+                        <div class="contact-detail">Monday - Friday : 9AM - 5PM</div>
+                    </div>
                     <div class="conatct-info-col">
                         <div class="contact-heading">Address :</div>
                         <div class="contact-detail">@Html.Raw(GlobalSetting.Address)</div>

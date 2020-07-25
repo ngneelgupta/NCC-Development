@@ -140,11 +140,45 @@
     }
     .banner-heading {
         font-size: 34px;
+        width: 100%;
     }
     .carousel-caption p {
         font-size: 19px;
     }
-
+    .hcp-inner img {
+        width: 18%;
+    }
+    .hcp-inner h2 {
+        font-size: 19px;
+    }
+    .registraion-steps:after {
+        left: 30px;
+    }
+    .patient-form-banner .banner-heading {
+        width: 50%;
+    }
+    .circle-grey::after {
+        width: 314px;
+    }
+    .contact-row {
+        margin: -150px 0px 70px;
+    }
+    .contact-row .col-lg-5 {
+        padding-left: 0px!important;
+    }
+    .contact-detail {
+        width: 85%;
+    }
+    .contact-heading {
+        width: 15%;
+    }
+    .conatct-info-col {
+        margin-top: 28px;
+    }
+    .recent-post {
+        margin: 35px 0 20px 0;
+    }
+    
 }
 
 
@@ -160,7 +194,7 @@
         transform: none;
     }
     .national-cannabis-col img {
-        height: 400px;
+        height: auto;
     }
     .cannabis-view-btn {
         padding: 0 0 0 40px;
@@ -206,6 +240,7 @@
     .patient-last-wrapper a {
         width: auto;
         margin: 20px 0;
+        padding: 8px 20px!important;
     }
     .demo-heading {
         font-size: 28px;
@@ -232,6 +267,43 @@
     .clinic-map-row iframe {
         height: 323px
     }
+    .hcp-inner {
+        justify-content: flex-start;
+    }
+    .hcp-inner img {
+        width: 10%;
+    }
+    .registraion-steps img {
+        width: 15%;
+    }
+    .registraion-steps:after {
+        left: 34px;
+    }
+    .timeline {
+        margin: 30px 0;
+    }
+    .circle-blue {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 38px;
+    }
+    .patient-form-flow {
+        padding: 10px 0px 0px;
+    }
+    .patient-form-flow h2 {
+        display: none;
+    }
+    .circle-blue::after {
+        width: 5px;
+        height: 100px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        top: 100%;
+    }
+    .patient-form-flow .col-md-4:last-child .circle-grey:after {
+        display: none;
+    }
 
 }
 
@@ -255,13 +327,33 @@
         font-weight: 700;
         line-height: 38px;
     }
-
-    
-    
+    .contact-heading {
+        width: 24%;
+    }
+    .contact-detail {
+        width: 76%;
+    }
+    .patient-form-banner .banner-heading {
+        width: 56%;
+    }
+    .common-banner p {
+        width: 56%;
+    }
 }
 
 @media screen and (max-width:480px) {
-
+    .common-banner p {
+        width: 100%;
+    }
+    .patient-form-banner .banner-heading {
+        width: 100%;
+    }
+    .registraion-steps:after {
+        left: 23px;
+    }
+    .contact-form {
+        padding: 30px 15px;
+    }
 }
 
 @media screen and (max-width:450px) {
@@ -293,7 +385,12 @@
     .treatment-inner img {
         width: 23%;
     }
-
+    .contact-detail {
+        width: 70%;
+    }
+    .contact-heading {
+        width: 30%;
+    }
 }
 
 @media screen and (max-width:420px) {

@@ -503,7 +503,7 @@ ul .content > li::before {
 .conatct-info-col {
 	width: 100%;
 	float: left;
-	margin-top: 50px;
+	margin-top: 35px;
 }
 
 .contact-heading {
@@ -929,10 +929,28 @@ ul .content > li::before {
 .about-fourth-wrapper .card-img-top, .about-third-wrapper .clinic-amenities .card-img-top {
     height: 195px;
 }
+.conatct-info-col h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #000;
+    margin: 0 0 15px 0;
+}
+.conatct-info-col p {
+    font-size: 17px;
+    color: #000;
+}
 
+.address-col .card-header {
+    padding: 0px;
+    background: transparent;
+    border: 0px;
+    box-shadow: none;
+}
 
-
-
-
-
-
+.address-col .card {
+    background: none;
+    box-shadow: none;
+}
+.address-col .card-body {
+    padding: 0px;
+}

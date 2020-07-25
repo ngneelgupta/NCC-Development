@@ -56,7 +56,7 @@ header a:hover {
 }
 
 li.nav-item {
-    padding: 0 25px;
+    padding: 0 18px;
     position: relative;
 }
 
@@ -105,6 +105,7 @@ a.contact-link:hover, .learn-more-link:hover {
 
 .navbar-brand img {
 	margin-top: -25px;
+	width: 50%;
 }
 
 .dropdown-menu {
@@ -327,39 +328,44 @@ video{
 .dashboard-third-wrapper h4 span {
 	color: #4dbfb0;
 }
+.hcpconnect-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 .connect-box-form {
 	width: 100%;
 	float: left;
 	margin: 30px 0 0 0;
-	height: 110px;
+	height: auto;
 	box-shadow: 0px 0px 18px 2px #e1e1e1;
-    border-radius: 22px 0 0 22px;
 }
 .connect-box-left {
-	width: 28%;
+	width: 100%;
 	float: left;
-	height: 100%;
+	height: auto;
 	display: flex;
 	align-items: center;
 	box-sizing: border-box;	
 	padding: 10px 15px;
-	background-color: #0067a5;	
-	border-radius: 22px 0 0 22px;
+	background-color: #0067a5;
+	text-align: center;
 }
 .connect-box-left h3 {
-	font-size: 25px;
+    width: 100%;
+	font-size: 20px;
 	color: #fff;
 	line-height: 32px;
 	font-weight: 600;
 	text-align: center;
 }
 .connect-box-right {
-	width: 72%;
+	width: 100%;
 	float: left;
-	height: 100%;
+	height: auto;
 	box-sizing: border-box;
 	background-color: #fff;
-	padding: 0px 15px;
+	padding: 15px 15px;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;

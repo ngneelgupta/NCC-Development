@@ -111,31 +111,32 @@
                         foreach (AddressNC item in Model.Address)
                         {
                             <div class="address-col">
-                                <h2 class="clinic-heading">@item.Title</h2>
+            				    <h2 class="clinic-heading">@item.Title</h2>
                                 @if (!string.IsNullOrEmpty(item.Address))
-                                {
-                                    <div class="address-inner">
-                                        <div class="address-heading">Address</div>
-                                        <div class="address-detail">
-                                            @item.Address
-                                        </div>
-                                    </div>
-                                }
-                                @if (!string.IsNullOrEmpty(item.PhoneNumber))
-                                {
-                                    <div class="address-inner">
-                                        <div class="address-heading">Phone Number</div>
-                                        <div class="address-detail"><a href="tel:@item.PhoneNumber">@item.PhoneNumber</a></div>
-                                    </div>
-                                }
-                                @if (!string.IsNullOrEmpty(item.Email))
-                                {
-                                    <div class="address-inner">
-                                        <div class="address-heading">Email</div>
-                                        <div class="address-detail"><a href="mailto:@item.Email">@item.Email</a> </div>
-                                    </div>
-                                }
+                                            {
+                                                <div class="address-inner">
+                                                    <div class="address-heading">Address</div>
+                                                    <div class="address-detail">
+                                                        @item.Address
+                                                    </div>
+                                                </div>
+                                            }
+                                            @if (!string.IsNullOrEmpty(item.PhoneNumber))
+                                            {
+                                                <div class="address-inner">
+                                                    <div class="address-heading">Phone Number</div>
+                                                    <div class="address-detail"><a href="tel:@item.PhoneNumber">@item.PhoneNumber</a></div>
+                                                </div>
+                                            }
+                                            @if (!string.IsNullOrEmpty(item.Email))
+                                            {
+                                                <div class="address-inner">
+                                                    <div class="address-heading">Email</div>
+                                                    <div class="address-detail"><a href="mailto:@item.Email">@item.Email</a> </div>
+                                                </div>
+                                            }
                             </div>
+            				
                         }
                     }
                 </div>
@@ -144,3 +145,69 @@
     </div>
 </section>
 
+
+
+
+<!--custom accordian code-->
+
+<section class="clinic-locations">
+    <div class="container">
+        <div class="row clinic-map-row">
+            <div class="col-lg-9 col-md-7">
+                @Html.Raw(Model.Map)
+            </div>
+            <div class="col-lg-3 col-md-5">
+                <div class="clinic-address">
+                    <div class="address-col">
+                            <!--Accordion wrapper-->
+            				<div class="accordion md-accordion" id="clinic-address" role="tablist" aria-multiselectable="true">
+            
+                				<!-- Accordion card -->
+                			    <div class="card">
+                				    <div class="card-header" role="tab" id="headingOne1">
+                				      <a data-toggle="collapse" data-parent="#clinic-address" href="#collapseOne1" aria-expanded="true"
+                				        aria-controls="collapseOne1">
+                				        <h5 class="mb-0 clinic-heading">ABC
+                				        <i class="fas fa-angle-down rotate-icon"></i></h5>			          	
+                				      </a>
+                				    </div>
+                				    <div id="collapseOne1" class="collapse" role="tabpanel" aria-labelledby="headingOne1"
+                				      data-parent="#clinic-address">
+                				        <div class="card-body">
+                				           <div class="address-inner">
+                                                <div class="address-heading">Address</div>
+                                                    <div class="address-detail">
+                                                       Suite 904, 135 Macquarie Street, Sydney New South Wales 2000, Australia
+                                                    </div>
+                                                </div> 
+                                            </div>
+                				        </div>
+                				    </div>
+            				    </div>
+            				    <div class="card">
+                				    <div class="card-header" role="tab" id="headingtwo">
+                				      <a data-toggle="collapse" data-parent="#clinic-address" href="#collapsetwo" aria-expanded="true"
+                				        aria-controls="collapsetwo">
+                				        <h5 class="mb-0 clinic-heading">ABC2
+                				        <i class="fas fa-angle-down rotate-icon"></i></h5>			          	
+                				      </a>
+                				    </div>
+                				    <div id="collapsetwo" class="collapse" role="tabpanel" aria-labelledby="headingtwo"
+                				      data-parent="#clinic-address">
+                				        <div class="card-body">
+                				           <div class="address-inner">
+                                                <div class="address-heading">Address</div>
+                                                    <div class="address-detail">
+                                                       Suite 904, 135 Macquarie Street, Sydney New South Wales 2000, Australia
+                                                    </div>
+                                                </div> 
+                                            </div>
+                				        </div>
+                				    </div>
+            				    </div>
+            		</div> 
+            	</div>
+            </div>
+        </div>
+        </div>
+    </section>

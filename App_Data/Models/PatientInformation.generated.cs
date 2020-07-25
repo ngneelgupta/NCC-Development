@@ -179,7 +179,7 @@ namespace Umbraco.Web.PublishedModels
 		public string PatientSpersonalDetailsEmploymentStatus => this.Value<string>("patientSPersonalDetailsEmploymentStatus");
 
 		///<summary>
-		/// Expiry Date
+		/// DVA Expiry Date
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("patientSPersonalDetailsExpiryDate")]
