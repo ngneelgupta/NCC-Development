@@ -3,6 +3,49 @@ using System.Collections.Generic;
 
 namespace NCC.BusinessLogic.Models
 {
+    public class DASSDataModel
+    {
+        public int NodeId { get; set; }
+        public string fullname { get; set; }
+        public string surname { get; set; }
+        public DateTime dob { get; set; }
+        public string HardWind { get; set; }
+        public string dryness { get; set; }
+        public string experience { get; set; }
+        public string breathing { get; set; }
+        public string initiative { get; set; }
+        public string overreact { get; set; }
+        public string trembling { get; set; }
+        public string nervous { get; set; }
+        public string worried { get; set; }
+        public string lookForward { get; set; }
+        public string agitated { get; set; }
+        public string relax { get; set; }
+        public string downhearted { get; set; }
+        public string intolerant { get; set; }
+        public string panic { get; set; }
+        public string enthusiastic { get; set; }
+        public string person { get; set; }
+        public string touchy { get; set; }
+        public string exertion { get; set; }
+        public string scared { get; set; }
+        public string meaningless { get; set; }
+    }
+
+    public class QualityOfLifeAssessmentDataModel
+    {
+        public int NodeId { get; set; }
+        public string fullname { get; set; }
+        public string surname { get; set; }
+        public DateTime dob { get; set; }
+        public string mobility { get; set; }
+        public string selfcare  { get; set; }
+        public string usualactivities { get; set; }
+        public string discomfort { get; set; }
+        public string depression { get; set; }
+        public string health { get; set; }
+    }
+
     public class RegisterDataModel
     {
         public int NodeId { get; set; }

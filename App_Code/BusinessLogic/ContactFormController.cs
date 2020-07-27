@@ -389,6 +389,119 @@ namespace NCC.BusinessLogics
                 }, JsonRequestBehavior.AllowGet);
             }
         }
+
+        [HttpPost]
+        public ActionResult QualityOfLifeAssessmentForm(QualityOfLifeAssessmentDataModel model)
+        {
+            try
+            {
+                if (model != null)
+                {
+                    var contentService = Services.ContentService;
+                    var resultNode = contentService.GetById(model.NodeId);
+
+                    var patientNode = contentService.CreateAndSave(model.fullname, model.NodeId, "qualityOfLifeAssessmentInformation");
+
+                    patientNode.SetValue("patientFullName", model.fullname);
+                    patientNode.SetValue("patientSurname", model.surname);
+                    patientNode.SetValue("patientDateOfBirth", model.dob);
+                    patientNode.SetValue("mobility", model.mobility);
+                    patientNode.SetValue("selfCare", model.selfcare);
+                    patientNode.SetValue("usualActivities", model.usualactivities);
+                    patientNode.SetValue("painDiscomfort", model.discomfort);
+                    patientNode.SetValue("anxietyDepression", model.depression);
+                    patientNode.SetValue("healthToday", model.health);
+
+                    contentService.SaveAndPublish(patientNode);
+
+                    return Json(new ContactFormResult()
+                    {
+                        message = "Quality of life assessment successfully.",
+                        result = true
+                    }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new ContactFormResult()
+                    {
+                        message = "Please fill the quality of life assessment form information !!",
+                        result = false
+                    }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new ContactFormResult()
+                {
+                    message = ex.Message,
+                    result = false
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult DASSForm(DASSDataModel model)
+        {
+            try
+            {
+                if (model != null)
+                {
+                    var contentService = Services.ContentService;
+                    var resultNode = contentService.GetById(model.NodeId);
+
+                    var patientNode = contentService.CreateAndSave(model.fullname, model.NodeId, "depressionAnxietyStressScoreInformation");
+
+                    patientNode.SetValue("patientFullName", model.fullname);
+                    patientNode.SetValue("patientSurname", model.surname);
+                    patientNode.SetValue("patientDateOfBirth", model.dob);
+                    patientNode.SetValue("iFoundItHardToWindDown", model.HardWind);
+                    patientNode.SetValue("iWasAwareOfDrynessOfMyMouth", model.dryness);
+                    patientNode.SetValue("iCouldnTSeemToExperienceAnyPositiveFeelingAtAll", model.experience);
+                    patientNode.SetValue("iExperiencedBreathingDifficulty", model.breathing);
+                    patientNode.SetValue("iFoundItDifficultToWorkUpTheInitiativeToDoThings", model.initiative);
+                    patientNode.SetValue("iTendedToOverReactToSituations", model.overreact);
+                    patientNode.SetValue("iExperiencedTrembling", model.trembling);
+                    patientNode.SetValue("iFeltThatIWasUsingALotOfNervousEnergy", model.nervous);
+                    patientNode.SetValue("iWasWorriedAboutSituationsInWhichIMightPanicAndMakeAFoolOfMyself", model.worried);
+                    patientNode.SetValue("iFeltThatIHadNothingToLookForwardTo", model.lookForward);
+                    patientNode.SetValue("iFoundMyselfGettingAgitated", model.agitated);
+                    patientNode.SetValue("iFoundItDifficultToRelax", model.relax);
+                    patientNode.SetValue("iFeltDownHeartedAndBlue", model.downhearted);
+                    patientNode.SetValue("iWasIntolerantOfAnythingThatKeptMeFromGettingOnWithWhatIWasDoing", model.intolerant);
+                    patientNode.SetValue("iFeltIWasCloseToPanic", model.panic);
+                    patientNode.SetValue("iWasUnableToBecomeEnthusiasticAboutAnything", model.enthusiastic);
+                    patientNode.SetValue("iFeltIWasnTWorthMuchAsAPerson", model.person);
+                    patientNode.SetValue("iFeltThatIWasRatherTouchy", model.touchy);
+                    patientNode.SetValue("iWasAwareOfTheActionOfMyHeartInTheAbsenceOfPhysicalExertion", model.exertion);
+                    patientNode.SetValue("iFeltScaredWithoutAnyGoodReason", model.scared);
+                    patientNode.SetValue("iFeltThatLifeWasMeaningless", model.meaningless);
+
+                    contentService.SaveAndPublish(patientNode);
+
+                    return Json(new ContactFormResult()
+                    {
+                        message = "Depression anxiety stress score successfully.",
+                        result = true
+                    }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new ContactFormResult()
+                    {
+                        message = "Please fill the depression anxiety stress score form information !!",
+                        result = false
+                    }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new ContactFormResult()
+                {
+                    message = ex.Message,
+                    result = false
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
     }
     public class ContactFormResult
     {

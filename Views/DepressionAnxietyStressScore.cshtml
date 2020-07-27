@@ -1,0 +1,936 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.DepressionAnxietyStressScore>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "master.cshtml";
+}
+
+<style>
+    .assessment-form {
+        margin: 40px 0;
+    }
+
+    .note-2 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .thermometer-img {
+        width: 70%;
+        margin: 0 0 20px 0;
+    }
+</style>
+
+<input type="hidden" id="DASSNodeId" value="@Model.Id" />
+
+<!-- banner section -->
+<section class="patient-form-banner common-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="carousel-caption">
+                    <h1 class="banner-heading text-white">Depression, Anxiety, Stress etc Score DASS21</h1>
+                    <p>Text: NCC welcomes HCPs to partner with us. You will have access to our latest material, ongoing events and the privilege to directly refer your patients to us.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="assessment-form">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="common-heading">DASS21</h2>
+            </div>
+            <div class="col-12">
+                <!--Accordion wrapper-->
+                <div class="accordion md-accordion form-accordian" id="QualityAssessment" role="tablist" aria-multiselectable="true">
+
+                    <!-- Accordion card -->
+                    <div class="card">
+                        <div class="card-header" role="tab" id="headingOne1">
+                            <a data-toggle="collapse" data-parent="#QualityAssessment" href="#collapseOne1" aria-expanded="true"
+                               aria-controls="collapseOne1">
+                                <h5 class="mb-0">
+                                    Patient Details
+                                    <i class="fas fa-angle-down rotate-icon"></i>
+                                </h5>
+                            </a>
+                        </div>
+                        <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
+                             data-parent="#QualityAssessment">
+                            <div class="card-body">
+                                <form class="patient-form">
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <label>Full Name</label>
+                                                <input type="text" class="form-control" name="full_name" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <label>Surname</label>
+                                                <input type="text" class="form-control" name="surname" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <label>Date of Birth</label>
+                                                <input type="date" class="form-control" name="dob" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion card -->
+                    <div class="card">
+                        <div class="card-header" role="tab" id="heading2">
+                            <a data-toggle="collapse" data-parent="#QualityAssessment" href="#collapse2" aria-expanded="true"
+                               aria-controls="collapse2">
+                                <h5 class="mb-0">
+                                    The DASS21 Questionnaire
+                                    <i class="fas fa-angle-down rotate-icon"></i>
+                                </h5>
+                            </a>
+                        </div>
+                        <div id="collapse2" class="collapse" role="tabpanel" aria-labelledby="heading2"
+                             data-parent="#QualityAssessment">
+                            <div class="card-body">
+                                <form class="patient-form">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <p class="note-2">
+                                                Please read each statement and circle a number 0, 1, 2 or 3 which indicates how much the statement
+                                                applied to you over the past week. There are no right or wrong answers. Do not spend too much time on any statement.
+                                            </p>
+                                            <p class="note-2">The rating scale is as follows:</p>
+                                            <p class="note">0 = Did not apply to me at all</p>
+                                            <p class="note">1 = Applied to me to some degree, or some of the time</p>
+                                            <p class="note">2 = Applied to me to a considerable degree, or a good part of time</p>
+                                            <p class="note">3 = Applied to me very much, or most of the time</p>
+                                        </div>
+
+                                        <!----------- Hard Wind Down --------------->
+
+                                        <div class="col-12">
+                                            <label>I found it hard to wind down</label>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="HardWind-1" name="HardWind">
+                                                    <label class="custom-control-label" for="HardWind-1">0</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="HardWind-2" name="HardWind">
+                                                    <label class="custom-control-label" for="HardWind-2">1</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="HardWind-3" name="HardWind">
+                                                    <label class="custom-control-label" for="HardWind-3">2</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="HardWind-4" name="HardWind">
+                                                    <label class="custom-control-label" for="HardWind-4">3</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!----------- dryness --------------->
+
+                                        <div class="col-12">
+                                            <label>I was aware of dryness of my mouth</label>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="dryness-1" name="dryness">
+                                                    <label class="custom-control-label" for="dryness-1">0</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="dryness-2" name="dryness">
+                                                    <label class="custom-control-label" for="dryness-2">1</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="dryness-3" name="dryness">
+                                                    <label class="custom-control-label" for="dryness-3">2</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="dryness-4" name="dryness">
+                                                    <label class="custom-control-label" for="dryness-4">3</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!----------- experience --------------->
+
+                                        <div class="col-12">
+                                            <label>I couldn't seem to experience any positive feeling at all</label>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="experience-1" name="experience">
+                                                    <label class="custom-control-label" for="experience-1">0</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="experience-2" name="experience">
+                                                    <label class="custom-control-label" for="experience-2">1</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="experience-3" name="experience">
+                                                    <label class="custom-control-label" for="experience-3">2</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="experience-4" name="experience">
+                                                    <label class="custom-control-label" for="experience-4">3</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!----------- experience --------------->
+
+                                        <div class="col-12">
+                                            <label>I experienced breathing difficulty (eg, excessively rapid breathing, breathlessness in the absence of physical exertion)</label>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="breathing-1" name="breathing">
+                                                    <label class="custom-control-label" for="breathing-1">0</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="breathing-2" name="breathing">
+                                                    <label class="custom-control-label" for="breathing-2">1</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="breathing-3" name="breathing">
+                                                    <label class="custom-control-label" for="breathing-3">2</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="breathing-4" name="breathing">
+                                                    <label class="custom-control-label" for="breathing-4">3</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!----------- initiative --------------->
+
+                                        <div class="col-12">
+                                            <label>I found it difficult to work up the initiative to do things</label>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="initiative-1" name="initiative">
+                                                    <label class="custom-control-label" for="initiative-1">0</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="initiative-2" name="initiative">
+                                                    <label class="custom-control-label" for="initiative-2">1</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="initiative-3" name="initiative">
+                                                    <label class="custom-control-label" for="initiative-3">2</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="initiative-4" name="initiative">
+                                                    <label class="custom-control-label" for="initiative-4">3</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!----------- over-react --------------->
+
+                                        <div class="col-12">
+                                            <label>I tended to over-react to situations</label>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="over-react-1" name="over-react">
+                                                    <label class="custom-control-label" for="over-react-1">0</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="over-react-2" name="over-react">
+                                                    <label class="custom-control-label" for="over-react-2">1</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="over-react-3" name="over-react">
+                                                    <label class="custom-control-label" for="over-react-3">2</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="over-react-4" name="over-react">
+                                                    <label class="custom-control-label" for="over-react-4">3</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!----------- trembling --------------->
+
+                                        <div class="col-12">
+                                            <label>I experienced trembling (eg, in the hands)</label>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="trembling-1" name="trembling">
+                                                    <label class="custom-control-label" for="trembling-1">0</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="trembling-2" name="trembling">
+                                                    <label class="custom-control-label" for="trembling-2">1</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="trembling-3" name="trembling">
+                                                    <label class="custom-control-label" for="trembling-3">2</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="trembling-4" name="trembling">
+                                                    <label class="custom-control-label" for="trembling-4">3</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!----------- nervous --------------->
+
+                                        <div class="col-12">
+                                            <label>I felt that I was using a lot of nervous energy</label>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="nervous-1" name="nervous">
+                                                    <label class="custom-control-label" for="nervous-1">0</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="nervous-2" name="nervous">
+                                                    <label class="custom-control-label" for="nervous-2">1</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="nervous-3" name="nervous">
+                                                    <label class="custom-control-label" for="nervous-3">2</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="nervous-4" name="nervous">
+                                                    <label class="custom-control-label" for="nervous-4">3</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!----------- worried situations --------------->
+
+                                        <div class="col-12">
+                                            <label>I was worried about situations in which I might panic and make a fool of myself</label>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="worried-1" name="worried">
+                                                    <label class="custom-control-label" for="worried-1">0</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="worried-2" name="worried">
+                                                    <label class="custom-control-label" for="worried-2">1</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="worried-3" name="worried">
+                                                    <label class="custom-control-label" for="worried-3">2</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="worried-4" name="worried">
+                                                    <label class="custom-control-label" for="worried-4">3</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!----------- look forward --------------->
+
+                                        <div class="col-12">
+                                            <label>I felt that I had nothing to look forward to</label>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="lookForward-1" name="lookForward">
+                                                    <label class="custom-control-label" for="lookForward-1">0</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="lookForward-2" name="lookForward">
+                                                    <label class="custom-control-label" for="lookForward-2">1</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="lookForward-3" name="lookForward">
+                                                    <label class="custom-control-label" for="lookForward-3">2</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="lookForward-4" name="lookForward">
+                                                    <label class="custom-control-label" for="lookForward-4">3</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!----------- agitated --------------->
+
+                                        <div class="col-12">
+                                            <label>I found myself getting agitated</label>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="agitated-1" name="agitated">
+                                                    <label class="custom-control-label" for="agitated-1">0</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="agitated-2" name="agitated">
+                                                    <label class="custom-control-label" for="agitated-2">1</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="agitated-3" name="agitated">
+                                                    <label class="custom-control-label" for="agitated-3">2</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="agitated-4" name="agitated">
+                                                    <label class="custom-control-label" for="agitated-4">3</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!----------- relax --------------->
+
+                                        <div class="col-12">
+                                            <label>I found it difficult to relax</label>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="relax-1" name="relax">
+                                                    <label class="custom-control-label" for="relax-1">0</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="relax-2" name="relax">
+                                                    <label class="custom-control-label" for="relax-2">1</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="relax-3" name="relax">
+                                                    <label class="custom-control-label" for="relax-3">2</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="relax-4" name="relax">
+                                                    <label class="custom-control-label" for="relax-4">3</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!----------- down-hearted --------------->
+
+                                        <div class="col-12">
+                                            <label>I felt down-hearted and blue</label>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="down-hearted-1" name="down-hearted">
+                                                    <label class="custom-control-label" for="down-hearted-1">0</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="down-hearted-2" name="down-hearted">
+                                                    <label class="custom-control-label" for="down-hearted-2">1</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="down-hearted-3" name="down-hearted">
+                                                    <label class="custom-control-label" for="down-hearted-3">2</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="down-hearted-4" name="down-hearted">
+                                                    <label class="custom-control-label" for="down-hearted-4">3</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!----------- intolerant --------------->
+
+                                        <div class="col-12">
+                                            <label>I was intolerant of anything that kept me from getting on with what I was doing</label>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="intolerant-1" name="intolerant">
+                                                    <label class="custom-control-label" for="intolerant-1">0</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="intolerant-2" name="intolerant">
+                                                    <label class="custom-control-label" for="intolerant-2">1</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="intolerant-3" name="intolerant">
+                                                    <label class="custom-control-label" for="intolerant-3">2</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="intolerant-4" name="intolerant">
+                                                    <label class="custom-control-label" for="intolerant-4">3</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!----------- panic --------------->
+
+                                        <div class="col-12">
+                                            <label>I felt I was close to panic</label>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="panic-1" name="panic">
+                                                    <label class="custom-control-label" for="panic-1">0</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="panic-2" name="panic">
+                                                    <label class="custom-control-label" for="panic-2">1</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="panic-3" name="panic">
+                                                    <label class="custom-control-label" for="panic-3">2</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="panic-4" name="panic">
+                                                    <label class="custom-control-label" for="panic-4">3</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!----------- enthusiastic --------------->
+
+                                        <div class="col-12">
+                                            <label>I was unable to become enthusiastic about anything</label>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="enthusiastic-1" name="enthusiastic">
+                                                    <label class="custom-control-label" for="enthusiastic-1">0</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="enthusiastic-2" name="enthusiastic">
+                                                    <label class="custom-control-label" for="enthusiastic-2">1</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="enthusiastic-3" name="enthusiastic">
+                                                    <label class="custom-control-label" for="enthusiastic-3">2</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="enthusiastic-4" name="enthusiastic">
+                                                    <label class="custom-control-label" for="enthusiastic-4">3</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!----------- person --------------->
+
+                                        <div class="col-12">
+                                            <label>I felt I wasn't worth much as a person</label>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="person-1" name="person">
+                                                    <label class="custom-control-label" for="person-1">0</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="person-2" name="person">
+                                                    <label class="custom-control-label" for="person-2">1</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="person-3" name="person">
+                                                    <label class="custom-control-label" for="person-3">2</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="person-4" name="person">
+                                                    <label class="custom-control-label" for="person-4">3</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!----------- touchy --------------->
+
+                                        <div class="col-12">
+                                            <label>I felt that I was rather touchy</label>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="touchy-1" name="touchy">
+                                                    <label class="custom-control-label" for="touchy-1">0</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="touchy-2" name="touchy">
+                                                    <label class="custom-control-label" for="touchy-2">1</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="touchy-3" name="touchy">
+                                                    <label class="custom-control-label" for="touchy-3">2</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="touchy-4" name="touchy">
+                                                    <label class="custom-control-label" for="touchy-4">3</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!----------- physical exertion --------------->
+
+                                        <div class="col-12">
+                                            <label>I was aware of the action of my heart in the absence of physical exertion (eg, sense of heart rate increase, heart missing a beat)</label>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="exertion-1" name="exertion">
+                                                    <label class="custom-control-label" for="exertion-1">0</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="exertion-2" name="exertion">
+                                                    <label class="custom-control-label" for="exertion-2">1</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="exertion-3" name="exertion">
+                                                    <label class="custom-control-label" for="exertion-3">2</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="exertion-4" name="exertion">
+                                                    <label class="custom-control-label" for="exertion-4">3</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!----------- felt scared --------------->
+
+                                        <div class="col-12">
+                                            <label>I felt scared without any good reason</label>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="scared-1" name="scared">
+                                                    <label class="custom-control-label" for="scared-1">0</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="scared-2" name="scared">
+                                                    <label class="custom-control-label" for="scared-2">1</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="scared-3" name="scared">
+                                                    <label class="custom-control-label" for="scared-3">2</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="scared-4" name="scared">
+                                                    <label class="custom-control-label" for="scared-4">3</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!----------- meaningless --------------->
+
+                                        <div class="col-12">
+                                            <label>I felt that life was meaningless</label>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="meaningless-1" name="meaningless">
+                                                    <label class="custom-control-label" for="meaningless-1">0</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="meaningless-2" name="meaningless">
+                                                    <label class="custom-control-label" for="meaningless-2">1</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="meaningless-3" name="meaningless">
+                                                    <label class="custom-control-label" for="meaningless-3">2</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="meaningless-4" name="meaningless">
+                                                    <label class="custom-control-label" for="meaningless-4">3</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <button type="button" class="learn-more-link submit-form-btn">Submit </button>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="alert alert-success" role="alert" style="display:none"></div>
+                                            <div class="alert alert-danger" role="alert" style="display:none"></div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Accordion wrapper -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section pageJs{
+    <script src="~/scripts/Depression Anxiety Stress Score.js"></script>
+} 

@@ -1,0 +1,427 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.QualityOfLifeAssessmentForm>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "master.cshtml";
+}
+
+<style>
+    .assessment-form {
+        margin: 40px 0;
+    }
+
+    .note-2 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .thermometer-img {
+        width: 70%;
+        margin: 0 0 20px 0;
+    }
+</style>
+
+<input type="hidden" id="QualityOfLifeNodeId" value="@Model.Id" />
+<!-- banner section -->
+<section class="patient-form-banner common-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="carousel-caption">
+                    <h1 class="banner-heading text-white">Quality of life Assessment</h1>
+                    <p>Text: NCC welcomes HCPs to partner with us. You will have access to our latest material, ongoing events and the privilege to directly refer your patients to us.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="assessment-form">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="common-heading">EQ-5D</h2>
+            </div>
+            <div class="col-12">
+                <!--Accordion wrapper-->
+                <div class="accordion md-accordion form-accordian" id="QualityAssessment" role="tablist" aria-multiselectable="true">
+
+                    <!-- Accordion card -->
+                    <div class="card">
+                        <div class="card-header" role="tab" id="headingOne1">
+                            <a data-toggle="collapse" data-parent="#QualityAssessment" href="#collapseOne1" aria-expanded="true"
+                               aria-controls="collapseOne1">
+                                <h5 class="mb-0">
+                                    Patient Details
+                                    <i class="fas fa-angle-down rotate-icon"></i>
+                                </h5>
+                            </a>
+                        </div>
+                        <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
+                             data-parent="#QualityAssessment">
+                            <div class="card-body">
+                                <form class="patient-form">
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <label>Full Name</label>
+                                                <input type="text" class="form-control" name="full_name" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <label>Surname</label>
+                                                <input type="text" class="form-control" name="surname" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <label>Date of Birth</label>
+                                                <input type="date" class="form-control" name="dob" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion card -->
+                    <div class="card">
+                        <div class="card-header" role="tab" id="heading2">
+                            <a data-toggle="collapse" data-parent="#QualityAssessment" href="#collapse2" aria-expanded="true"
+                               aria-controls="collapse2">
+                                <h5 class="mb-0">
+                                    About EQ-5D
+                                    <i class="fas fa-angle-down rotate-icon"></i>
+                                </h5>
+                            </a>
+                        </div>
+                        <div id="collapse2" class="collapse" role="tabpanel" aria-labelledby="heading2"
+                             data-parent="#QualityAssessment">
+                            <div class="card-body">
+                                <form class="patient-form">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <p class="note-2">
+                                                In order to determine whether there are any improvements in your symptoms, we need to
+                                                utilise an assessment tool. The assessment tool we use is a questionnaire called a
+                                                EQ-5D and it is a standard medical questionnaire used to measure patient physical,
+                                                mental and social health and wellbeing.
+                                            </p>
+                                            <p class="note-2">
+                                                A EQ-5D is completed prior to commencing medicinal cannabis, the results of which are
+                                                used as a baseline response. In subsequent monitoring sessions further EQ-5D
+                                                questionnaires are completed in order to measure how your responses change and
+                                                determine if you are seeing an improvement in your health.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion card -->
+                    <div class="card">
+                        <div class="card-header" role="tab" id="heading3">
+                            <a data-toggle="collapse" data-parent="#QualityAssessment" href="#collapse3" aria-expanded="true"
+                               aria-controls="collapse3">
+                                <h5 class="mb-0">
+                                    The EuroQol (EQ-5D) Questionnaire
+                                    <i class="fas fa-angle-down rotate-icon"></i>
+                                </h5>
+                            </a>
+                        </div>
+                        <div id="collapse3" class="collapse" role="tabpanel" aria-labelledby="heading3"
+                             data-parent="#QualityAssessment">
+                            <div class="card-body">
+                                <form class="patient-form">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <p class="note">Under each heading, please select the ONE box that best describes your health TODAY. </p>
+                                        </div>
+
+
+                                        <!------------------------Mobility--------------------------->
+
+
+                                        <div class="col-12">
+                                            <label>MOBILITY</label>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="full-emp" name="employment">
+                                                    <label class="custom-control-label" for="full-emp">I have no problems in walking about</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="unemployed" name="employment">
+                                                    <label class="custom-control-label" for="unemployed">I have slight problems in walking about</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="partTimeEmp" name="employment">
+                                                    <label class="custom-control-label" for="partTimeEmp">I have moderate problems in walking about</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="retired" name="employment">
+                                                    <label class="custom-control-label" for="retired">I have severe problems in walking about</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="self-emp" name="employment">
+                                                    <label class="custom-control-label" for="self-emp">I am unable to walk about</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <!---------------------Self Care---------------->
+
+
+                                        <div class="col-12">
+                                            <label>Self Care</label>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="self-care-1" name="self-care">
+                                                    <label class="custom-control-label" for="self-care-1">I have no problems washing or dressing myself</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="self-care-2" name="self-care">
+                                                    <label class="custom-control-label" for="self-care-2">I have slight problems washing or dressing myself</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="self-care-3" name="self-care">
+                                                    <label class="custom-control-label" for="self-care-3">I have moderate problems washing or dressing myself</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="self-care-4" name="self-care">
+                                                    <label class="custom-control-label" for="self-care-4">I have severe problems washing or dressing myself</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="self-care-5" name="self-care">
+                                                    <label class="custom-control-label" for="self-care-5">I am unable to wash or dress myself</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <!--------------USUAL ACTIVITIES-------------->
+
+
+                                        <div class="col-12">
+                                            <label>USUAL ACTIVITIES (e.g. work, study, housework, family or leisure activities</label>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="usual-activities-1" name="usual-activities">
+                                                    <label class="custom-control-label" for="usual-activities-1">I have no problems doing my usual activities</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="usual-activities-2" name="usual-activities">
+                                                    <label class="custom-control-label" for="usual-activities-2">I have slight problems doing my usual activities</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="usual-activities-3" name="usual-activities">
+                                                    <label class="custom-control-label" for="usual-activities-3">I have moderate problems doing my usual activities</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="usual-activities-4" name="usual-activities">
+                                                    <label class="custom-control-label" for="usual-activities-4">I have severe problems doing my usual activities</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="usual-activities-5" name="usual-activities">
+                                                    <label class="custom-control-label" for="usual-activities-5">I am unable to do my usual activites</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <!------------------------PAIN/DISCOMFORT------------------------>
+
+
+                                        <div class="col-12">
+                                            <label>PAIN/DISCOMFORT</label>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="discomfort-1" name="discomfort">
+                                                    <label class="custom-control-label" for="discomfort-1">I have no pain or discomfort</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="discomfort-2" name="discomfort">
+                                                    <label class="custom-control-label" for="discomfort-2">I have slight pain or discomfort</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="discomfort-3" name="discomfort">
+                                                    <label class="custom-control-label" for="discomfort-3">I have moderate pain or discomfort</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="discomfort-4" name="discomfort">
+                                                    <label class="custom-control-label" for="discomfort-4">I have severe pain or discomfort</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="discomfort-5" name="discomfort">
+                                                    <label class="custom-control-label" for="discomfort-5">I have extreme pain or discomfort</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <!------------------------ANXIETY/DEPRESSION------------------------>
+
+
+                                        <div class="col-12">
+                                            <label>ANXIETY/DEPRESSION</label>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="depression-1" name="depression">
+                                                    <label class="custom-control-label" for="depression-1">I am not anxious or depressed</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="depression-2" name="depression">
+                                                    <label class="custom-control-label" for="depression-2">I am slightly anxious or depressed</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="depression-3" name="depression">
+                                                    <label class="custom-control-label" for="depression-3">I am moderately anxious or depressed</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="depression-4" name="depression">
+                                                    <label class="custom-control-label" for="depression-4">I am severely anxious or depressed</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" class="custom-control-input" id="depression-5" name="depression">
+                                                    <label class="custom-control-label" for="depression-5">I am extremely anxious or depressed</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-----------------About Health--------------->
+
+                                        <div class="col-12">
+                                            <label>We would like to know how good or bad your heath is TODAY.</label>
+                                            @if (Model.HealthMeterImage != null)
+                                            {
+                                                <img src="@(Model.HealthMeterImage.Url)" class="thermometer-img">
+                                            }
+                                            <p class="note">This scale is numbered from 0 to 100.</p>
+                                            <p class="note">100 means the best health you can imagine.</p>
+                                            <p class="note">0 means the worst health you can imagine.</p>
+                                            <p class="note">Please write the number in the box below to indicate how your health is TODAY.</p>
+                                        </div>
+
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <label>Enter Your HEALTH TODAY</label>
+                                                <input type="text" class="form-control accept-only-num" name="health" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <button type="button" class="learn-more-link submit-form-btn">Submit </button>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="alert alert-success" role="alert" style="display:none"></div>
+                                            <div class="alert alert-danger" role="alert" style="display:none"></div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Accordion wrapper -->
+            </div>
+        </div>
+    </div>
+</section>
+
+@section pageJs{
+    <script src="~/scripts/Quality of Life Assessment.js"></script>
+} 
