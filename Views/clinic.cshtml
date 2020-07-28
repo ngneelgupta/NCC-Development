@@ -1,8 +1,24 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Clinic>
 @using ContentModels = Umbraco.Web.PublishedModels;
 @{
+    /**/
+
     Layout = "master.cshtml";
 }
+
+<style>
+    .address-heading {
+       
+        color: #000;
+        
+    }
+
+    .address-detail, .address-detail a {
+        
+        color: #000;
+       
+    }
+</style>
 
 <!-- banner section -->
 <section class="clinic-banner common-banner" style="background: url(@(Model.BannerImage!=null?Model.BannerImage.Url:string.Empty)) top center no-repeat;background-size: cover;">
@@ -73,46 +89,159 @@
 <!-- Clinic Locations -->
 <section class="clinic-locations">
     <div class="container">
-        @*<form action="" class="location-from">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="email">State</label>
-                            <input type="email" id="email">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="email">City</label>
-                            <input type="email" id="email">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="email">Post Code</label>
-                            <input type="email" id="email">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <button type="button" class="learn-more-link">Search</button>
-                        </div>
+        @*<div class="row clinic-map-row">
+                <div class="col-lg-9 col-md-7">
+                    @Html.Raw(Model.Map)
+                </div>
+                <div class="col-lg-3 col-md-5">
+                    <div class="clinic-address">
+                        @if (Model.Address != null)
+                        {
+                            foreach (AddressNC item in Model.Address)
+                            {
+                                <div class="address-col">
+                                    <h2 class="clinic-heading">@item.Title</h2>
+                                    @if (!string.IsNullOrEmpty(item.Address))
+                                    {
+                                        <div class="address-inner">
+                                            <div class="address-heading">Address</div>
+                                            <div class="address-detail">
+                                                @item.Address
+                                            </div>
+                                        </div>
+                                    }
+                                    @if (!string.IsNullOrEmpty(item.PhoneNumber))
+                                    {
+                                        <div class="address-inner">
+                                            <div class="address-heading">Phone Number</div>
+                                            <div class="address-detail"><a href="tel:@item.PhoneNumber">@item.PhoneNumber</a></div>
+                                        </div>
+                                    }
+                                    @if (!string.IsNullOrEmpty(item.Email))
+                                    {
+                                        <div class="address-inner">
+                                            <div class="address-heading">Email</div>
+                                            <div class="address-detail"><a href="mailto:@item.Email">@item.Email</a> </div>
+                                        </div>
+                                    }
+                                </div>
+
+                            }
+                        }
                     </div>
                 </div>
-            </form>*@
+            </div>*@
+    </div>
+</section>
+
+
+
+
+<!--custom accordian code-->
+
+@*<section class="clinic-locations">
+    <div class="container">
         <div class="row clinic-map-row">
             <div class="col-lg-9 col-md-7">
                 @Html.Raw(Model.Map)
             </div>
             <div class="col-lg-3 col-md-5">
                 <div class="clinic-address">
+                    <div class="address-col">
+                        <!--Accordion wrapper-->
+                        <div class="accordion md-accordion" id="clinic-address" role="tablist" aria-multiselectable="true">
+
+                            <!-- Accordion card -->
+                            @if (Model.Address != null)
+                            {
+                                var i = 1;
+                                foreach (AddressNC item in Model.Address)
+                                {
+                                    <div class="card">
+                                        <div class="card-header" role="tab" id="headingOne@(i)">
+                                            <a data-toggle="collapse" data-parent="#clinic-address" href="#collapseOne@(i)" aria-expanded="true"
+                                               aria-controls="collapseOne@(i)">
+                                                <h5 class="mb-0 clinic-heading">
+                                                    @item.Title
+                                                    <i class="fas fa-angle-down rotate-icon"></i>
+                                                </h5>
+                                            </a>
+                                        </div>
+                                        <div id="collapseOne@(i)" class="collapse" role="tabpanel" aria-labelledby="headingOne@(i)"
+                                             data-parent="#clinic-address">
+                                            <div class="card-body">
+                                                <div class="address-inner">
+                                                    <div class="address-heading">Address</div>
+                                                    <div class="address-detail">
+                                                        @if (!string.IsNullOrEmpty(item.Address))
+                                                        {
+                                                            <div class="address-inner">
+                                                                <div class="address-heading">Address</div>
+                                                                <div class="address-detail">
+                                                                    @item.Address
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                        @if (!string.IsNullOrEmpty(item.PhoneNumber))
+                                                        {
+                                                            <div class="address-inner">
+                                                                <div class="address-heading">Phone Number</div>
+                                                                <div class="address-detail"><a href="tel:@item.PhoneNumber">@item.PhoneNumber</a></div>
+                                                            </div>
+                                                        }
+                                                        @if (!string.IsNullOrEmpty(item.Email))
+                                                        {
+                                                            <div class="address-inner">
+                                                                <div class="address-heading">Email</div>
+                                                                <div class="address-detail"><a href="mailto:@item.Email">@item.Email</a> </div>
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    i++;
+                                }
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>*@
+
+<section class="faq-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!--Accordion wrapper-->
+                <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
                     @if (Model.Address != null)
                     {
+                        var i = 1;
                         foreach (AddressNC item in Model.Address)
                         {
-                            <div class="address-col">
-            				    <h2 class="clinic-heading">@item.Title</h2>
-                                @if (!string.IsNullOrEmpty(item.Address))
+                            <div class="card">
+                                <div class="card-header" role="tab" id="headingOne@(i)">
+                                    <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne@(i)" aria-expanded="true"
+                                       aria-controls="collapseOne@(i)">
+                                        <h5 class="mb-0">
+                                            @item.Title
+                                            <i class="fas fa-chevron-circle-down rotate-icon"></i>
+                                        </h5>
+                                    </a>
+                                </div>
+                                <div id="collapseOne@(i)" class="collapse @(i==1?"show":string.Empty)" role="tabpanel" aria-labelledby="headingOne@(i)"
+                                     data-parent="#accordionEx">
+                                    <div class="col-lg-6 col-md-6">
+                                        @Html.Raw(item.EmbeddedMap)
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="card-body">
+                                            @if (!string.IsNullOrEmpty(item.Address))
                                             {
                                                 <div class="address-inner">
                                                     <div class="address-heading">Address</div>
@@ -135,79 +264,17 @@
                                                     <div class="address-detail"><a href="mailto:@item.Email">@item.Email</a> </div>
                                                 </div>
                                             }
-                            </div>
-            				
+                                        </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            i++;
                         }
                     }
                 </div>
+                <!-- Accordion wrapper -->
             </div>
         </div>
     </div>
 </section>
-
-
-
-
-<!--custom accordian code-->
-
-<section class="clinic-locations">
-    <div class="container">
-        <div class="row clinic-map-row">
-            <div class="col-lg-9 col-md-7">
-                @Html.Raw(Model.Map)
-            </div>
-            <div class="col-lg-3 col-md-5">
-                <div class="clinic-address">
-                    <div class="address-col">
-                            <!--Accordion wrapper-->
-            				<div class="accordion md-accordion" id="clinic-address" role="tablist" aria-multiselectable="true">
-            
-                				<!-- Accordion card -->
-                			    <div class="card">
-                				    <div class="card-header" role="tab" id="headingOne1">
-                				      <a data-toggle="collapse" data-parent="#clinic-address" href="#collapseOne1" aria-expanded="true"
-                				        aria-controls="collapseOne1">
-                				        <h5 class="mb-0 clinic-heading">ABC
-                				        <i class="fas fa-angle-down rotate-icon"></i></h5>			          	
-                				      </a>
-                				    </div>
-                				    <div id="collapseOne1" class="collapse" role="tabpanel" aria-labelledby="headingOne1"
-                				      data-parent="#clinic-address">
-                				        <div class="card-body">
-                				           <div class="address-inner">
-                                                <div class="address-heading">Address</div>
-                                                    <div class="address-detail">
-                                                       Suite 904, 135 Macquarie Street, Sydney New South Wales 2000, Australia
-                                                    </div>
-                                                </div> 
-                                            </div>
-                				        </div>
-                				    </div>
-            				    </div>
-            				    <div class="card">
-                				    <div class="card-header" role="tab" id="headingtwo">
-                				      <a data-toggle="collapse" data-parent="#clinic-address" href="#collapsetwo" aria-expanded="true"
-                				        aria-controls="collapsetwo">
-                				        <h5 class="mb-0 clinic-heading">ABC2
-                				        <i class="fas fa-angle-down rotate-icon"></i></h5>			          	
-                				      </a>
-                				    </div>
-                				    <div id="collapsetwo" class="collapse" role="tabpanel" aria-labelledby="headingtwo"
-                				      data-parent="#clinic-address">
-                				        <div class="card-body">
-                				           <div class="address-inner">
-                                                <div class="address-heading">Address</div>
-                                                    <div class="address-detail">
-                                                       Suite 904, 135 Macquarie Street, Sydney New South Wales 2000, Australia
-                                                    </div>
-                                                </div> 
-                                            </div>
-                				        </div>
-                				    </div>
-            				    </div>
-            		</div> 
-            	</div>
-            </div>
-        </div>
-        </div>
-    </section>

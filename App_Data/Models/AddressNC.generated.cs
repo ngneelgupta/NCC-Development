@@ -60,6 +60,13 @@ namespace Umbraco.Web.PublishedModels
 		public string Email => this.Value<string>("email");
 
 		///<summary>
+		/// Embedded Map: Place Embedded Map Code Here
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("embeddedMap")]
+		public string EmbeddedMap => this.Value<string>("embeddedMap");
+
+		///<summary>
 		/// Phone Number
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
