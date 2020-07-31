@@ -178,6 +178,9 @@
     .recent-post {
         margin: 35px 0 20px 0;
     }
+    .our-team-col .card {
+        width: 100%;
+    }
     
 }
 
@@ -268,10 +271,17 @@
         height: 323px
     }
     .hcp-inner {
-        justify-content: flex-start;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .hcp-inner h2 {
+        font-size: 19px;
+        width: 100%;
+        text-align: center;
     }
     .hcp-inner img {
         width: 10%;
+        margin: 0px 0 10px 0;
     }
     .registraion-steps img {
         width: 15%;
@@ -304,6 +314,13 @@
     .patient-form-flow .col-md-4:last-child .circle-grey:after {
         display: none;
     }
+    .clinic-location .col-md-6 {
+        padding: 0 15px!important;
+    }
+    .clinic-address {
+        margin: 0 0 20px 0;
+        height: auto;
+    }
 
 }
 
@@ -314,11 +331,22 @@
     .treatment-inner {
         margin: 30px 0 0px;
     }
+    .videoModal .close {
+        margin: -24px -8px 0 auto;
+    }
 }
 
 @media screen and (max-width:550px) {
+    .navbar-brand {
+        padding: 0 0 0 15px;
+        width: 50%;
+    }
     .navbar-toggler {
-        width: 14%;
+        width: 13%
+    }
+    .navbar-brand img {
+        margin-top: -4px;
+        width: 80%;
     }
     .banner-heading {
         width: 100%;
@@ -338,6 +366,9 @@
     }
     .common-banner p {
         width: 56%;
+    }
+    .hcp-banner.common-banner p {
+        color: #e4e4e4!important;
     }
 }
 
@@ -395,7 +426,7 @@
 
 @media screen and (max-width:420px) {
     .navbar-toggler {
-        width: 18%;
+        width: 16%;
     }
     .common-heading {
         font-size: 26px;

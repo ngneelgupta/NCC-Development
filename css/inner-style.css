@@ -630,12 +630,12 @@ ul .content > li::before {
 
 .address-heading {
 	font-size: 15px;
-	color: #fff;
+	color: #fff!important;
 	font-weight: 600;
 }
 .address-detail, .address-detail a {
 	font-size: 15px;
-	color: #fff;
+	color: #fff!important;
 	font-weight: 300;
 }
 .clinic-map-row {
@@ -953,4 +953,25 @@ ul .content > li::before {
 }
 .address-col .card-body {
     padding: 0px;
+}
+.assessment-form {
+	margin: 40px 0;
+}
+
+.note-2 {
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+
+.thermometer-img {
+	width: 70%;
+	margin: 0 0 20px 0;
+}
+
+.collapse iframe {
+    height: 100%!important;
+}
+
+.clinic-location #accordionEx .card-header {
+    border: 0px;
 }

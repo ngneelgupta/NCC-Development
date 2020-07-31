@@ -86,134 +86,7 @@
     </div>
 </section>
 
-<!-- Clinic Locations -->
-<section class="clinic-locations">
-    <div class="container">
-        @*<div class="row clinic-map-row">
-                <div class="col-lg-9 col-md-7">
-                    @Html.Raw(Model.Map)
-                </div>
-                <div class="col-lg-3 col-md-5">
-                    <div class="clinic-address">
-                        @if (Model.Address != null)
-                        {
-                            foreach (AddressNC item in Model.Address)
-                            {
-                                <div class="address-col">
-                                    <h2 class="clinic-heading">@item.Title</h2>
-                                    @if (!string.IsNullOrEmpty(item.Address))
-                                    {
-                                        <div class="address-inner">
-                                            <div class="address-heading">Address</div>
-                                            <div class="address-detail">
-                                                @item.Address
-                                            </div>
-                                        </div>
-                                    }
-                                    @if (!string.IsNullOrEmpty(item.PhoneNumber))
-                                    {
-                                        <div class="address-inner">
-                                            <div class="address-heading">Phone Number</div>
-                                            <div class="address-detail"><a href="tel:@item.PhoneNumber">@item.PhoneNumber</a></div>
-                                        </div>
-                                    }
-                                    @if (!string.IsNullOrEmpty(item.Email))
-                                    {
-                                        <div class="address-inner">
-                                            <div class="address-heading">Email</div>
-                                            <div class="address-detail"><a href="mailto:@item.Email">@item.Email</a> </div>
-                                        </div>
-                                    }
-                                </div>
-
-                            }
-                        }
-                    </div>
-                </div>
-            </div>*@
-    </div>
-</section>
-
-
-
-
-<!--custom accordian code-->
-
-@*<section class="clinic-locations">
-    <div class="container">
-        <div class="row clinic-map-row">
-            <div class="col-lg-9 col-md-7">
-                @Html.Raw(Model.Map)
-            </div>
-            <div class="col-lg-3 col-md-5">
-                <div class="clinic-address">
-                    <div class="address-col">
-                        <!--Accordion wrapper-->
-                        <div class="accordion md-accordion" id="clinic-address" role="tablist" aria-multiselectable="true">
-
-                            <!-- Accordion card -->
-                            @if (Model.Address != null)
-                            {
-                                var i = 1;
-                                foreach (AddressNC item in Model.Address)
-                                {
-                                    <div class="card">
-                                        <div class="card-header" role="tab" id="headingOne@(i)">
-                                            <a data-toggle="collapse" data-parent="#clinic-address" href="#collapseOne@(i)" aria-expanded="true"
-                                               aria-controls="collapseOne@(i)">
-                                                <h5 class="mb-0 clinic-heading">
-                                                    @item.Title
-                                                    <i class="fas fa-angle-down rotate-icon"></i>
-                                                </h5>
-                                            </a>
-                                        </div>
-                                        <div id="collapseOne@(i)" class="collapse" role="tabpanel" aria-labelledby="headingOne@(i)"
-                                             data-parent="#clinic-address">
-                                            <div class="card-body">
-                                                <div class="address-inner">
-                                                    <div class="address-heading">Address</div>
-                                                    <div class="address-detail">
-                                                        @if (!string.IsNullOrEmpty(item.Address))
-                                                        {
-                                                            <div class="address-inner">
-                                                                <div class="address-heading">Address</div>
-                                                                <div class="address-detail">
-                                                                    @item.Address
-                                                                </div>
-                                                            </div>
-                                                        }
-                                                        @if (!string.IsNullOrEmpty(item.PhoneNumber))
-                                                        {
-                                                            <div class="address-inner">
-                                                                <div class="address-heading">Phone Number</div>
-                                                                <div class="address-detail"><a href="tel:@item.PhoneNumber">@item.PhoneNumber</a></div>
-                                                            </div>
-                                                        }
-                                                        @if (!string.IsNullOrEmpty(item.Email))
-                                                        {
-                                                            <div class="address-inner">
-                                                                <div class="address-heading">Email</div>
-                                                                <div class="address-detail"><a href="mailto:@item.Email">@item.Email</a> </div>
-                                                            </div>
-                                                        }
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    i++;
-                                }
-                            }
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>*@
-
-<section class="faq-wrapper">
+<section class="faq-wrapper clinic-location">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -236,39 +109,43 @@
                                 </div>
                                 <div id="collapseOne@(i)" class="collapse @(i==1?"show":string.Empty)" role="tabpanel" aria-labelledby="headingOne@(i)"
                                      data-parent="#accordionEx">
-                                    <div class="col-lg-6 col-md-6">
-                                        @Html.Raw(item.EmbeddedMap)
-                                    </div>
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="card-body">
-                                            @if (!string.IsNullOrEmpty(item.Address))
-                                            {
-                                                <div class="address-inner">
-                                                    <div class="address-heading">Address</div>
-                                                    <div class="address-detail">
-                                                        @item.Address
+                                    <div class="row ml-0 mr-0">
+                                        <div class="col-lg-9 col-md-6 pl-0">
+                                            @Html.Raw(item.EmbeddedMap)
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 pr-0">
+                                            <div class="clinic-address">
+                                                <div class="card-body address-col">
+                                                @if (!string.IsNullOrEmpty(item.Address))
+                                                {
+                                                    <div class="address-inner">
+                                                        <div class="address-heading">Address</div>
+                                                        <div class="address-detail">
+                                                            @item.Address
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            }
-                                            @if (!string.IsNullOrEmpty(item.PhoneNumber))
-                                            {
-                                                <div class="address-inner">
-                                                    <div class="address-heading">Phone Number</div>
-                                                    <div class="address-detail"><a href="tel:@item.PhoneNumber">@item.PhoneNumber</a></div>
-                                                </div>
-                                            }
-                                            @if (!string.IsNullOrEmpty(item.Email))
-                                            {
-                                                <div class="address-inner">
-                                                    <div class="address-heading">Email</div>
-                                                    <div class="address-detail"><a href="mailto:@item.Email">@item.Email</a> </div>
-                                                </div>
-                                            }
-                                        </div>
+                                                }
+                                                @if (!string.IsNullOrEmpty(item.PhoneNumber))
+                                                {
+                                                    <div class="address-inner">
+                                                        <div class="address-heading">Phone Number</div>
+                                                        <div class="address-detail"><a href="tel:@item.PhoneNumber">@item.PhoneNumber</a></div>
+                                                    </div>
+                                                }
+                                                @if (!string.IsNullOrEmpty(item.Email))
+                                                {
+                                                    <div class="address-inner">
+                                                        <div class="address-heading">Email</div>
+                                                        <div class="address-detail"><a href="mailto:@item.Email">@item.Email</a> </div>
+                                                    </div>
+                                                }
+                                            </div>
+                                            </div>
                                         </div>
                                     </div>
+                               </div>
 
-                                </div>
+                            </div>
                             i++;
                         }
                     }
