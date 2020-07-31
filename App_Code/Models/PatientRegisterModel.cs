@@ -3,6 +3,27 @@ using System.Collections.Generic;
 
 namespace NCC.BusinessLogic.Models
 {
+    public class BriefPainInventoryDataModel
+    {
+        public int NodeId { get; set; }
+        public string fullname { get; set; }
+        public string surname { get; set; }
+        public DateTime dob { get; set; }
+        public string pain { get; set; }
+        public string leastpain { get; set; }
+        public string average { get; set; }
+        public string HowMuchPain { get; set; }
+        public string title { get; set; }
+        public string medications { get; set; }
+        public string generalActivity { get; set; }
+        public string mood { get; set; }
+        public string ability { get; set; }
+        public string housework { get; set; }
+        public string Relations { get; set; }
+        public string sleep { get; set; }
+        public string Enjoyment { get; set; }
+    }
+
     public class DASSDataModel
     {
         public int NodeId { get; set; }

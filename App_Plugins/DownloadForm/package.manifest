@@ -1,0 +1,30 @@
+﻿{
+  "sections": [
+    {
+      "alias": "downloadForm",
+      "name": "Download Form"
+    }
+  ],
+  "dashboards": [
+    {
+      "alias": "home",
+      "sections": [ "downloadForm" ],
+      "view": "~/App_Plugins/DownloadForm/Dashboard/home.html",
+      "weight": -100,
+      "access": [
+        {
+          "deny": "translator"
+        },
+        {
+          "grant": "admin"
+        }
+      ]
+    }
+  ],
+  "css": [
+    "~/App_Plugins/DownloadForm/Dashboard/dashboard.css"
+  ],
+  "javascript": [
+    "~/App_Plugins/DownloadForm/Dashboard/dashboard.controller.js"
+  ]
+}

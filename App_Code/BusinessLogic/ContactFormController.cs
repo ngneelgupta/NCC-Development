@@ -7,6 +7,7 @@ using NCC.Models;
 using NCC.BusinessLogic.Models;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Text;
 /// <summary>
 /// Summary description for ContactFormController
 /// </summary>
@@ -351,10 +352,10 @@ namespace NCC.BusinessLogics
 
                     if (model.practitionerDetails != null)
                     {
-                        patientNode.SetValue("practitionerDetailsFullName", model.practitionerDetails.full_name); 
-                        patientNode.SetValue("practitionerDetailsPractitionerType", model.practitionerDetails.pract_type); 
-                        patientNode.SetValue("practitionerDetailsPhoneNumber", model.practitionerDetails.Phoneno);  
-                        patientNode.SetValue("practitionerDetailsEmail", model.practitionerDetails.email);  
+                        patientNode.SetValue("practitionerDetailsFullName", model.practitionerDetails.full_name);
+                        patientNode.SetValue("practitionerDetailsPractitionerType", model.practitionerDetails.pract_type);
+                        patientNode.SetValue("practitionerDetailsPhoneNumber", model.practitionerDetails.Phoneno);
+                        patientNode.SetValue("practitionerDetailsEmail", model.practitionerDetails.email);
                         patientNode.SetValue("practitionerDetailsAddress", model.practitionerDetails.address);
                         patientNode.SetValue("practitionerDetailsProviderNumber", model.practitionerDetails.provider_no);
                         patientNode.SetValue("practitionerDetailsHealthLinkNumber", model.practitionerDetails.healthlink_no);
@@ -500,6 +501,122 @@ namespace NCC.BusinessLogics
                     message = ex.Message,
                     result = false
                 }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult BriefPainInventoryForm(BriefPainInventoryDataModel model)
+        {
+            try
+            {
+                if (model != null)
+                {
+                    var contentService = Services.ContentService;
+                    var resultNode = contentService.GetById(model.NodeId);
+
+                    var patientNode = contentService.CreateAndSave(model.fullname, model.NodeId, "briefPainInventoryInformation");
+
+                    patientNode.SetValue("patientFullName", model.fullname);
+                    patientNode.SetValue("patientSurname", model.surname);
+                    patientNode.SetValue("patientDateOfBirth", model.dob);
+                    patientNode.SetValue("pleaseRateYourPainBySelectingTheOneNumberThatBestDescribesYourPainAtItsWorstInTheLastWeek", model.pain);
+                    patientNode.SetValue("pleaseRateYourPainBySelectingTheOneNumberThatBestDescribesYourPainAtItsLeastInTheLastWeek", model.leastpain);
+                    patientNode.SetValue("pleaseRateYourPainBySelectingTheOneNumberThatBestDescribesYourPainOnAverage", model.average);
+                    patientNode.SetValue("pleaseRateYourPainBySelectingTheOneNumberThatTellsHowMuchPainYouHaveRightNow", model.HowMuchPain);
+                    patientNode.SetValue("whatTreatmentsOrMedicationsAreYouReceivingForYourpain", model.title);
+                    patientNode.SetValue("inTheLastWeekHowMuchReliefHavePainTreatmentsOrMedicationsProvidedPleaseCircleTheOnePercentageThatBestShowsHowMuchReliefYouHaveReceived", model.medications);
+                    patientNode.SetValue("generalActivity", model.generalActivity);
+                    patientNode.SetValue("mood", model.mood);
+                    patientNode.SetValue("walkingAbility", model.ability);
+                    patientNode.SetValue("normalWork", model.housework);
+                    patientNode.SetValue("relationsWithOtherPeople", model.Relations);
+                    patientNode.SetValue("sleep", model.sleep);
+                    patientNode.SetValue("enjoymentOfLife", model.Enjoyment);
+
+                    contentService.SaveAndPublish(patientNode);
+
+                    return Json(new ContactFormResult()
+                    {
+                        message = "Brief pain inventory form save successfully.",
+                        result = true
+                    }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new ContactFormResult()
+                    {
+                        message = "Please fill the brief pain inventory form information !!",
+                        result = false
+                    }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new ContactFormResult()
+                {
+                    message = ex.Message,
+                    result = false
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        //Download form file
+        [HttpGet]
+        public ActionResult BriefPainInventoryFormCSV(int id)
+        {
+            try
+            {
+                var Node = Umbraco.Content(id);
+
+                //before your loop
+                var csv = new StringBuilder();
+
+                var newLine = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15}",
+                            "Full Name", "Surname", "Date Of Birth", "Please rate your pain by selecting the one number that best describes your pain at its worst in the last week",
+                            "Please rate your pain by selecting the one number that best describes your pain at its least in the last week",
+                            "Please rate your pain by selecting the one number that best describes your pain on average",
+                            "Please rate your pain by selecting the one number that tells how much pain you have right now",
+                            "What treatments or medications are you receiving for yourpain?",
+                            "In the last week how much relief have pain treatments or medications provided? Please circle the one percentage that best shows how much relief you have received",
+                            "General activity", "Mood", "Walking ability", "Normal work (includes both outside the home and housework)",
+                            "Relations with other people", "Sleep", "Enjoyment of life");
+                csv.AppendLine(newLine);
+
+                if (Node.Children != null)
+                {
+                    foreach (var item in Node.Children)
+                    {
+                        //in your loop
+                        var fullName = item.GetProperty("patientFullName").GetValue().ToString();
+                        var surname = item.GetProperty("patientSurname").GetValue().ToString();
+                        var dob = Convert.ToDateTime(item.GetProperty("patientDateOfBirth").GetValue().ToString()).ToString("dd/MM/yyyy");
+                        var pain = item.GetProperty("pleaseRateYourPainBySelectingTheOneNumberThatBestDescribesYourPainAtItsWorstInTheLastWeek").GetValue().ToString();
+                        var leastpain = item.GetProperty("pleaseRateYourPainBySelectingTheOneNumberThatBestDescribesYourPainAtItsLeastInTheLastWeek").GetValue().ToString();
+                        var average = item.GetProperty("pleaseRateYourPainBySelectingTheOneNumberThatBestDescribesYourPainOnAverage").GetValue().ToString();
+                        var HowMuchPain = item.GetProperty("pleaseRateYourPainBySelectingTheOneNumberThatTellsHowMuchPainYouHaveRightNow").GetValue().ToString();
+                        var title = item.GetProperty("whatTreatmentsOrMedicationsAreYouReceivingForYourpain").GetValue().ToString();
+                        var medications = item.GetProperty("inTheLastWeekHowMuchReliefHavePainTreatmentsOrMedicationsProvidedPleaseCircleTheOnePercentageThatBestShowsHowMuchReliefYouHaveReceived").GetValue().ToString();
+                        var generalActivity = item.GetProperty("generalActivity").GetValue().ToString();
+                        var mood = item.GetProperty("mood").GetValue().ToString();
+                        var ability = item.GetProperty("walkingAbility").GetValue().ToString();
+                        var housework = item.GetProperty("normalWork").GetValue().ToString();
+                        var Relations = item.GetProperty("relationsWithOtherPeople").GetValue().ToString();
+                        var sleep = item.GetProperty("sleep").GetValue().ToString();
+                        var Enjoyment = item.GetProperty("enjoymentOfLife").GetValue().ToString();
+
+                        //Suggestion made by KyleMit
+                        newLine = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15}",
+                            fullName, surname, dob, pain, leastpain, average, HowMuchPain, title, medications, generalActivity, mood, ability,
+                            housework, Relations, sleep, Enjoyment);
+                        csv.AppendLine(newLine);
+                    }
+                }
+
+                return File(new UTF8Encoding().GetBytes(csv.ToString()), "text/csv", Node.Name + ".csv");
+            }
+            catch (Exception ex)
+            {
+                return null;
             }
         }
     }
