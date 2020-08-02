@@ -2,10 +2,50 @@
     <div class="download-form-config">
         <h2>Download Form</h2>
         <a style="display:none;" id="callApi"></a>
+
+        Period :
+        <div class='wrapper'>
+            <label for="fromDate">from:</label>
+            <input type="text" id="fromDate" name="fromc">
+            <label for="toDate">to:</label>
+            <input type="text" id="toDate" name="toDate">
+        </div>
+
+        <!--<div class="form-sec">
+            <h4>Quality of Life Assessment</h4>
+            <a class="ui right floated btn btn-warning" ng-click="BriefPainInventoryCSV('1301')"> Download CSV</a>
+        </div>
+
+        <div class="form-sec">
+            <h4>Depression Anxiety Stress Score</h4>
+            <a class="ui right floated btn btn-warning" ng-click="BriefPainInventoryCSV('1306')"> Download CSV</a>
+        </div>
+
         <div class="form-sec">
             <h4>Brief Pain Inventory</h4>
-            <a class="ui right floated btn btn-warning" ng-click="BriefPainInventoryCSV()"> Download CSV</a>
+            <a class="ui right floated btn btn-warning" ng-click="BriefPainInventoryCSV('1313')"> Download CSV</a>
+        </div>-->
+
+        <div ng-repeat="form in FormsData">
+            <h4>{{form.formName}}</h4>
+            <a class="ui right floated btn btn-warning" ng-click="DownloadFormCSV(form.formId)"> Download CSV</a>
+
+            <table class="formDataTable">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="{{form.formId}}" ng-click="SelectAll(form.formId)"/></th>
+                        <th>Name</th>
+                        <th>Surname</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="data in form.data">
+                        <td><input type="checkbox" id="{{data.NodeId}}" value="{{data.NodeId}}" ng-click="SelectSingle(data.NodeId)" /></td>
+                        <td>{{data.Name}}</td>
+                        <td>{{data.Surname}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
-

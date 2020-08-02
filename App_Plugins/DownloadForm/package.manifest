@@ -22,9 +22,11 @@
     }
   ],
   "css": [
-    "~/App_Plugins/DownloadForm/Dashboard/dashboard.css"
+    "~/App_Plugins/DownloadForm/Dashboard/dashboard.css",
+    "https://code.jquery.com/ui/1.11.4/themes/ui-lightness/jquery-ui.css"
   ],
   "javascript": [
-    "~/App_Plugins/DownloadForm/Dashboard/dashboard.controller.js"
+    "~/App_Plugins/DownloadForm/Dashboard/dashboard.controller.js",
+    "https://code.jquery.com/ui/1.11.3/jquery-ui.js"
   ]
 }

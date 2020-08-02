@@ -8,11 +8,12 @@ using NCC.BusinessLogic.Models;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.Text;
+using System.Linq;
 /// <summary>
 /// Summary description for ContactFormController
 /// </summary>
 ///
-namespace NCC.BusinessLogics
+namespace NCC.BusinessLogic
 {
     public class ContactFormController : SurfaceController
     {
@@ -562,7 +563,7 @@ namespace NCC.BusinessLogics
 
         //Download form file
         [HttpGet]
-        public ActionResult BriefPainInventoryFormCSV(int id)
+        public ActionResult DownloadFormCSV(int id, DateTime? startDate, DateTime? endDate, string SelectedPatientFormIds)
         {
             try
             {
@@ -570,59 +571,213 @@ namespace NCC.BusinessLogics
 
                 //before your loop
                 var csv = new StringBuilder();
+                var newLine = string.Empty;
 
-                var newLine = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15}",
-                            "Full Name", "Surname", "Date Of Birth", "Please rate your pain by selecting the one number that best describes your pain at its worst in the last week",
-                            "Please rate your pain by selecting the one number that best describes your pain at its least in the last week",
-                            "Please rate your pain by selecting the one number that best describes your pain on average",
-                            "Please rate your pain by selecting the one number that tells how much pain you have right now",
-                            "What treatments or medications are you receiving for yourpain?",
-                            "In the last week how much relief have pain treatments or medications provided? Please circle the one percentage that best shows how much relief you have received",
-                            "General activity", "Mood", "Walking ability", "Normal work (includes both outside the home and housework)",
-                            "Relations with other people", "Sleep", "Enjoyment of life");
-                csv.AppendLine(newLine);
+                var childrens = Node.Children != null && Node.Children.Count() > 0 && startDate != null ? Node.Children.Where(x => x.CreateDate >= startDate) : Node.Children;
+                childrens = childrens != null && childrens.Count() > 0 && endDate != null ? Node.Children.Where(x => x.CreateDate <= endDate) : childrens;
+                childrens = childrens != null && childrens.Count() > 0 && !string.IsNullOrEmpty(SelectedPatientFormIds) ? Node.Children.Where(x => SelectedPatientFormIds.Split(',').Where(y => y == x.Id.ToString()).FirstOrDefault() != null) : childrens;
 
-                if (Node.Children != null)
+                if (childrens != null && childrens.Count() > 0)
                 {
-                    foreach (var item in Node.Children)
+                    if (id == 1301)
                     {
-                        //in your loop
-                        var fullName = item.GetProperty("patientFullName").GetValue().ToString();
-                        var surname = item.GetProperty("patientSurname").GetValue().ToString();
-                        var dob = Convert.ToDateTime(item.GetProperty("patientDateOfBirth").GetValue().ToString()).ToString("dd/MM/yyyy");
-                        var pain = item.GetProperty("pleaseRateYourPainBySelectingTheOneNumberThatBestDescribesYourPainAtItsWorstInTheLastWeek").GetValue().ToString();
-                        var leastpain = item.GetProperty("pleaseRateYourPainBySelectingTheOneNumberThatBestDescribesYourPainAtItsLeastInTheLastWeek").GetValue().ToString();
-                        var average = item.GetProperty("pleaseRateYourPainBySelectingTheOneNumberThatBestDescribesYourPainOnAverage").GetValue().ToString();
-                        var HowMuchPain = item.GetProperty("pleaseRateYourPainBySelectingTheOneNumberThatTellsHowMuchPainYouHaveRightNow").GetValue().ToString();
-                        var title = item.GetProperty("whatTreatmentsOrMedicationsAreYouReceivingForYourpain").GetValue().ToString();
-                        var medications = item.GetProperty("inTheLastWeekHowMuchReliefHavePainTreatmentsOrMedicationsProvidedPleaseCircleTheOnePercentageThatBestShowsHowMuchReliefYouHaveReceived").GetValue().ToString();
-                        var generalActivity = item.GetProperty("generalActivity").GetValue().ToString();
-                        var mood = item.GetProperty("mood").GetValue().ToString();
-                        var ability = item.GetProperty("walkingAbility").GetValue().ToString();
-                        var housework = item.GetProperty("normalWork").GetValue().ToString();
-                        var Relations = item.GetProperty("relationsWithOtherPeople").GetValue().ToString();
-                        var sleep = item.GetProperty("sleep").GetValue().ToString();
-                        var Enjoyment = item.GetProperty("enjoymentOfLife").GetValue().ToString();
-
-                        //Suggestion made by KyleMit
-                        newLine = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15}",
-                            fullName, surname, dob, pain, leastpain, average, HowMuchPain, title, medications, generalActivity, mood, ability,
-                            housework, Relations, sleep, Enjoyment);
+                        newLine = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8}",
+                                "Full Name", "Surname", "Date Of Birth", "MOBILITY",
+                                "Self Care",
+                                "USUAL ACTIVITIES",
+                                "PAIN/DISCOMFORT",
+                                "ANXIETY/DEPRESSION",
+                                "HEALTH TODAY");
                         csv.AppendLine(newLine);
-                    }
-                }
 
-                return File(new UTF8Encoding().GetBytes(csv.ToString()), "text/csv", Node.Name + ".csv");
+                        foreach (var item in childrens)
+                        {
+                            //in your loop
+                            var fullName = item.GetProperty("patientFullName").GetValue().ToString();
+                            var surname = item.GetProperty("patientSurname").GetValue().ToString();
+                            var dob = Convert.ToDateTime(item.GetProperty("patientDateOfBirth").GetValue().ToString()).ToString("dd/MM/yyyy");
+                            var mobility = item.GetProperty("mobility").GetValue().ToString();
+                            var selfCare = item.GetProperty("selfCare").GetValue().ToString();
+                            var usualActivities = item.GetProperty("usualActivities").GetValue().ToString();
+                            var painDiscomfort = item.GetProperty("painDiscomfort").GetValue().ToString();
+                            var anxietyDepression = item.GetProperty("anxietyDepression").GetValue().ToString();
+                            var healthToday = item.GetProperty("healthToday").GetValue().ToString();
+
+                            //Suggestion made by KyleMit
+                            newLine = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8}",
+                                fullName, surname, dob, mobility, selfCare, usualActivities, painDiscomfort, anxietyDepression, healthToday);
+                            csv.AppendLine(newLine);
+                        }
+                    }
+                    else if (id == 1306)
+                    {
+                        newLine = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23}",
+                                "Full Name", "Surname", "Date Of Birth", "iFeltThatLifeWasMeaningless",
+                                "I was aware of dryness of my mouth",
+                                "I couldn't seem to experience any positive feeling at all",
+                                "I experienced breathing difficulty",
+                                "I found it difficult to work up the initiative to do things",
+                                "I tended to over-react to situations",
+                                "I experienced trembling", "I felt that I was using a lot of nervous energy",
+                                "I was worried about situations in which I might panic and make a fool of myself",
+                                "I felt that I had nothing to look forward to",
+                                "I found myself getting agitated", "I found it difficult to relax", "I felt down-hearted and blue",
+                                "I was intolerant of anything that kept me from getting on with what I was doing",
+                                "I felt I was close to panic",
+                                "I was unable to become enthusiastic about anything",
+                                "I was unable to become enthusiastic about anything",
+                                "I felt that I was rather touchy",
+                                "I was aware of the action of my heart in the absence of physical exertion",
+                                "I felt scared without any good reason",
+                                "I felt that life was meaningless");
+                        csv.AppendLine(newLine);
+
+                        foreach (var item in childrens)
+                        {
+                            //in your loop
+                            var fullName = item.GetProperty("patientFullName").GetValue().ToString();
+                            var surname = item.GetProperty("patientSurname").GetValue().ToString();
+                            var dob = Convert.ToDateTime(item.GetProperty("patientDateOfBirth").GetValue().ToString()).ToString("dd/MM/yyyy");
+                            var HardWind = item.GetProperty("iFoundItHardToWindDown").GetValue().ToString();
+                            var dryness = item.GetProperty("iWasAwareOfDrynessOfMyMouth").GetValue().ToString();
+                            var experience = item.GetProperty("iCouldnTSeemToExperienceAnyPositiveFeelingAtAll").GetValue().ToString();
+                            var breathing = item.GetProperty("iExperiencedBreathingDifficulty").GetValue().ToString();
+                            var initiative = item.GetProperty("iFoundItDifficultToWorkUpTheInitiativeToDoThings").GetValue().ToString();
+                            var overreact = item.GetProperty("iTendedToOverReactToSituations").GetValue().ToString();
+                            var trembling = item.GetProperty("iExperiencedTrembling").GetValue().ToString();
+                            var nervous = item.GetProperty("iFeltThatIWasUsingALotOfNervousEnergy").GetValue().ToString();
+                            var worried = item.GetProperty("iWasWorriedAboutSituationsInWhichIMightPanicAndMakeAFoolOfMyself").GetValue().ToString();
+                            var lookForward = item.GetProperty("iFeltThatIHadNothingToLookForwardTo").GetValue().ToString();
+                            var agitated = item.GetProperty("iFoundMyselfGettingAgitated").GetValue().ToString();
+                            var relax = item.GetProperty("iFoundItDifficultToRelax").GetValue().ToString();
+                            var downhearted = item.GetProperty("iFeltDownHeartedAndBlue").GetValue().ToString();
+                            var intolerant = item.GetProperty("iWasIntolerantOfAnythingThatKeptMeFromGettingOnWithWhatIWasDoing").GetValue().ToString();
+                            var panic = item.GetProperty("iFeltIWasCloseToPanic").GetValue().ToString();
+                            var enthusiastic = item.GetProperty("iWasUnableToBecomeEnthusiasticAboutAnything").GetValue().ToString();
+                            var person = item.GetProperty("iFeltIWasnTWorthMuchAsAPerson").GetValue().ToString();
+                            var touchy = item.GetProperty("iFeltIWasnTWorthMuchAsAPerson").GetValue().ToString();
+                            var exertion = item.GetProperty("iWasAwareOfTheActionOfMyHeartInTheAbsenceOfPhysicalExertion").GetValue().ToString();
+                            var scared = item.GetProperty("iFeltScaredWithoutAnyGoodReason").GetValue().ToString();
+                            var meaningless = item.GetProperty("iFeltThatLifeWasMeaningless").GetValue().ToString();
+
+                            //Suggestion made by KyleMit
+                            newLine = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23}",
+                                fullName, surname, dob, HardWind, dryness, experience, breathing, initiative, overreact, trembling, nervous, worried,
+                                lookForward, agitated, relax, downhearted, intolerant, panic, enthusiastic, person, touchy, exertion, scared, meaningless);
+                            csv.AppendLine(newLine);
+                        }
+                    }
+                    else if (id == 1313)
+                    {
+                        newLine = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15}",
+                                "Full Name", "Surname", "Date Of Birth", "Please rate your pain by selecting the one number that best describes your pain at its worst in the last week",
+                                "Please rate your pain by selecting the one number that best describes your pain at its least in the last week",
+                                "Please rate your pain by selecting the one number that best describes your pain on average",
+                                "Please rate your pain by selecting the one number that tells how much pain you have right now",
+                                "What treatments or medications are you receiving for yourpain?",
+                                "In the last week how much relief have pain treatments or medications provided? Please circle the one percentage that best shows how much relief you have received",
+                                "General activity", "Mood", "Walking ability", "Normal work (includes both outside the home and housework)",
+                                "Relations with other people", "Sleep", "Enjoyment of life");
+                        csv.AppendLine(newLine);
+
+                        foreach (var item in childrens)
+                        {
+                            //in your loop
+                            var fullName = item.GetProperty("patientFullName").GetValue().ToString();
+                            var surname = item.GetProperty("patientSurname").GetValue().ToString();
+                            var dob = Convert.ToDateTime(item.GetProperty("patientDateOfBirth").GetValue().ToString()).ToString("dd/MM/yyyy");
+                            var pain = item.GetProperty("pleaseRateYourPainBySelectingTheOneNumberThatBestDescribesYourPainAtItsWorstInTheLastWeek").GetValue().ToString();
+                            var leastpain = item.GetProperty("pleaseRateYourPainBySelectingTheOneNumberThatBestDescribesYourPainAtItsLeastInTheLastWeek").GetValue().ToString();
+                            var average = item.GetProperty("pleaseRateYourPainBySelectingTheOneNumberThatBestDescribesYourPainOnAverage").GetValue().ToString();
+                            var HowMuchPain = item.GetProperty("pleaseRateYourPainBySelectingTheOneNumberThatTellsHowMuchPainYouHaveRightNow").GetValue().ToString();
+                            var title = item.GetProperty("whatTreatmentsOrMedicationsAreYouReceivingForYourpain").GetValue().ToString();
+                            var medications = item.GetProperty("inTheLastWeekHowMuchReliefHavePainTreatmentsOrMedicationsProvidedPleaseCircleTheOnePercentageThatBestShowsHowMuchReliefYouHaveReceived").GetValue().ToString();
+                            var generalActivity = item.GetProperty("generalActivity").GetValue().ToString();
+                            var mood = item.GetProperty("mood").GetValue().ToString();
+                            var ability = item.GetProperty("walkingAbility").GetValue().ToString();
+                            var housework = item.GetProperty("normalWork").GetValue().ToString();
+                            var Relations = item.GetProperty("relationsWithOtherPeople").GetValue().ToString();
+                            var sleep = item.GetProperty("sleep").GetValue().ToString();
+                            var Enjoyment = item.GetProperty("enjoymentOfLife").GetValue().ToString();
+
+                            //Suggestion made by KyleMit
+                            newLine = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15}",
+                                fullName, surname, dob, pain, leastpain, average, HowMuchPain, title, medications, generalActivity, mood, ability,
+                                housework, Relations, sleep, Enjoyment);
+                            csv.AppendLine(newLine);
+                        }
+                    }
+
+                    return File(new UTF8Encoding().GetBytes(csv.ToString()), "text/csv", Node.Name + ".csv");
+                }
+                else
+                {
+                    return File(new UTF8Encoding().GetBytes(""), "text/csv", Node.Name + ".csv");
+                }
             }
             catch (Exception ex)
             {
                 return null;
             }
         }
+
+        [HttpGet]
+        public ActionResult GetAllFormList()
+        {
+            int[] formIds = new int[] { 1301, 1306, 1313 };
+            var result = new List<FormResultDataModel>();
+            if (formIds != null && formIds.Length > 0)
+            {
+                foreach (var id in formIds)
+                {
+                    var node = Umbraco.Content(id);
+
+                    if (node != null)
+                    {
+                        List<FormDataModel> data = new List<FormDataModel>();
+                        if (node.Children != null && node.Children.Count() > 0)
+                        {
+                            foreach (var item in node.Children)
+                            {
+                                data.Add(new FormDataModel()
+                                {
+                                    NodeId = item.Id,
+                                    Name = item.Name,
+                                    Surname = item.GetProperty("patientSurname").GetValue().ToString()
+                                });
+                            }
+                        }
+                        result.Add(new FormResultDataModel()
+                        {
+                            formId = node.Id,
+                            formName = node.Name,
+                            data = data
+                        });
+                    }
+                }
+            }
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
     }
     public class ContactFormResult
     {
         public bool result { get; set; }
         public string message { get; set; }
+        public FileContentResult data { get; set; }
+    }
+
+    public class FormResultDataModel
+    {
+        public int formId { get; set; }
+        public string formName { get; set; }
+        public List<FormDataModel> data { get; set; }
+    }
+
+    public class FormDataModel
+    {
+        public int NodeId { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
     }
 }
