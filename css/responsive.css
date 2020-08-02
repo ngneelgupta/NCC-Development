@@ -334,9 +334,16 @@
     .videoModal .close {
         margin: -24px -8px 0 auto;
     }
+    .our-team-col .card-img-top {
+        width: 70%;
+        height: auto;
+    }
+    .team-image-col {
+        height: 240px;
+    }
 }
 
-@media screen and (max-width:550px) {
+@media screen and (max-width:575px) {
     .navbar-brand {
         padding: 0 0 0 15px;
         width: 50%;
@@ -369,6 +376,9 @@
     }
     .hcp-banner.common-banner p {
         color: #e4e4e4!important;
+    }
+    .team-image-col {
+        height: auto;
     }
 }
 
