@@ -1,13 +1,13 @@
 ﻿<div style="max-width: 1200px" ng-controller="DownloadForm.DownloadFormDashboardController" class="download-form">
     <div class="download-form-config">
-        <h2>Download Form</h2>
+        <h2>Download Forms</h2>
         <a style="display:none;" id="callApi"></a>
 
         Period :
         <div class='wrapper'>
-            <label for="fromDate">from:</label>
+            <label for="fromDate">From:</label>
             <input type="text" id="fromDate" name="fromc">
-            <label for="toDate">to:</label>
+            <label for="toDate">To:</label>
             <input type="text" id="toDate" name="toDate">
         </div>
         <div ng-repeat="form in FormsData">
@@ -22,7 +22,7 @@
                             <tr>
                                 <th><input type="checkbox" id="{{form.formId}}" ng-click="SelectAll(form.formId)" /></th>
                                 <th>Name</th>
-                                <th>Surname</th>
+                                <th>SurName</th>
                                 <th>Submit Date</th>
                             </tr>
                         </thead>

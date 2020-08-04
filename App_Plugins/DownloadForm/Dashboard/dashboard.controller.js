@@ -42,6 +42,10 @@ angular.module("umbraco").controller("DownloadForm.DownloadFormDashboardControll
                             downloadLink.attr('download', 'Depression Anxiety Stress Score.csv');
                         else if (id == 1313)
                             downloadLink.attr('download', 'Brief Pain Inventory.csv');
+                        else if (id == 1231)
+                            downloadLink.attr('download', 'Referral Forms.csv');
+                        else if (id == 1178)
+                            downloadLink.attr('download', 'Patient Form.csv');
                         downloadLink[0].click();
                         notificationsService.success("Download form file", "File download successfully !!");
                     }

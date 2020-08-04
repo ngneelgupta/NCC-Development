@@ -707,6 +707,250 @@ namespace NCC.BusinessLogic
                             csv.AppendLine(newLine);
                         }
                     }
+                    else if (id == 1231)
+                    {
+                        newLine = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23},{24},{25},{26},{27},{28},{29}",
+                                "Title",
+                                "First Name",
+                                "Last Name",
+                                "Gender",
+                                "Date of Birth",
+                                "Phone",
+                                "Email",
+                                "Address",
+                                "Suburb",
+                                "State",
+                                "Postcode",
+                                "Medicare Number",
+                                "Ref No",
+                                "Medicare Expiry",
+                                //"DOES THE PATIENT SUFFER FROM ANY OF THESE CONDITIONS?",
+                                "IF OTHER, PLEASE SPECIFY..",
+                                "PLEASE LIST ALL PAST MEDICATIONS FOR THE PATIENT AND THE LENGTH TRIED",
+                                "REASON FOR REFERRAL",
+                                "DOES YOUR PATIENT HAVE A CURRENT CARE PLAN IN PLACE?",
+                                "WOULD YOU LIKE US TO DO A CARE PLAN REVIEW FOR YOUR PATIENT?",
+                                "IF YOUR PATIENT DOES NOT HAVE A CURRENT CARE PLAN IN PLACE WOULD YOU CONSENT FOR OUR NCC DOCTOR TO INITIATE ONE?",
+                                "Full Name",
+                                "Practitioner Type",
+                                "Phone Number",
+                                "Practitioner Email",
+                                "Practitioner Address",
+                                "Practitioner ProviderNumber",
+                                "Practitioner HealthLink Number",
+                                "Support this patient to be treated with medicinal cannabis if needed",
+                                "I here by refer the above named patient to a doctor and/or specialist at national cannabis clinics",
+                                "Referral Date");
+                        csv.AppendLine(newLine);
+
+                        foreach (var item in childrens)
+                        {
+                            //in your loop
+                            var TITLE = item.GetProperty("tITLE").GetValue().ToString();
+                            var FirstName = item.GetProperty("firstName").GetValue().ToString();
+                            var LastName = item.GetProperty("lastName").GetValue().ToString();
+                            var Gender = item.GetProperty("gender").GetValue().ToString();
+                            var DateofBirth = Convert.ToDateTime(item.GetProperty("dateOfBirth").GetValue().ToString()).ToString("dd/MM/yyyy");
+                            var Phone = item.GetProperty("phone").GetValue().ToString();
+                            var Email = item.GetProperty("email").GetValue().ToString();
+                            var Address = item.GetProperty("address").GetValue().ToString();
+                            var Suburb = item.GetProperty("suburb").GetValue().ToString();
+                            var State = item.GetProperty("state").GetValue().ToString();
+                            var Postcode = item.GetProperty("postcode").GetValue().ToString();
+                            var MedicareNumber = item.GetProperty("medicareNumber").GetValue().ToString();
+                            var RefNo = item.GetProperty("refNo").GetValue().ToString();
+                            var MedicareExpiry = item.GetProperty("medicareExpiry").GetValue().ToString();
+
+                            //var DOESTHEPATIENTSUFFERFROMANYOFTHESECONDITIONS = item.GetProperty("patientFullName").GetValue().ToString();
+
+                            var IFOTHERPLEASESPECIFY = item.GetProperty("iFOTHERPLEASESPECIFY").GetValue().ToString();
+                            var PLEASELISTALLPASTMEDICATIONSFORTHEPATIENTANDTHELENGTHTRIED = item.GetProperty("pLEASELISTALLPASTMEDICATIONSFORTHEPATIENTANDTHELENGTHTRIED").GetValue().ToString();
+                            var REASONFORREFERRAL = item.GetProperty("rEASONFORREFERRAL").GetValue().ToString();
+                            var DOESYOURPATIENTHAVEACURRENTCAREPLANINPLACE = Convert.ToBoolean(item.GetProperty("dOESYOURPATIENTHAVEACURRENTCAREPLANINPLACE").GetValue());
+                            var WOULDYOULIKEUSTODOACAREPLANREVIEWFORYOURPATIENT = Convert.ToBoolean(item.GetProperty("wOULDYOULIKEUSTODOACAREPLANREVIEWFORYOURPATIENT").GetValue());
+                            var IFYOURPATIENTDOESNOTHAVEACURRENTCAREPLANINPLACEWOULDYOUCONSENTFOROURNCCDOCTORTOINITIATEONE = Convert.ToBoolean(item.GetProperty("iFYOURPATIENTDOESNOTHAVEACURRENTCAREPLANINPLACEWOULDYOUCONSENTFOROURNCCDOCTORTOINITIATEONE").GetValue());
+                            var FullName = item.GetProperty("practitionerDetailsFullName").GetValue().ToString();
+                            var PractitionerType = item.GetProperty("practitionerDetailsPractitionerType").GetValue().ToString();
+                            var PhoneNumber = item.GetProperty("practitionerDetailsPhoneNumber").GetValue().ToString();
+                            var PractitionerEmail = item.GetProperty("practitionerDetailsEmail").GetValue().ToString();
+                            var PractitionerAddress = item.GetProperty("practitionerDetailsAddress").GetValue().ToString();
+                            var PractitionerProviderNumber = item.GetProperty("practitionerDetailsProviderNumber").GetValue().ToString();
+                            var PractitionerHealthLinkNumber = item.GetProperty("practitionerDetailsHealthLinkNumber").GetValue().ToString();
+                            var Supportthispatienttobetreatedwithmedicinalcannabisifneeded = Convert.ToBoolean(item.GetProperty("supportThisPatientToBeTreatedWithMedicinalCannabisIfNeeded").GetValue());
+                            var Iherebyrefertheabovenamedpatienttoadoctorandorspecialistatnationalcannabisclinics = Convert.ToBoolean(item.GetProperty("iHereByReferTheAboveNamedPatientToADoctorAndOrSpecialistAtNationalCannabisClinics").GetValue());
+                            var ReferralDate = Convert.ToDateTime(item.GetProperty("referralDate").GetValue().ToString()).ToString("dd/MM/yyyy");
+
+
+
+
+
+                            //Suggestion made by KyleMit
+                            newLine = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23},{24},{25},{26},{27},{28},{29}",
+                            TITLE,
+                            FirstName,
+                            LastName,
+                            Gender,
+                            DateofBirth,
+                            Phone,
+                            Email,
+                            Address,
+                            Suburb,
+                            State,
+                            Postcode,
+                            MedicareNumber,
+                            RefNo,
+                            MedicareExpiry,
+                            //DOESTHEPATIENTSUFFERFROMANYOFTHESECONDITIONS,
+                            IFOTHERPLEASESPECIFY,
+                            PLEASELISTALLPASTMEDICATIONSFORTHEPATIENTANDTHELENGTHTRIED,
+                            REASONFORREFERRAL,
+                            DOESYOURPATIENTHAVEACURRENTCAREPLANINPLACE,
+                            WOULDYOULIKEUSTODOACAREPLANREVIEWFORYOURPATIENT,
+                            IFYOURPATIENTDOESNOTHAVEACURRENTCAREPLANINPLACEWOULDYOUCONSENTFOROURNCCDOCTORTOINITIATEONE,
+                            FullName,
+                            PractitionerType,
+                            PhoneNumber,
+                            PractitionerEmail,
+                            PractitionerAddress,
+                            PractitionerProviderNumber,
+                            PractitionerHealthLinkNumber,
+                            Supportthispatienttobetreatedwithmedicinalcannabisifneeded,
+                            Iherebyrefertheabovenamedpatienttoadoctorandorspecialistatnationalcannabisclinics,
+                            ReferralDate);
+                            csv.AppendLine(newLine);
+                        }
+                    }
+                    else if (id == 1178)
+                    {
+                        newLine = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23},{24},{25},{26},{27},{28},{29},{30},{31},{32},{33},{34},{35},{36},{37},{38}",
+                                "Title",
+                                "Surname",
+                                "Given Name(S)",
+                                "Preferred Name",
+                                "Date of Birth",
+                                "Phone",
+                                "Email",
+                                "Aboriginal Or Torres  Strait Islander",
+                                "Occupation",
+                                "Address",
+                                "Suburb",
+                                "State",
+                                "Postcode",
+                                "Home Phone",
+                                "Work Phone",
+                                "Mobile Number",
+                                "Work Email",
+                                "Medicare Number",
+                                "Ref. No",
+                                "Medicare Expiry",
+                                "DVA No",
+                                "DVA Expiry Date",
+                                "Native Language",
+                                "If Other Than Language Well You Required A Certified Translator",
+                                "Employment Status",
+                                "If Other",
+                                "Potential Contraindications",
+                                "Accept NC Terms and Conditions",
+                                "Agree to all National Canabinoid Clinic to acess your medical history records if needed.",
+                                "Understand that assessment by our doctors does not ensure approval and access to medical cannabis",
+                                "Patient Full Name",
+                                "Date Of Birth",
+                                "Source Of Decision-Making Authority",
+                                "Decision Maker Name",
+                                "Decision Maker Relation",
+                                "Decision Maker Date",
+                                "Witness",
+                                "Witness Relation",
+                                "Witness Date");
+                        csv.AppendLine(newLine);
+
+                        foreach (var item in childrens)
+                        {
+                            //in your loop
+                            var Title = item.GetProperty("patientSPersonalDetailsTitle").GetValue().ToString();
+                            var Surname = item.GetProperty("patientSPersonalDetailsSurname").GetValue().ToString();
+                            var GivenName = item.GetProperty("patientSPersonalDetailsGivenNameS").GetValue().ToString();
+                            var PreferredName = item.GetProperty("patientSPersonalDetailsPreferredName").GetValue().ToString();
+                            var DateofBirth = Convert.ToDateTime(item.GetProperty("patientSPersonalDetailsDateOfBirth").GetValue().ToString()).ToString("dd/MM/yyyy");
+                            var Phone = item.GetProperty("patientSPersonalDetailsPhone").GetValue().ToString();
+                            var Email = item.GetProperty("patientSPersonalDetailsEmail").GetValue().ToString();
+                            var AboriginalOrTorresStraitIslander = Convert.ToBoolean(item.GetProperty("patientSPersonalDetailsAboriginalOrTorresStraitIslander").GetValue());
+                            var Occupation = item.GetProperty("patientSPersonalDetailsOccupation").GetValue().ToString();
+                            var Address = item.GetProperty("patientSPersonalDetailsAddress").GetValue().ToString();
+                            var Suburb = item.GetProperty("patientSPersonalDetailsSuburb").GetValue().ToString();
+                            var State = item.GetProperty("patientSPersonalDetailsState").GetValue().ToString();
+                            var Postcode = item.GetProperty("patientSPersonalDetailsPostCode").GetValue().ToString();
+                            var HomePhone = item.GetProperty("patientSPersonalDetailsHomePhone").GetValue().ToString();
+                            var WorkPhone = item.GetProperty("patientSPersonalDetailsWorkPhone").GetValue().ToString();
+                            var MobileNumber = item.GetProperty("patientSPersonalDetailsMobileNumber").GetValue().ToString();
+                            var WorkEmail = item.GetProperty("patientSPersonalDetailsWorkEmail").GetValue().ToString();
+                            var MedicareNumber = item.GetProperty("patientSPersonalDetailsMedicareNumber").GetValue().ToString();
+                            var RefNo = item.GetProperty("patientSPersonalDetailsRefNo").GetValue().ToString();
+                            var MedicareExpiry = item.GetProperty("patientSPersonalDetailsMedicareExpiry").GetValue().ToString();
+                            var DVANo = item.GetProperty("patientSPersonalDetailsDVANo").GetValue().ToString();
+                            var DVAExpiryDate = Convert.ToDateTime(item.GetProperty("patientSPersonalDetailsExpiryDate").GetValue().ToString()).ToString("dd/MM/yyyy");
+                            var NativeLanguage = item.GetProperty("patientSPersonalDetailsNativeLanguage").GetValue().ToString();
+                            var IfOtherThanLanguageWellYouRequiredACertifiedTranslator = item.GetProperty("patientSPersonalDetailsIfOtherThanLanguageWellYouRequiredACertifiedTranslator").GetValue().ToString();
+                            var EmploymentStatus = item.GetProperty("patientSPersonalDetailsEmploymentStatus").GetValue().ToString();
+                            var IfOther = item.GetProperty("personalMedicalHistoryIfOther").GetValue().ToString();
+                            var PotentialContraindications = item.GetProperty("personalMedicalHistoryPotentialContraindications").GetValue().ToString();
+                            var AcceptNCTermsandConditions = Convert.ToBoolean(item.GetProperty("acceptNCTermsAndConditions").GetValue());
+                            var AgreetoallNationalCanabinoidClinictoacessyourmedicalhistoryrecordsifneeded = Convert.ToBoolean(item.GetProperty("agreeToAllNationalCanabinoidClinicToAcessYourMedicalHistoryRecordsIfNeeded").GetValue());
+                            var Understandthatassessmentbyourdoctorsdoesnotensureapprovalandaccesstomedicalcannabis = Convert.ToBoolean(item.GetProperty("understandThatAssessmentByOurDoctorsDoesNotEnsureApprovalAndAccessToMedicalCannabis").GetValue());
+                            var PatientFullName = item.GetProperty("additionalInformationPatientFullName").GetValue().ToString();
+                            var DateOfBirth = Convert.ToDateTime(item.GetProperty("additionalInformationDateOfBirth").GetValue().ToString()).ToString("dd/MM/yyyy");
+                            var SourceOfDecisionMakingAuthority = item.GetProperty("additionalInformationSourceOfDecisionMakingAuthority").GetValue().ToString();
+                            var DecisionMakerName = item.GetProperty("additionalInformationDecisionMakerName").GetValue().ToString();
+                            var DecisionMakerRelation = item.GetProperty("additionalInformationDecisionMakerRelation").GetValue().ToString();
+                            var DecisionMakerDate = Convert.ToDateTime(item.GetProperty("additionalInformationDecisionMakerDate").GetValue().ToString()).ToString("dd/MM/yyyy");
+                            var Witness = item.GetProperty("additionalInformationWitness").GetValue().ToString();
+                            var WitnessRelation = item.GetProperty("additionalInformationWitnessRelation").GetValue().ToString();
+                            var WitnessDate = Convert.ToDateTime(item.GetProperty("additionalInformationWitnessDate").GetValue().ToString()).ToString("dd/MM/yyyy"); ;
+
+                            //Suggestion made by KyleMit
+                            newLine = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23},{24},{25},{26},{27},{28},{29},{30},{31},{32},{33},{34},{35},{36},{37},{38}",
+                            Title,
+                            Surname,
+                            GivenName,
+                            PreferredName,
+                            DateofBirth,
+                            Phone,
+                            Email,
+                            AboriginalOrTorresStraitIslander,
+                            Occupation,
+                            Address,
+                            Suburb,
+                            State,
+                            Postcode,
+                            HomePhone,
+                            WorkPhone,
+                            MobileNumber,
+                            WorkEmail,
+                            MedicareNumber,
+                            RefNo,
+                            MedicareExpiry,
+                            DVANo,
+                            DVAExpiryDate,
+                            NativeLanguage,
+                            IfOtherThanLanguageWellYouRequiredACertifiedTranslator,
+                            EmploymentStatus,
+                            IfOther,
+                            PotentialContraindications,
+                            AcceptNCTermsandConditions,
+                            AgreetoallNationalCanabinoidClinictoacessyourmedicalhistoryrecordsifneeded,
+                            Understandthatassessmentbyourdoctorsdoesnotensureapprovalandaccesstomedicalcannabis,
+                            PatientFullName,
+                            DateOfBirth,
+                            SourceOfDecisionMakingAuthority,
+                            DecisionMakerName,
+                            DecisionMakerRelation,
+                            DecisionMakerDate,
+                            Witness,
+                            WitnessRelation,
+                            WitnessDate);
+                            csv.AppendLine(newLine);
+                        }
+                    }
 
                     return File(new UTF8Encoding().GetBytes(csv.ToString()), "text/csv", Node.Name + ".csv");
                 }
@@ -724,37 +968,98 @@ namespace NCC.BusinessLogic
         [HttpGet]
         public ActionResult GetAllFormList()
         {
-            int[] formIds = new int[] { 1301, 1306, 1313 };
+            int[] formIds = new int[] { 1301, 1306, 1313, 1231, 1178 };
             var result = new List<FormResultDataModel>();
             if (formIds != null && formIds.Length > 0)
             {
                 foreach (var id in formIds)
                 {
-                    var node = Umbraco.Content(id);
-
-                    if (node != null)
+                    if (id == 1231)
                     {
-                        List<FormDataModel> data = new List<FormDataModel>();
-                        if (node.Children != null && node.Children.Count() > 0)
-                        {
-                            foreach (var item in node.Children)
-                            {
-                                data.Add(new FormDataModel()
-                                {
-                                    NodeId = item.Id,
-                                    Name = item.Name,
-                                    Surname = item.GetProperty("patientSurname").GetValue().ToString(),
-                                    CreateDate = item.CreateDate.ToString("dd/MM/yyyy")
+                        var node = Umbraco.Content(id);
 
-                                });
-                            }
-                        }
-                        result.Add(new FormResultDataModel()
+                        if (node != null)
                         {
-                            formId = node.Id,
-                            formName = node.Name,
-                            data = data
-                        });
+                            List<FormDataModel> data = new List<FormDataModel>();
+                            if (node.Children != null && node.Children.Count() > 0)
+                            {
+                                foreach (var item in node.Children)
+                                {
+                                    data.Add(new FormDataModel()
+                                    {
+                                        NodeId = item.Id,
+                                        Name = item.GetProperty("firstName").GetValue().ToString(),
+                                        Surname = item.GetProperty("lastName").GetValue().ToString(),
+                                        CreateDate = item.CreateDate.ToString("dd/MM/yyyy")
+
+                                    });
+                                }
+                            }
+                            result.Add(new FormResultDataModel()
+                            {
+                                formId = node.Id,
+                                formName = node.Name,
+                                data = data
+                            });
+                        }
+                    }
+                    else if (id == 1178)
+                    {
+                        var node = Umbraco.Content(id);
+
+                        if (node != null)
+                        {
+                            List<FormDataModel> data = new List<FormDataModel>();
+                            if (node.Children != null && node.Children.Count() > 0)
+                            {
+                                foreach (var item in node.Children)
+                                {
+                                    data.Add(new FormDataModel()
+                                    {
+                                        NodeId = item.Id,
+                                        Name = item.GetProperty("patientSPersonalDetailsGivenNameS").GetValue().ToString(),
+                                        Surname = item.GetProperty("patientSPersonalDetailsSurname").GetValue().ToString(),
+                                        CreateDate = item.CreateDate.ToString("dd/MM/yyyy")
+
+                                    });
+                                }
+                            }
+                            result.Add(new FormResultDataModel()
+                            {
+                                formId = node.Id,
+                                formName = node.Name,
+                                data = data
+                            });
+                        }
+                    }
+                    else
+                    {
+                        var node = Umbraco.Content(id);
+
+                        if (node != null)
+                        {
+                            List<FormDataModel> data = new List<FormDataModel>();
+                            if (node.Children != null && node.Children.Count() > 0)
+                            {
+                                foreach (var item in node.Children)
+                                {
+                                    data.Add(new FormDataModel()
+                                    {
+                                        NodeId = item.Id,
+                                        Name = item.Name,
+                                        Surname = item.GetProperty("patientSurname").GetValue().ToString(),
+                                        CreateDate = item.CreateDate.ToString("dd/MM/yyyy")
+
+                                    });
+                                }
+                            }
+                            result.Add(new FormResultDataModel()
+                            {
+                                formId = node.Id,
+                                formName = node.Name,
+                                data = data
+                            });
+                        }
                     }
                 }
             }
