@@ -1,14 +1,60 @@
-﻿.wrapper {
+﻿.download-form.ng-scope {
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px;
+}
+
+.download-form-config {
+    font-size: 18px;
+}
+
+    .download-form-config .ng-scope {
+        margin: 20px 0 30px;
+    }
+
+.download-form.ng-scope .wrapper {
     display: inline;
-    border: 1px solid lightgray;
-    padding: 4px;
-    box-shadow: inset 1px 1px 1px rgba(0,0,0,.1)
+    border: 0px;
+    padding: 0px;
+    box-shadow: none;
 }
 
-input {
-    border: 0;
+.download-form-config h4.ng-binding {
+    display: inline-block;
 }
 
-label {
-    color: gray;
+.download-form-config .floated.btn.btn-warning {
+    float: right;
+}
+
+.formDataTable {
+    width: 50%;
+    text-align: left;
+    margin: 20px;
+}
+.form-heading {
+    background-color: #f3f3f3;
+    padding: 6px 23px;
+    width: 96%;
+    float: left;
+}
+.form-table {
+    width: 100%;
+    display: block;
+    box-shadow: 1px 1px 12px rgba(0,0,0,.2);
+    overflow: auto;
+}
+
+    .form-table th, .form-table td {
+        line-height: 31px;
+        width: 8px;
+    }
+.checkbox {
+    width: 13px;
+}
+.tablescroll {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 200px;
+    width: 100%;
 }

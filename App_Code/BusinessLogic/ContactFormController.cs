@@ -743,7 +743,9 @@ namespace NCC.BusinessLogic
                                 {
                                     NodeId = item.Id,
                                     Name = item.Name,
-                                    Surname = item.GetProperty("patientSurname").GetValue().ToString()
+                                    Surname = item.GetProperty("patientSurname").GetValue().ToString(),
+                                    CreateDate = item.CreateDate.ToString("dd/MM/yyyy")
+
                                 });
                             }
                         }
@@ -779,5 +781,6 @@ namespace NCC.BusinessLogic
         public int NodeId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
+        public string CreateDate { get; set; }
     }
 }
