@@ -31,7 +31,6 @@
                 "meaningless": $(".assessment-form .patient-form input[name='meaningless']:checked").siblings().text(),
                 "NodeId": $("#DASSNodeId").val()
             };
-            console.log(formData);
 
             $('.loader').show();
 
@@ -96,6 +95,17 @@ function CheckFormValidate() {
             return false;
         }
     });
+
+    if (isValid) {
+        let radioNameList = ["HardWind", "dryness", "experience", "breathing", "initiative", "over-react", "trembling", "nervous", "worried", "lookForward", "agitated", "relax", "down-hearted", "intolerant", "panic", "enthusiastic", "person"];
+        for (var i = 0; i < radioNameList.length; i++) {
+            isValid = $(".assessment-form .patient-form input[name='" + radioNameList[i] + "']").is(':checked');
+            if (!isValid) {
+                $(".assessment-form .patient-form input[name='" + radioNameList[i] + "']:eq(0)").focus();
+                return isValid;
+            }
+        }
+    }
 
     return isValid;
 }

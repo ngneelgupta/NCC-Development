@@ -23,7 +23,6 @@
                 "Enjoyment": $(".assessment-form .patient-form input[name='Enjoyment']:checked").siblings().text(),
                 "NodeId": $("#BriefInventoryNodeId").val()
             };
-            console.log(formData);
 
             $('.loader').show();
 
@@ -82,6 +81,17 @@ function CheckFormValidate() {
             return false;
         }
     });
+
+    if (isValid) {
+        let radioNameList = ["pain", "leastpain", "average", "HowMuchPain", "medications", "generalActivity", "mood", "ability", "housework", "Relations", "sleep", "Enjoyment"];
+        for (var i = 0; i < radioNameList.length; i++) {
+            isValid = $(".assessment-form .patient-form input[name='" + radioNameList[i] + "']").is(':checked');
+            if (!isValid) {
+                $(".assessment-form .patient-form input[name='" + radioNameList[i] + "']:eq(0)").focus();
+                return isValid;
+            }
+        }
+    }
 
     return isValid;
 }

@@ -9,11 +9,8 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.Text;
 using System.Linq;
-/// <summary>
-/// Summary description for ContactFormController
-/// </summary>
-///
-namespace NCC.BusinessLogic
+
+namespace NCC.BusinessLogics
 {
     public class ContactFormController : SurfaceController
     {
@@ -709,7 +706,7 @@ namespace NCC.BusinessLogic
                     }
                     else if (id == 1231)
                     {
-                        newLine = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23},{24},{25},{26},{27},{28},{29}",
+                        newLine = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23},{24},{25},{26},{27},{28},{29},{30}",
                                 "Title",
                                 "First Name",
                                 "Last Name",
@@ -724,7 +721,7 @@ namespace NCC.BusinessLogic
                                 "Medicare Number",
                                 "Ref No",
                                 "Medicare Expiry",
-                                //"DOES THE PATIENT SUFFER FROM ANY OF THESE CONDITIONS?",
+                                "DOES THE PATIENT SUFFER FROM ANY OF THESE CONDITIONS?",
                                 "IF OTHER, PLEASE SPECIFY..",
                                 "PLEASE LIST ALL PAST MEDICATIONS FOR THE PATIENT AND THE LENGTH TRIED",
                                 "REASON FOR REFERRAL",
@@ -761,7 +758,9 @@ namespace NCC.BusinessLogic
                             var RefNo = item.GetProperty("refNo").GetValue().ToString();
                             var MedicareExpiry = item.GetProperty("medicareExpiry").GetValue().ToString();
 
-                            //var DOESTHEPATIENTSUFFERFROMANYOFTHESECONDITIONS = item.GetProperty("patientFullName").GetValue().ToString();
+                            var sourceValue = item.GetProperty("dOESTHEPATIENTSUFFERFROMANYOFTHESECONDITIONS").GetSourceValue();
+                            var jsonObj = JsonConvert.DeserializeObject<List<TextNCDataModel>>(sourceValue.ToString());
+                            var DOESTHEPATIENTSUFFERFROMANYOFTHESECONDITIONS = jsonObj?.Count > 0 ? string.Join("|", jsonObj.Select(x => x.content)) : "";
 
                             var IFOTHERPLEASESPECIFY = item.GetProperty("iFOTHERPLEASESPECIFY").GetValue().ToString();
                             var PLEASELISTALLPASTMEDICATIONSFORTHEPATIENTANDTHELENGTHTRIED = item.GetProperty("pLEASELISTALLPASTMEDICATIONSFORTHEPATIENTANDTHELENGTHTRIED").GetValue().ToString();
@@ -785,7 +784,7 @@ namespace NCC.BusinessLogic
 
 
                             //Suggestion made by KyleMit
-                            newLine = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23},{24},{25},{26},{27},{28},{29}",
+                            newLine = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23},{24},{25},{26},{27},{28},{29},{30}",
                             TITLE,
                             FirstName,
                             LastName,
@@ -800,7 +799,7 @@ namespace NCC.BusinessLogic
                             MedicareNumber,
                             RefNo,
                             MedicareExpiry,
-                            //DOESTHEPATIENTSUFFERFROMANYOFTHESECONDITIONS,
+                            DOESTHEPATIENTSUFFERFROMANYOFTHESECONDITIONS,
                             IFOTHERPLEASESPECIFY,
                             PLEASELISTALLPASTMEDICATIONSFORTHEPATIENTANDTHELENGTHTRIED,
                             REASONFORREFERRAL,
@@ -1087,5 +1086,12 @@ namespace NCC.BusinessLogic
         public string Name { get; set; }
         public string Surname { get; set; }
         public string CreateDate { get; set; }
+    }
+
+    public class TextNCDataModel
+    {
+        public string key { get; set; }
+        public string ncContentTypeAlias { get; set; }
+        public string content { get; set; }
     }
 }
