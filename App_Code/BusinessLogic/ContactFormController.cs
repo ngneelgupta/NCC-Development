@@ -722,7 +722,7 @@ namespace NCC.BusinessLogics
                                 "Ref No",
                                 "Medicare Expiry",
                                 "DOES THE PATIENT SUFFER FROM ANY OF THESE CONDITIONS?",
-                                "IF OTHER, PLEASE SPECIFY..",
+                                "IF OTHER PLEASE SPECIFY",
                                 "PLEASE LIST ALL PAST MEDICATIONS FOR THE PATIENT AND THE LENGTH TRIED",
                                 "REASON FOR REFERRAL",
                                 "DOES YOUR PATIENT HAVE A CURRENT CARE PLAN IN PLACE?",
