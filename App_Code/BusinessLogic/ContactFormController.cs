@@ -750,7 +750,7 @@ namespace NCC.BusinessLogics
                             var DateofBirth = Convert.ToDateTime(item.GetProperty("dateOfBirth").GetValue().ToString()).ToString("dd/MM/yyyy");
                             var Phone = item.GetProperty("phone").GetValue().ToString();
                             var Email = item.GetProperty("email").GetValue().ToString();
-                            var Address = item.GetProperty("address").GetValue().ToString();
+                            var Address = ScapeComma(item.GetProperty("address").GetValue().ToString());
                             var Suburb = item.GetProperty("suburb").GetValue().ToString();
                             var State = item.GetProperty("state").GetValue().ToString();
                             var Postcode = item.GetProperty("postcode").GetValue().ToString();
@@ -772,7 +772,7 @@ namespace NCC.BusinessLogics
                             var PractitionerType = item.GetProperty("practitionerDetailsPractitionerType").GetValue().ToString();
                             var PhoneNumber = item.GetProperty("practitionerDetailsPhoneNumber").GetValue().ToString();
                             var PractitionerEmail = item.GetProperty("practitionerDetailsEmail").GetValue().ToString();
-                            var PractitionerAddress = item.GetProperty("practitionerDetailsAddress").GetValue().ToString();
+                            var PractitionerAddress = ScapeComma(item.GetProperty("practitionerDetailsAddress").GetValue().ToString());
                             var PractitionerProviderNumber = item.GetProperty("practitionerDetailsProviderNumber").GetValue().ToString();
                             var PractitionerHealthLinkNumber = item.GetProperty("practitionerDetailsHealthLinkNumber").GetValue().ToString();
                             var Supportthispatienttobetreatedwithmedicinalcannabisifneeded = Convert.ToBoolean(item.GetProperty("supportThisPatientToBeTreatedWithMedicinalCannabisIfNeeded").GetValue());
@@ -875,7 +875,7 @@ namespace NCC.BusinessLogics
                             var Email = item.GetProperty("patientSPersonalDetailsEmail").GetValue().ToString();
                             var AboriginalOrTorresStraitIslander = Convert.ToBoolean(item.GetProperty("patientSPersonalDetailsAboriginalOrTorresStraitIslander").GetValue());
                             var Occupation = item.GetProperty("patientSPersonalDetailsOccupation").GetValue().ToString();
-                            var Address = item.GetProperty("patientSPersonalDetailsAddress").GetValue().ToString();
+                            var Address = ScapeComma(item.GetProperty("patientSPersonalDetailsAddress").GetValue().ToString());
                             var Suburb = item.GetProperty("patientSPersonalDetailsSuburb").GetValue().ToString();
                             var State = item.GetProperty("patientSPersonalDetailsState").GetValue().ToString();
                             var Postcode = item.GetProperty("patientSPersonalDetailsPostCode").GetValue().ToString();
@@ -937,7 +937,7 @@ namespace NCC.BusinessLogics
                             PotentialContraindications,
                             AcceptNCTermsandConditions,
                             AgreetoallNationalCanabinoidClinictoacessyourmedicalhistoryrecordsifneeded,
-                            Understandthatassessmentbyourdoctorsdoesnotensureapprovalandaccesstomedicalcannabis,
+                           Understandthatassessmentbyourdoctorsdoesnotensureapprovalandaccesstomedicalcannabis,
                             PatientFullName,
                             DateOfBirth,
                             SourceOfDecisionMakingAuthority,
@@ -1064,6 +1064,19 @@ namespace NCC.BusinessLogics
             }
 
             return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public string ScapeComma(string data)
+        {
+            if (data.Contains("\""))
+            {
+                data = data.Replace("\"", "");
+            }
+            else if (data.Contains(","))
+            {
+                data = data.Replace(",", " ");
+            }
+            return data;
         }
     }
     public class ContactFormResult
