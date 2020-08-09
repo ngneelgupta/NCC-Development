@@ -61,8 +61,6 @@
                 "other": $(".presonal-details-block .patient-form input[name=other]").val()
             };
 
-            console.log(personalDetails);
-
             $(".personal-history-block").removeAttr('style');
             $('.presonal-details-block').hide();
             GoToSection('#FocusSection');
@@ -70,77 +68,80 @@
     });
 
     $(".personal-history-block button.next-btn").click(function () {
-        let currentlyExperience = [];
-        $(".personal-history-block .patient-form input[type=checkbox]:checked").each(function () {
-            currentlyExperience.push($(this).parent().find('label').text());
-        });
+        var isValid = CheckHistoryBlockFormValidate();
+        if (isValid) {
+            let currentlyExperience = [];
+            $(".personal-history-block .patient-form input[type=checkbox]:checked").each(function () {
+                currentlyExperience.push($(this).parent().find('label').text());
+            });
 
-        let pastMedication = [];
-        let medication = {
-            "Medication": $(".personal-history-block .patient-form input[name='Medication']").val(),
-            "time": $(".personal-history-block .patient-form input[name='time']").val()
-        };
+            let pastMedication = [];
+            let medication = {
+                "Medication": $(".personal-history-block .patient-form input[name='Medication']").val(),
+                "time": $(".personal-history-block .patient-form input[name='time']").val()
+            };
 
-        if (medication.Medication != "") {
-            pastMedication.push(medication);
+            if (medication.Medication != "") {
+                pastMedication.push(medication);
+            }
+
+            medication = {
+                "Medication": $(".personal-history-block .patient-form input[name='Medication2']").val(),
+                "time": $(".personal-history-block .patient-form input[name='time2']").val()
+            };
+
+            if (medication.Medication != "") {
+                pastMedication.push(medication);
+            }
+
+            medication = {
+                "Medication": $(".personal-history-block .patient-form input[name='Medication3']").val(),
+                "time": $(".personal-history-block .patient-form input[name='time3']").val()
+            };
+
+            if (medication.Medication != "") {
+                pastMedication.push(medication);
+            }
+
+            medication = {
+                "Medication": $(".personal-history-block .patient-form input[name='Medication4']").val(),
+                "time": $(".personal-history-block .patient-form input[name='time4']").val()
+            };
+
+            if (medication.Medication != "") {
+                pastMedication.push(medication);
+            }
+
+            medication = {
+                "Medication": $(".personal-history-block .patient-form input[name='Medication5']").val(),
+                "time": $(".personal-history-block .patient-form input[name='time5']").val()
+            };
+
+            if (medication.Medication != "") {
+                pastMedication.push(medication);
+            }
+
+            personalHistory = {
+                "currentlyexperience": currentlyExperience,
+                "othercondition": $(".personal-history-block .patient-form input[name='other-condition']").val(),
+                "potentialcontraindications": $(".personal-history-block .patient-form input[name='currently']:checked").parent().find('label').text(),
+                "pastmedication": pastMedication,
+                "allergies": $(".personal-history-block .patient-form textarea[name='allergies']").val(),
+                "pregnant": $(".personal-history-block .patient-form textarea[name='pregnant']").val(),
+                "smoking": $(".personal-history-block .patient-form input[name='smoking']:checked").parent().find('label').text(),
+                "smokernumber": $(".personal-history-block .patient-form input[name='smoker-number']").val(),
+                "alcohol": $(".personal-history-block .patient-form input[name='alcohol']:checked").parent().find('label').text(),
+                "drinknumber": $(".personal-history-block .patient-form input[name='drink-number']").val(),
+                "checkup": $(".personal-history-block .patient-form input[name='checkup']").val(),
+                "overallcheckup": $(".personal-history-block .patient-form input[name='overall-checkup']:checked").parent().find('label').text(),
+                "drivingyes": $(".personal-history-block .patient-form input[name='driving-yes']:checked").parent().find('label').text(),
+                "continuedriving": $(".personal-history-block .patient-form input[name='continue-driving']:checked").parent().find('label').text()
+            };
+
+            $(".additional-info-block").removeAttr('style');
+            $('.personal-history-block').hide();
+            GoToSection('#FocusSection');
         }
-
-        medication = {
-            "Medication": $(".personal-history-block .patient-form input[name='Medication2']").val(),
-            "time": $(".personal-history-block .patient-form input[name='time2']").val()
-        };
-
-        if (medication.Medication != "") {
-            pastMedication.push(medication);
-        }
-
-        medication = {
-            "Medication": $(".personal-history-block .patient-form input[name='Medication3']").val(),
-            "time": $(".personal-history-block .patient-form input[name='time3']").val()
-        };
-
-        if (medication.Medication != "") {
-            pastMedication.push(medication);
-        }
-
-        medication = {
-            "Medication": $(".personal-history-block .patient-form input[name='Medication4']").val(),
-            "time": $(".personal-history-block .patient-form input[name='time4']").val()
-        };
-
-        if (medication.Medication != "") {
-            pastMedication.push(medication);
-        }
-
-        medication = {
-            "Medication": $(".personal-history-block .patient-form input[name='Medication5']").val(),
-            "time": $(".personal-history-block .patient-form input[name='time5']").val()
-        };
-
-        if (medication.Medication != "") {
-            pastMedication.push(medication);
-        }
-
-        personalHistory = {
-            "currentlyexperience": currentlyExperience,
-            "othercondition": $(".personal-history-block .patient-form input[name='other-condition']").val(),
-            "potentialcontraindications": $(".personal-history-block .patient-form input[name='currently']:checked").parent().find('label').text(),
-            "pastmedication": pastMedication,
-            "allergies": $(".personal-history-block .patient-form textarea[name='allergies']").val(),
-            "pregnant": $(".personal-history-block .patient-form textarea[name='pregnant']").val(),
-            "smoking": $(".personal-history-block .patient-form input[name='smoking']:checked").parent().find('label').text(),
-            "smokernumber": $(".personal-history-block .patient-form input[name='smoker-number']").val(),
-            "alcohol": $(".personal-history-block .patient-form input[name='alcohol']:checked").parent().find('label').text(),
-            "drinknumber": $(".personal-history-block .patient-form input[name='drink-number']").val(),
-            "checkup": $(".personal-history-block .patient-form input[name='checkup']").val(),
-            "overallcheckup": $(".personal-history-block .patient-form input[name='overall-checkup']:checked").parent().find('label').text(),
-            "drivingyes": $(".personal-history-block .patient-form input[name='driving-yes']:checked").parent().find('label').text(),
-            "continuedriving": $(".personal-history-block .patient-form input[name='continue-driving']:checked").parent().find('label').text()
-        };
-
-        $(".additional-info-block").removeAttr('style');
-        $('.personal-history-block').hide();
-        GoToSection('#FocusSection');
     });
 
     $(".additional-info-block button.next-btn").click(function () {
@@ -316,6 +317,18 @@ function CheckPersonalDetailsFormValidate() {
         if ($(".presonal-details-block .patient-form textarea").val() == "" || $(".presonal-details-block .patient-form textarea").val().length <= 0) {
             $(".presonal-details-block .patient-form textarea").focus();
             isValid = false;
+        }
+    }
+
+    return isValid;
+}
+
+function CheckHistoryBlockFormValidate() {
+    let isValid = true;
+    if (isValid) {
+        isValid = $(".personal-history-block .patient-form input[name=alcohol]").prop('checked');
+        if (!isValid) {
+            $(".personal-history-block .patient-form input#alcohol-yes").focus();
         }
     }
 
