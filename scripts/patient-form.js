@@ -25,11 +25,17 @@
                 emergencycontact.push(emergencycontactJson);
             }
 
+            let aboutNCC = [];
+            $(".presonal-details-block .patient-form input[name=example2]:checked").each(function () {
+                aboutNCC.push($(this).parent().find('label').text());
+            });
+
             personalDetails = {
                 "title": $(".presonal-details-block .patient-form select.title-select").val(),
                 "surname": $(".presonal-details-block .patient-form input[name=surname]").val(),
                 "givenname": $(".presonal-details-block .patient-form input[name='given-name']").val(),
                 "preferredname": $(".presonal-details-block .patient-form input[name='preferred-name']").val(),
+                "gender": $(".presonal-details-block .patient-form select.select-gender").val(),
                 "birthdate": $(".presonal-details-block .patient-form input[name='birth-date']").val(),
                 "phone": $(".presonal-details-block .patient-form input[name=phone]").val(),
                 "email": $(".presonal-details-block .patient-form input[name=email]").val(),
@@ -51,8 +57,11 @@
                 "nativelanguage": $(".presonal-details-block .patient-form input[name='native-language']").val(),
                 "certificate": $(".presonal-details-block .patient-form input[name=certificate]").val(),
                 "emergencycontact": emergencycontact,
-                "employment": $(".presonal-details-block .patient-form input[name=employment]:checked").parent().find('label').text()
+                "employment": aboutNCC,
+                "other": $(".presonal-details-block .patient-form input[name=other]").val()
             };
+
+            console.log(personalDetails);
 
             $(".personal-history-block").removeAttr('style');
             $('.presonal-details-block').hide();
@@ -116,7 +125,17 @@
             "currentlyexperience": currentlyExperience,
             "othercondition": $(".personal-history-block .patient-form input[name='other-condition']").val(),
             "potentialcontraindications": $(".personal-history-block .patient-form input[name='currently']:checked").parent().find('label').text(),
-            "pastmedication": pastMedication
+            "pastmedication": pastMedication,
+            "allergies": $(".personal-history-block .patient-form textarea[name='allergies']").val(),
+            "pregnant": $(".personal-history-block .patient-form textarea[name='pregnant']").val(),
+            "smoking": $(".personal-history-block .patient-form input[name='smoking']:checked").parent().find('label').text(),
+            "smokernumber": $(".personal-history-block .patient-form input[name='smoker-number']").val(),
+            "alcohol": $(".personal-history-block .patient-form input[name='alcohol']:checked").parent().find('label').text(),
+            "drinknumber": $(".personal-history-block .patient-form input[name='drink-number']").val(),
+            "checkup": $(".personal-history-block .patient-form input[name='checkup']").val(),
+            "overallcheckup": $(".personal-history-block .patient-form input[name='overall-checkup']:checked").parent().find('label').text(),
+            "drivingyes": $(".personal-history-block .patient-form input[name='driving-yes']:checked").parent().find('label').text(),
+            "continuedriving": $(".personal-history-block .patient-form input[name='continue-driving']:checked").parent().find('label').text()
         };
 
         $(".additional-info-block").removeAttr('style');

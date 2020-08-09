@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web.Mvc;
 using System.Collections.Generic;
 
 namespace NCC.BusinessLogic.Models
@@ -82,6 +83,7 @@ namespace NCC.BusinessLogic.Models
         public string surname { get; set; }
         public string givenname { get; set; }
         public string preferredname { get; set; }
+        public string gender { get; set; }
         public DateTime birthdate { get; set; }
         public string phone { get; set; }
         public string email { get; set; }
@@ -103,12 +105,12 @@ namespace NCC.BusinessLogic.Models
         public string nativelanguage { get; set; }
         public string certificate { get; set; }
         public List<EmergencyContact> emergencycontact { get; set; }
-        public string employment { get; set; }
+        public List<string> employment { get; set; }
+        public string other { get; set; }
 
         //Referral Form
         public string f_name { get; set; }
         public string l_name { get; set; }
-        public string gender { get; set; }
     }
 
     public class EmergencyContact
@@ -124,6 +126,16 @@ namespace NCC.BusinessLogic.Models
         public string othercondition { get; set; }
         public string potentialcontraindications { get; set; }
         public List<PastMedication> pastmedication { get; set; }
+        public string allergies { get; set; }
+        public string pregnant { get; set; }
+        public string smoking { get; set; }
+        public string smokernumber { get; set; }
+        public string alcohol { get; set; }
+        public string drinknumber { get; set; }
+        public string checkup { get; set; }
+        public string overallcheckup { get; set; }
+        public string drivingyes { get; set; }
+        public string continuedriving { get; set; }
 
         //Referral Form
         public List<string> patientsuffercondition { get; set; }
@@ -178,5 +190,58 @@ namespace NCC.BusinessLogic.Models
         public bool conditions { get; set; }
         public bool history { get; set; }
         public DateTime date { get; set; }
+    }
+
+    public class ContactFormResult
+    {
+        public bool result { get; set; }
+        public string message { get; set; }
+        public FileContentResult data { get; set; }
+    }
+
+    public class FormResultDataModel
+    {
+        public int formId { get; set; }
+        public string formName { get; set; }
+        public List<FormDataModel> data { get; set; }
+    }
+
+    public class FormDataModel
+    {
+        public int NodeId { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string CreateDate { get; set; }
+    }
+
+    public class TextNCDataModel
+    {
+        public string key { get; set; }
+        public string ncContentTypeAlias { get; set; }
+        public string content { get; set; }
+    }
+
+    public class EmergencyContactsInformation
+    {
+        public string key { get; set; }
+        public string ncContentTypeAlias { get; set; }
+        public string relativeName { get; set; }
+        public string relationship { get; set; }
+        public string contactNumber { get; set; }
+    }
+
+    public class PersonalMedicalHistoryAllPastMedication
+    {
+        public string lengthOfTime { get; set; }
+        public string nameOfMedication { get; set; }
+    }
+
+    public class AdditionalInformationListOfAllCurrentMedicalAndSpecialist
+    {
+        public DateTime approximateDateOfLastConsultaion { get; set; }
+        public string phoneNumber { get; set; }
+        public string practiceAddress { get; set; }
+        public string practitionerName { get; set; }
+        public string specialty { get; set; }
     }
 }

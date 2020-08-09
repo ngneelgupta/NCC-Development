@@ -172,11 +172,11 @@ namespace Umbraco.Web.PublishedModels
 		public IEnumerable<EmergencyContactInfoNC> PatientSpersonalDetailsEmergencyContactsInformation => this.Value<IEnumerable<EmergencyContactInfoNC>>("patientSPersonalDetailsEmergencyContactsInformation");
 
 		///<summary>
-		/// Employment Status
+		/// Employment How did you hear about NCC?
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("patientSPersonalDetailsEmploymentStatus")]
-		public string PatientSpersonalDetailsEmploymentStatus => this.Value<string>("patientSPersonalDetailsEmploymentStatus");
+		public IEnumerable<TextNC> PatientSpersonalDetailsEmploymentStatus => this.Value<IEnumerable<TextNC>>("patientSPersonalDetailsEmploymentStatus");
 
 		///<summary>
 		/// DVA Expiry Date
@@ -184,6 +184,13 @@ namespace Umbraco.Web.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("patientSPersonalDetailsExpiryDate")]
 		public DateTime PatientSpersonalDetailsExpiryDate => this.Value<DateTime>("patientSPersonalDetailsExpiryDate");
+
+		///<summary>
+		/// Gender
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("patientSPersonalDetailsGender")]
+		public string PatientSpersonalDetailsGender => this.Value<string>("patientSPersonalDetailsGender");
 
 		///<summary>
 		/// Given Name(S)
@@ -211,7 +218,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("patientSPersonalDetailsMedicareExpiry")]
-		public string PatientSpersonalDetailsMedicareExpiry => this.Value<string>("patientSPersonalDetailsMedicareExpiry");
+		public DateTime PatientSpersonalDetailsMedicareExpiry => this.Value<DateTime>("patientSPersonalDetailsMedicareExpiry");
 
 		///<summary>
 		/// Medicare Number
@@ -240,6 +247,13 @@ namespace Umbraco.Web.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("patientSPersonalDetailsOccupation")]
 		public string PatientSpersonalDetailsOccupation => this.Value<string>("patientSPersonalDetailsOccupation");
+
+		///<summary>
+		/// Other ? Please Spec
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("patientSPersonalDetailsOtherPleaseSpec")]
+		public string PatientSpersonalDetailsOtherPleaseSpec => this.Value<string>("patientSPersonalDetailsOtherPleaseSpec");
 
 		///<summary>
 		/// Phone
@@ -312,6 +326,20 @@ namespace Umbraco.Web.PublishedModels
 		public string PatientSpersonalDetailsWorkPhone => this.Value<string>("patientSPersonalDetailsWorkPhone");
 
 		///<summary>
+		/// Are you currently driving?
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("personalMedicalHistoryAreYouCurrentlyDriving")]
+		public string PersonalMedicalHistoryAreYouCurrentlyDriving => this.Value<string>("personalMedicalHistoryAreYouCurrentlyDriving");
+
+		///<summary>
+		/// Are you currently pregnant, Planning to become pregnant or breastfeeding?
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("personalMedicalHistoryAreYouCurrentlyPregnantPlanningToBecomePregnantOrBreastfeeding")]
+		public string PersonalMedicalHistoryAreYouCurrentlyPregnantPlanningToBecomePregnantOrBreastfeeding => this.Value<string>("personalMedicalHistoryAreYouCurrentlyPregnantPlanningToBecomePregnantOrBreastfeeding");
+
+		///<summary>
 		/// Do You Currently Experience, Or Have A History Of, Any Of The Following Medical Condition?
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
@@ -319,11 +347,46 @@ namespace Umbraco.Web.PublishedModels
 		public IEnumerable<TextNC> PersonalMedicalHistoryDoYouCurrentlyExperienceOrHaveAhistoryOfAnyOfTheFollowingMedicalCondition => this.Value<IEnumerable<TextNC>>("personalMedicalHistoryDoYouCurrentlyExperienceOrHaveAHistoryOfAnyOfTheFollowingMedicalCondition");
 
 		///<summary>
+		/// Do you drink alcohol?
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("personalMedicalHistoryDoYouDrinkAlcohol")]
+		public string PersonalMedicalHistoryDoYouDrinkAlcohol => this.Value<string>("personalMedicalHistoryDoYouDrinkAlcohol");
+
+		///<summary>
+		/// Do you have any known allergies? Please list
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("personalMedicalHistoryDoYouHaveAnyKnownAllergiesPleaseList")]
+		public string PersonalMedicalHistoryDoYouHaveAnyKnownAllergiesPleaseList => this.Value<string>("personalMedicalHistoryDoYouHaveAnyKnownAllergiesPleaseList");
+
+		///<summary>
+		/// Do you want to continue driving?
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("personalMedicalHistoryDoYouWantToContinueDriving")]
+		public string PersonalMedicalHistoryDoYouWantToContinueDriving => this.Value<string>("personalMedicalHistoryDoYouWantToContinueDriving");
+
+		///<summary>
 		/// If Other
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("personalMedicalHistoryIfOther")]
 		public string PersonalMedicalHistoryIfOther => this.Value<string>("personalMedicalHistoryIfOther");
+
+		///<summary>
+		/// If smoker, number per day
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("personalMedicalHistoryIfSmokerNumberPerDay")]
+		public string PersonalMedicalHistoryIfSmokerNumberPerDay => this.Value<string>("personalMedicalHistoryIfSmokerNumberPerDay");
+
+		///<summary>
+		/// If yes, how many standard drinks per week
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("personalMedicalHistoryIfYesHowManyStandardDrinksPerWeek")]
+		public string PersonalMedicalHistoryIfYesHowManyStandardDrinksPerWeek => this.Value<string>("personalMedicalHistoryIfYesHowManyStandardDrinksPerWeek");
 
 		///<summary>
 		/// List Of All Past Medications Taken For Your Conditions And The Length Of Time Taken Or Trailed
@@ -338,6 +401,27 @@ namespace Umbraco.Web.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("personalMedicalHistoryPotentialContraindications")]
 		public string PersonalMedicalHistoryPotentialContraindications => this.Value<string>("personalMedicalHistoryPotentialContraindications");
+
+		///<summary>
+		/// Smoking Status
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("personalMedicalHistorySmokingStatus")]
+		public string PersonalMedicalHistorySmokingStatus => this.Value<string>("personalMedicalHistorySmokingStatus");
+
+		///<summary>
+		/// When did you last have an overall check-up?
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("personalMedicalHistoryWhenDidYouLastHaveAnOverallCheckUp")]
+		public DateTime PersonalMedicalHistoryWhenDidYouLastHaveAnOverallCheckUp => this.Value<DateTime>("personalMedicalHistoryWhenDidYouLastHaveAnOverallCheckUp");
+
+		///<summary>
+		/// Overall check-up status
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("personalMedicalHistoryWhenDidYouLastHaveAnOverallCheckUpStatus")]
+		public string PersonalMedicalHistoryWhenDidYouLastHaveAnOverallCheckUpStatus => this.Value<string>("personalMedicalHistoryWhenDidYouLastHaveAnOverallCheckUpStatus");
 
 		///<summary>
 		/// Understand that assessment by our doctors does not ensure approval and access to medical cannabis.

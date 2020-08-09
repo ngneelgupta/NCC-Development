@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.Text;
 using System.Linq;
+using Umbraco.Web;
 
 namespace NCC.BusinessLogics
 {
@@ -166,10 +167,24 @@ namespace NCC.BusinessLogics
                             }
                         }
 
+                        List<Dictionary<string, object>> aboutNCC = new List<Dictionary<string, object>>();
+                        if (model.personalDetails.employment != null && model.personalDetails.employment.Count > 0)
+                        {
+                            foreach (var item in model.personalDetails.employment)
+                            {
+                                aboutNCC.Add(new Dictionary<string, object>(){
+                                { "key", Guid.NewGuid() },
+                                { "ncContentTypeAlias", "textNC" },
+                                { "content", item }
+                            });
+                            }
+                        }
+
                         patientNode.SetValue("patientSPersonalDetailsTitle", model.personalDetails.title);
                         patientNode.SetValue("patientSPersonalDetailsSurname", model.personalDetails.surname);
                         patientNode.SetValue("patientSPersonalDetailsGivenNameS", model.personalDetails.givenname);
                         patientNode.SetValue("patientSPersonalDetailsPreferredName", model.personalDetails.preferredname);
+                        patientNode.SetValue("patientSPersonalDetailsGender", model.personalDetails.gender);
                         patientNode.SetValue("patientSPersonalDetailsDateOfBirth", model.personalDetails.birthdate);
                         patientNode.SetValue("patientSPersonalDetailsPhone", model.personalDetails.phone);
                         patientNode.SetValue("patientSPersonalDetailsEmail", model.personalDetails.email);
@@ -191,7 +206,8 @@ namespace NCC.BusinessLogics
                         patientNode.SetValue("patientSPersonalDetailsNativeLanguage", model.personalDetails.nativelanguage);
                         patientNode.SetValue("patientSPersonalDetailsIfOtherThanLanguageWellYouRequiredACertifiedTranslator", model.personalDetails.certificate);
                         patientNode.SetValue("patientSPersonalDetailsEmergencyContactsInformation", JsonConvert.SerializeObject(emergencycontact)); //NC
-                        patientNode.SetValue("patientSPersonalDetailsEmploymentStatus", model.personalDetails.employment);
+                        patientNode.SetValue("patientSPersonalDetailsEmploymentStatus", JsonConvert.SerializeObject(aboutNCC)); //NC
+                        patientNode.SetValue("patientSPersonalDetailsOtherPleaseSpec", model.personalDetails.other);
                     }
 
                     if (model.personalHistory != null)
@@ -229,6 +245,17 @@ namespace NCC.BusinessLogics
                         patientNode.SetValue("personalMedicalHistoryIfOther", model.personalHistory.othercondition);
                         patientNode.SetValue("personalMedicalHistoryPotentialContraindications", model.personalHistory.potentialcontraindications);
                         patientNode.SetValue("personalMedicalHistoryListOfAllPastMedicationsTakenForYourConditionsAndTheLengthOfTimeTakenOrTrailed", JsonConvert.SerializeObject(pastmedication)); //NC
+
+                        patientNode.SetValue("personalMedicalHistoryDoYouHaveAnyKnownAllergiesPleaseList", model.personalHistory.allergies);
+                        patientNode.SetValue("personalMedicalHistoryAreYouCurrentlyPregnantPlanningToBecomePregnantOrBreastfeeding", model.personalHistory.pregnant);
+                        patientNode.SetValue("personalMedicalHistorySmokingStatus", model.personalHistory.smoking);
+                        patientNode.SetValue("personalMedicalHistoryIfSmokerNumberPerDay", model.personalHistory.smokernumber);
+                        patientNode.SetValue("personalMedicalHistoryDoYouDrinkAlcohol", model.personalHistory.alcohol);
+                        patientNode.SetValue("personalMedicalHistoryIfYesHowManyStandardDrinksPerWeek", model.personalHistory.drinknumber);
+                        patientNode.SetValue("personalMedicalHistoryWhenDidYouLastHaveAnOverallCheckUp", model.personalHistory.checkup);
+                        patientNode.SetValue("personalMedicalHistoryWhenDidYouLastHaveAnOverallCheckUpStatus", model.personalHistory.overallcheckup);
+                        patientNode.SetValue("personalMedicalHistoryAreYouCurrentlyDriving", model.personalHistory.drivingyes);
+                        patientNode.SetValue("personalMedicalHistoryDoYouWantToContinueDriving", model.personalHistory.continuedriving);
                     }
 
                     if (model.additionalInfo != null)
@@ -821,11 +848,12 @@ namespace NCC.BusinessLogics
                     }
                     else if (id == 1178)
                     {
-                        newLine = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23},{24},{25},{26},{27},{28},{29},{30},{31},{32},{33},{34},{35},{36},{37},{38}",
+                        newLine = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23},{24},{25},{26},{27},{28},{29},{30},{31},{32},{33},{34},{35},{36},{37},{38},{39},{40},{41},{42},{43},{44},{45},{46},{47},{48},{49},{50},{51},{52},{53},{54}",
                                 "Title",
                                 "Surname",
                                 "Given Name(S)",
                                 "Preferred Name",
+                                "Gender",
                                 "Date of Birth",
                                 "Phone",
                                 "Email",
@@ -846,9 +874,24 @@ namespace NCC.BusinessLogics
                                 "DVA Expiry Date",
                                 "Native Language",
                                 "If Other Than Language Well You Required A Certified Translator",
-                                "Employment Status",
+                                "Emergency Contacts Information",
+                                "Employment How did you hear about NCC?",
+                                "Other ? Please Spec",
+                                "Do You Currently Experience Or Have A History Of Any Of The Following Medical Condition?",
                                 "If Other",
                                 "Potential Contraindications",
+                                "List Of All Past Medications Taken For Your Conditions And The Length Of Time Taken Or Trailed",
+                                "Do you have any known allergies? Please list",
+                                "Are you currently pregnant Planning to become pregnant or breastfeeding?",
+                                "Smoking Status",
+                                "If smoker number per day",
+                                "Do you drink alcohol?",
+                                "If yes how many standard drinks per week",
+                                "When did you last have an overall check-up?",
+                                "Overall check-up status",
+                                "Are you currently driving?",
+                                "Do you want to continue driving?",
+                                "List Of All Current Medical And Specialist",
                                 "Accept NC Terms and Conditions",
                                 "Agree to all National Canabinoid Clinic to acess your medical history records if needed.",
                                 "Understand that assessment by our doctors does not ensure approval and access to medical cannabis",
@@ -870,6 +913,7 @@ namespace NCC.BusinessLogics
                             var Surname = item.GetProperty("patientSPersonalDetailsSurname").GetValue().ToString();
                             var GivenName = item.GetProperty("patientSPersonalDetailsGivenNameS").GetValue().ToString();
                             var PreferredName = item.GetProperty("patientSPersonalDetailsPreferredName").GetValue().ToString();
+                            var Gender = item.GetProperty("patientSPersonalDetailsGender").GetValue().ToString();
                             var DateofBirth = Convert.ToDateTime(item.GetProperty("patientSPersonalDetailsDateOfBirth").GetValue().ToString()).ToString("dd/MM/yyyy");
                             var Phone = item.GetProperty("patientSPersonalDetailsPhone").GetValue().ToString();
                             var Email = item.GetProperty("patientSPersonalDetailsEmail").GetValue().ToString();
@@ -885,14 +929,93 @@ namespace NCC.BusinessLogics
                             var WorkEmail = item.GetProperty("patientSPersonalDetailsWorkEmail").GetValue().ToString();
                             var MedicareNumber = item.GetProperty("patientSPersonalDetailsMedicareNumber").GetValue().ToString();
                             var RefNo = item.GetProperty("patientSPersonalDetailsRefNo").GetValue().ToString();
-                            var MedicareExpiry = item.GetProperty("patientSPersonalDetailsMedicareExpiry").GetValue().ToString();
+                            var MedicareExpiry = item.GetProperty("patientSPersonalDetailsMedicareExpiry").Value<DateTime>().ToString("dd/MM/yyyy");
                             var DVANo = item.GetProperty("patientSPersonalDetailsDVANo").GetValue().ToString();
                             var DVAExpiryDate = Convert.ToDateTime(item.GetProperty("patientSPersonalDetailsExpiryDate").GetValue().ToString()).ToString("dd/MM/yyyy");
                             var NativeLanguage = item.GetProperty("patientSPersonalDetailsNativeLanguage").GetValue().ToString();
                             var IfOtherThanLanguageWellYouRequiredACertifiedTranslator = item.GetProperty("patientSPersonalDetailsIfOtherThanLanguageWellYouRequiredACertifiedTranslator").GetValue().ToString();
-                            var EmploymentStatus = item.GetProperty("patientSPersonalDetailsEmploymentStatus").GetValue().ToString();
-                            var IfOther = item.GetProperty("personalMedicalHistoryIfOther").GetValue().ToString();
+
+                            var emergencyContactsInformationSourceValue = item.GetProperty("patientSPersonalDetailsEmergencyContactsInformation").GetSourceValue();
+                            var emergencyContactsInformationJsonObj = JsonConvert.DeserializeObject<List<EmergencyContactsInformation>>(emergencyContactsInformationSourceValue.ToString());
+                            var emergencyContactsInformation = "";
+
+                            if (emergencyContactsInformationJsonObj?.Count > 0)
+                            {
+                                foreach (var pc in emergencyContactsInformationJsonObj)
+                                {
+                                    if (emergencyContactsInformation.Length > 0)
+                                    {
+                                        emergencyContactsInformation += " | { Relative Name : " + pc.relativeName + " | Relationship : " + pc.relationship + " | Phone Number : " + pc.contactNumber + " }";
+                                    }
+                                    else
+                                    {
+                                        emergencyContactsInformation += "{ Relative Name : " + pc.relativeName + " | Relationship : " + pc.relationship + " | Phone Number : " + pc.contactNumber + " }";
+                                    }
+                                }
+                            }
+
+                            var employmentStatusSourceValue = item.GetProperty("patientSPersonalDetailsEmploymentStatus").GetSourceValue();
+                            var employmentStatusJsonObj = JsonConvert.DeserializeObject<List<TextNCDataModel>>(employmentStatusSourceValue.ToString());
+                            var EmploymentStatus = employmentStatusJsonObj?.Count > 0 ? string.Join("|", employmentStatusJsonObj.Select(x => x.content)) : "";
+
+                            var employeementOtherSpec = item.GetProperty("patientSPersonalDetailsOtherPleaseSpec").GetValue().ToString();
+
+                            var currentlyExperienceSourceValue = item.GetProperty("personalMedicalHistoryDoYouCurrentlyExperienceOrHaveAHistoryOfAnyOfTheFollowingMedicalCondition").GetSourceValue();
+                            var currentlyExperienceJsonObj = JsonConvert.DeserializeObject<List<TextNCDataModel>>(currentlyExperienceSourceValue.ToString());
+                            var currentlyExperience = currentlyExperienceJsonObj?.Count > 0 ? string.Join("|", currentlyExperienceJsonObj.Select(x => x.content)) : "";
+
+                            var IfOther = ScapeComma(item.GetProperty("personalMedicalHistoryIfOther").GetValue().ToString());
+
+                            var pastMedicationsSourceValue = item.GetProperty("personalMedicalHistoryListOfAllPastMedicationsTakenForYourConditionsAndTheLengthOfTimeTakenOrTrailed").GetSourceValue();
+                            var pastMedicationsJsonObj = JsonConvert.DeserializeObject<List<PersonalMedicalHistoryAllPastMedication>>(pastMedicationsSourceValue.ToString());
+                            var pastMedications = "";
+
+                            if (pastMedicationsJsonObj?.Count > 0)
+                            {
+                                foreach (var pc in pastMedicationsJsonObj)
+                                {
+                                    if (pastMedications.Length > 0)
+                                    {
+                                        pastMedications += " | { Name Of Medication : " + ScapeComma(pc.nameOfMedication) + " | Length Of Time : " + ScapeComma(pc.lengthOfTime) + " }";
+                                    }
+                                    else
+                                    {
+                                        pastMedications = "{ Name Of Medication : " + ScapeComma(pc.nameOfMedication) + " | Length Of Time : " + ScapeComma(pc.lengthOfTime) + " }";
+                                    }
+                                }
+                            }
+
                             var PotentialContraindications = item.GetProperty("personalMedicalHistoryPotentialContraindications").GetValue().ToString();
+                            var allergies = item.GetProperty("personalMedicalHistoryDoYouHaveAnyKnownAllergiesPleaseList").Value<string>();
+                            var pregnant = item.GetProperty("personalMedicalHistoryAreYouCurrentlyPregnantPlanningToBecomePregnantOrBreastfeeding").Value<string>();
+                            var smokingStatus = item.GetProperty("personalMedicalHistorySmokingStatus").Value<string>();
+                            var smokePerDay = item.GetProperty("personalMedicalHistoryIfSmokerNumberPerDay").Value<string>();
+                            var drinkAlcohol = item.GetProperty("personalMedicalHistoryDoYouDrinkAlcohol").Value<string>();
+                            var alcoholPerDay = item.GetProperty("personalMedicalHistoryIfYesHowManyStandardDrinksPerWeek").Value<string>();
+                            var lastCheckUp = item.GetProperty("personalMedicalHistoryWhenDidYouLastHaveAnOverallCheckUp").Value<DateTime>().ToString("dd/MM/yyyy");
+                            var checkUpStatus = item.GetProperty("personalMedicalHistoryWhenDidYouLastHaveAnOverallCheckUpStatus").Value<string>();
+                            var driving = item.GetProperty("personalMedicalHistoryAreYouCurrentlyDriving").Value<string>();
+                            var continueDriving = item.GetProperty("personalMedicalHistoryDoYouWantToContinueDriving").Value<string>();
+
+                            var currentMedicalAndSpecialistSourceValue = item.GetProperty("additionalInformationListOfAllCurrentMedicalAndSpecialist").GetSourceValue();
+                            var currentMedicalAndSpecialistJsonObj = JsonConvert.DeserializeObject<List<AdditionalInformationListOfAllCurrentMedicalAndSpecialist>>(currentMedicalAndSpecialistSourceValue.ToString());
+                            var currentMedicalAndSpecialist = "";
+
+                            if (currentMedicalAndSpecialistJsonObj?.Count > 0)
+                            {
+                                foreach (var pc in currentMedicalAndSpecialistJsonObj)
+                                {
+                                    if (currentMedicalAndSpecialist.Length > 0)
+                                    {
+                                        currentMedicalAndSpecialist += " | { Practitioner Name : " + pc.practitionerName + " | Specialty : " + ScapeComma(pc.specialty) + " | Phone Number : " + pc.phoneNumber + " | Practice Address : " + ScapeComma(pc.practiceAddress)  + " | Approximate Date Of Last Consultaion : " + pc.approximateDateOfLastConsultaion.ToString("dd/MM/yyyy") + " }";
+                                    }
+                                    else
+                                    {
+                                        currentMedicalAndSpecialist = "{ Practitioner Name : " + pc.practitionerName + " | Specialty : " + ScapeComma(pc.specialty) + " | Phone Number : " + pc.phoneNumber + " | Practice Address : " + ScapeComma(pc.practiceAddress) + " | Approximate Date Of Last Consultaion : " + pc.approximateDateOfLastConsultaion.ToString("dd/MM/yyyy") + " }";
+                                    }
+                                }
+                            }
+
                             var AcceptNCTermsandConditions = Convert.ToBoolean(item.GetProperty("acceptNCTermsAndConditions").GetValue());
                             var AgreetoallNationalCanabinoidClinictoacessyourmedicalhistoryrecordsifneeded = Convert.ToBoolean(item.GetProperty("agreeToAllNationalCanabinoidClinicToAcessYourMedicalHistoryRecordsIfNeeded").GetValue());
                             var Understandthatassessmentbyourdoctorsdoesnotensureapprovalandaccesstomedicalcannabis = Convert.ToBoolean(item.GetProperty("understandThatAssessmentByOurDoctorsDoesNotEnsureApprovalAndAccessToMedicalCannabis").GetValue());
@@ -907,11 +1030,12 @@ namespace NCC.BusinessLogics
                             var WitnessDate = Convert.ToDateTime(item.GetProperty("additionalInformationWitnessDate").GetValue().ToString()).ToString("dd/MM/yyyy"); ;
 
                             //Suggestion made by KyleMit
-                            newLine = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23},{24},{25},{26},{27},{28},{29},{30},{31},{32},{33},{34},{35},{36},{37},{38}",
+                            newLine = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23},{24},{25},{26},{27},{28},{29},{30},{31},{32},{33},{34},{35},{36},{37},{38},{39},{40},{41},{42},{43},{44},{45},{46},{47},{48},{49},{50},{51},{52},{53},{54}",
                             Title,
                             Surname,
                             GivenName,
                             PreferredName,
+                            Gender,
                             DateofBirth,
                             Phone,
                             Email,
@@ -932,12 +1056,27 @@ namespace NCC.BusinessLogics
                             DVAExpiryDate,
                             NativeLanguage,
                             IfOtherThanLanguageWellYouRequiredACertifiedTranslator,
+                            emergencyContactsInformation,
                             EmploymentStatus,
+                            employeementOtherSpec,
+                            currentlyExperience,
                             IfOther,
                             PotentialContraindications,
+                            pastMedications,
+                            allergies,
+                            pregnant,
+                            smokingStatus,
+                            smokePerDay,
+                            drinkAlcohol,
+                            alcoholPerDay,
+                            lastCheckUp,
+                            checkUpStatus,
+                            driving,
+                            continueDriving,
+                            currentMedicalAndSpecialist,
                             AcceptNCTermsandConditions,
                             AgreetoallNationalCanabinoidClinictoacessyourmedicalhistoryrecordsifneeded,
-                           Understandthatassessmentbyourdoctorsdoesnotensureapprovalandaccesstomedicalcannabis,
+                            Understandthatassessmentbyourdoctorsdoesnotensureapprovalandaccesstomedicalcannabis,
                             PatientFullName,
                             DateOfBirth,
                             SourceOfDecisionMakingAuthority,
@@ -1078,33 +1217,5 @@ namespace NCC.BusinessLogics
             }
             return data;
         }
-    }
-    public class ContactFormResult
-    {
-        public bool result { get; set; }
-        public string message { get; set; }
-        public FileContentResult data { get; set; }
-    }
-
-    public class FormResultDataModel
-    {
-        public int formId { get; set; }
-        public string formName { get; set; }
-        public List<FormDataModel> data { get; set; }
-    }
-
-    public class FormDataModel
-    {
-        public int NodeId { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public string CreateDate { get; set; }
-    }
-
-    public class TextNCDataModel
-    {
-        public string key { get; set; }
-        public string ncContentTypeAlias { get; set; }
-        public string content { get; set; }
     }
 }
