@@ -130,19 +130,29 @@
                                                     <input type="text" class="form-control" name="preferred-name" required>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4 col-sm-6">
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Gender *</label>
+                                                    <select class="form-control select-gender*" required>
+                                                        <option value="Male">Male</option>
+                                                        <option value="Female">Female</option>
+                                                        <option value="Unisex">Unisex</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6">
                                                 <div class="form-group">
                                                     <label>Date of Birth *</label>
                                                     <input type="date" class="form-control" name="birth-date" required>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4 col-sm-6">
+                                            <div class="col-md-3 col-sm-6">
                                                 <div class="form-group">
                                                     <label>Phone *</label>
                                                     <input type="text" class="form-control accept-only-num" name="phone" required>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4 col-sm-6">
+                                            <div class="col-md-3 col-sm-6">
                                                 <div class="form-group">
                                                     <label>Email *</label>
                                                     <input type="email" class="form-control" name="email" required>
@@ -304,70 +314,76 @@
                                                 </div>
                                             </div>
                                             <div class="col-12">
-                                                <label>Employment status</label>
+                                                <label>How did you hear about NCC?</label>
                                             </div>
                                             <div class="col-md-3 col-sm-6">
                                                 <div class="form-group">
-                                                    <div class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" class="custom-control-input" id="full-emp" name="employment">
-                                                        <label class="custom-control-label" for="full-emp">Full Time Employed</label>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="GPreferral" name="example2">
+                                                        <label class="custom-control-label" for="GPreferral">GP referral</label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-3 col-sm-6">
                                                 <div class="form-group">
-                                                    <div class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" class="custom-control-input" id="unemployed" name="employment">
-                                                        <label class="custom-control-label" for="unemployed">Unemployed</label>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="Advertisement" name="example2">
+                                                        <label class="custom-control-label" for="Advertisement">Advertisement</label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-3 col-sm-6">
                                                 <div class="form-group">
-                                                    <div class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" class="custom-control-input" id="partTimeEmp" name="employment">
-                                                        <label class="custom-control-label" for="partTimeEmp">Part Time Employed</label>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="SpecialistReferral" name="example2">
+                                                        <label class="custom-control-label" for="SpecialistReferral">Specialist referral</label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-3 col-sm-6">
                                                 <div class="form-group">
-                                                    <div class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" class="custom-control-input" id="retired" name="employment">
-                                                        <label class="custom-control-label" for="retired">Retired</label>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="SocialMedia" name="example2">
+                                                        <label class="custom-control-label" for="SocialMedia">Social Media</label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-3 col-sm-6">
                                                 <div class="form-group">
-                                                    <div class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" class="custom-control-input" id="self-emp" name="employment">
-                                                        <label class="custom-control-label" for="self-emp">Self Employed</label>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="Friend" name="example2">
+                                                        <label class="custom-control-label" for="Friend">Friend/Family</label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-3 col-sm-6">
                                                 <div class="form-group">
-                                                    <div class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" class="custom-control-input" id="fullTymStu" name="employment">
-                                                        <label class="custom-control-label" for="fullTymStu">Full Time Student</label>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="Conferences" name="example2">
+                                                        <label class="custom-control-label" for="Conferences">Trade Show/Conferences</label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-3 col-sm-6">
                                                 <div class="form-group">
-                                                    <div class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" class="custom-control-input" id="partTimeStu" name="employment">
-                                                        <label class="custom-control-label" for="partTimeStu">Part Time Student</label>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="WebSearch" name="example2">
+                                                        <label class="custom-control-label" for="WebSearch">Web Search</label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-3 col-sm-6">
                                                 <div class="form-group">
-                                                    <div class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" class="custom-control-input" id="other" name="employment">
-                                                        <label class="custom-control-label" for="other">Other</label>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="customCheck" name="example2">
+                                                        <label class="custom-control-label" for="customCheck">Other</label>
                                                     </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label>Other ? Please Spec</label>
+                                                    <input type="text" class="form-control" name="other">
                                                 </div>
                                             </div>
                                             <div class="col-12">
@@ -389,7 +405,7 @@
 </div>
 
 <!-- Personal History -->
-<div class="personal-history-block" style="display:none">
+<div class="personal-history-block" style="display:none;">
     <section class="patient-form-flow personal-history" id="personalHistory">
         <div class="container">
             <div class="row">
@@ -674,6 +690,115 @@
                                                 <div class="form-group">
                                                     <label>Length of time</label>
                                                     <input type="text" class="form-control" name="time5">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label>Do you have any known allergies? Please list: </label>
+                                                    <textarea class="form-control" name="allergies" rows="2" required></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label>Are you currently pregnant, Planning to become pregnant or breastfeeding?</label>
+                                                    <textarea class="form-control" name="pregnant" rows="2" required></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <label>
+                                                    Smoking Status:
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="non-smoker" name="smoking">
+                                                        <label class="custom-control-label" for="non-smoker">Non-smoker</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="ex-smoker" name="smoking">
+                                                        <label class="custom-control-label" for="ex-smoker">Ex-smoker</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="smoker" name="smoking">
+                                                        <label class="custom-control-label" for="smoker">Smoker</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label>If smoker, number per day..</label>
+                                                    <input type="text" class="form-control" name="smoker-number">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Do you drink alcohol?*</label>
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="alcohol-yes" name="alcohol">
+                                                        <label class="custom-control-label" for="alcohol-yes">Yes</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="alcohol-no" name="alcohol">
+                                                        <label class="custom-control-label" for="alcohol-no">No</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9 col-sm-6">
+                                                <label>If yes, how many standard drinks per week..</label>
+                                                <input type="text" class="form-control" name="drink-number">
+                                            </div>
+                                            <div class="col-md-5 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>When did you last have an overall check-up?</label>
+                                                    <input type="date" class="form-control" name="checkup">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-7 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>&nbsp;</label>
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="Unsure" name="overall-checkup">
+                                                        <label class="custom-control-label" for="Unsure">Unsure</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="Never" name="overall-checkup">
+                                                        <label class="custom-control-label" for="Never">Never</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label>Are you currently driving?</label>
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="driving-yes" name="driving-yes">
+                                                        <label class="custom-control-label" for="driving-yes">Yes</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="driving-no" name="driving-yes">
+                                                        <label class="custom-control-label" for="driving-no">No</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label>Do you want to continue driving?</label>
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="continue-driving-yes" name="continue-driving">
+                                                        <label class="custom-control-label" for="continue-driving-yes">Yes</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" class="custom-control-input" id="continue-driving-no" name="continue-driving">
+                                                        <label class="custom-control-label" for="continue-driving-no">No</label>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-12">
