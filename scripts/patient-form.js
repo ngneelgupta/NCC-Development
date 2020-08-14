@@ -297,7 +297,7 @@ function CheckPersonalDetailsFormValidate() {
     });
 
     if (isValid) {
-        isValid = $(".presonal-details-block .patient-form input[name=example1]").prop('checked');
+        isValid = $(".presonal-details-block .patient-form input[name=example1]").is(":checked");
         if (!isValid) {
             $(".presonal-details-block .patient-form input#customRadio1").focus();
         }
@@ -326,7 +326,8 @@ function CheckPersonalDetailsFormValidate() {
 function CheckHistoryBlockFormValidate() {
     let isValid = true;
     if (isValid) {
-        isValid = $(".personal-history-block .patient-form input[name=alcohol]").prop('checked');
+        isValid = $(".personal-history-block .patient-form input[name='alcohol']").is(":checked");
+
         if (!isValid) {
             $(".personal-history-block .patient-form input#alcohol-yes").focus();
         }
