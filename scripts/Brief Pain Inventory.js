@@ -1,4 +1,4 @@
-﻿$(function () {
+$(function () {
     var formData = {};
     $(".submit-form-btn").click(function () {
         var isValid = CheckFormValidate();
@@ -113,7 +113,7 @@
         });
     });
 
-    $(".patient-image svg").areaSelectable({ allowMultiple: true, x: 30, y: 30 });
+    $(".boday_marker img").areaSelectable({ allowMultiple: true, x: 30, y: 30 });
 });
 
 function CheckFormValidate() {
