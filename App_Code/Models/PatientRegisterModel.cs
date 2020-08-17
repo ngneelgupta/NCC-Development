@@ -23,6 +23,7 @@ namespace NCC.BusinessLogic.Models
         public string Relations { get; set; }
         public string sleep { get; set; }
         public string Enjoyment { get; set; }
+        public string bodyMaker { get; set; }
     }
 
     public class DASSDataModel

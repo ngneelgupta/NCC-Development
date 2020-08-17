@@ -21,7 +21,8 @@ $(function () {
                 "Relations": $(".assessment-form .patient-form input[name='Relations']:checked").siblings().text(),
                 "sleep": $(".assessment-form .patient-form input[name='sleep']:checked").siblings().text(),
                 "Enjoyment": $(".assessment-form .patient-form input[name='Enjoyment']:checked").siblings().text(),
-                "NodeId": $("#BriefInventoryNodeId").val()
+                "NodeId": $("#BriefInventoryNodeId").val(),
+                "bodyMaker":$("#bodyMaker").val()
             };
 
             $('.loader').show();
@@ -113,7 +114,7 @@ $(function () {
         });
     });
 
-    $(".boday_marker img").areaSelectable({ allowMultiple: true, x: 30, y: 30 });
+    $(".body_marker img").areaSelectable({ allowMultiple: true, x: 30, y: 30 });
 });
 
 function CheckFormValidate() {

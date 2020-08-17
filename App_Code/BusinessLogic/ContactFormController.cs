@@ -557,6 +557,7 @@ namespace NCC.BusinessLogics
                     patientNode.SetValue("relationsWithOtherPeople", model.Relations);
                     patientNode.SetValue("sleep", model.sleep);
                     patientNode.SetValue("enjoymentOfLife", model.Enjoyment);
+                    patientNode.SetValue("painMarker", model.bodyMaker);
 
                     contentService.SaveAndPublish(patientNode);
 
