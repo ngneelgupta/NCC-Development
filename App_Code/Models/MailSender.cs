@@ -15,7 +15,6 @@ namespace NCC.Models
                 SmtpClient smtpClient = new SmtpClient();
                 msg.From = new MailAddress(mailSenderUserName, MailSenderDisplayName);
                 msg.To.Add(to);
-                msg.Bcc.Add("megha.bisht@teknomatics.com");
                 msg.Subject = subject;
                 msg.Body = html;
 
@@ -45,7 +44,6 @@ namespace NCC.Models
                 SmtpClient smtpClient = new SmtpClient();
                 msg.From = new System.Net.Mail.MailAddress(mailSenderUserName, MailSenderDisplayName);
                 msg.To.Add(to);
-                msg.Bcc.Add("megha.bisht@teknomatics.com");
                 msg.Subject = subject;
                 msg.Body = html;
                 msg.Attachments.Add(new Attachment(stream, fileName));

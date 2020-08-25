@@ -93,7 +93,7 @@ namespace NCC.BusinessLogics
                 if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(message) && !string.IsNullOrEmpty(subject) && !string.IsNullOrEmpty(disease))
                 {
 
-                    Clientemailtemplate = Clientemailtemplate.Replace("/@logo", "http://13.239.35.111/images/logo.png");
+                    Clientemailtemplate = Clientemailtemplate.Replace("/@logo", "https://ncclinics.com.au/images/logo.png");
                     Clientemailtemplate = Clientemailtemplate.Replace("@username", name);
                     Clientemailtemplate = Clientemailtemplate.Replace("@email", email);
                     Clientemailtemplate = Clientemailtemplate.Replace("@phone", phone);
