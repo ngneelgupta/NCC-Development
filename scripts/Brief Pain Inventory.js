@@ -64,57 +64,9 @@ $(function () {
             });
         }
 
-        //var test = $(".patient-image").get(0);
-        //html2canvas(test).then(function (canvas) {
-        //    // canvas width
-        //    var canvasWidth = canvas.width;
-        //    // canvas height
-        //    var canvasHeight = canvas.height;
-
-        //    var img = Canvas2Image.convertToImage(canvas, canvasWidth, canvasHeight);
-
-        //    console.log(img);
-
-        //    $("#captureImage").append(img);
-        //});
+       
     });
-
-    var test = $(".patient-image").get(0);
-    // to canvas
-    $('.toCanvas').click(function (e) {
-        html2canvas(test).then(function (canvas) {
-            //canvas.width = 1000;
-            //canvas.height = 1000;
-
-            // canvas width
-            var canvasWidth = canvas.width;
-            // canvas height
-            var canvasHeight = canvas.height;
-            // render canvas
-            $('.toCanvas').after(canvas);
-
-
-            // convert canvas to image
-            $('.toPic').click(function (e) {
-                var img = Canvas2Image.convertToImage(canvas, canvasWidth, canvasHeight);
-                // render image
-                $(".toPic").after(img);
-                // save
-                $('#save').click(function (e) {
-                    let type = $('#sel').val(); // image type
-                    let w = $('#imgW').val(); // image width
-                    let h = $('#imgH').val(); // image height
-                    let f = $('#imgFileName').val(); // file name
-                    w = (w === '') ? canvasWidth : w;
-                    h = (h === '') ? canvasHeight : h;
-                    // save as image
-                    Canvas2Image.saveAsImage(canvas, w, h, type, f);
-                });
-            });
-        });
-    });
-
-    $(".body_marker img").areaSelectable({ allowMultiple: true, x: 30, y: 30 });
+$(".body_marker img").areaSelectable({ allowMultiple: true, x: 30, y: 30});
 });
 
 function CheckFormValidate() {
@@ -122,9 +74,9 @@ function CheckFormValidate() {
     $(".assessment-form .patient-form input").removeClass('error');
     $(".form-accordian .card .card-header").removeAttr("style");
     $(".assessment-form .patient-form input:required").each(function () {
-        if ($(this).val() == "" || $(this).val() == null || $(this).val().length <= 0) {
+        if ($(this).val() === "" || $(this).val() === null || $(this).val().length <= 0) {
             $(this).closest('.card').find('.card-header').css("background", 'red');
-            if ($(this).attr('name') != "health") {
+            if ($(this).attr('name') !== "health") {
                 $(this).closest('.card').find('.card-header a').trigger('click');
             }
             $(this).addClass('error');
@@ -134,16 +86,16 @@ function CheckFormValidate() {
         }
     });
 
-    if (isValid) {
-        let radioNameList = ["pain", "leastpain", "average", "HowMuchPain", "medications", "generalActivity", "mood", "ability", "housework", "Relations", "sleep", "Enjoyment"];
-        for (var i = 0; i < radioNameList.length; i++) {
-            isValid = $(".assessment-form .patient-form input[name='" + radioNameList[i] + "']").is(':checked');
-            if (!isValid) {
-                $(".assessment-form .patient-form input[name='" + radioNameList[i] + "']:eq(0)").focus();
-                return isValid;
-            }
-        }
-    }
+    //if (isValid) {
+    //    let radioNameList = ["pain", "leastpain", "average", "HowMuchPain", "medications", "generalActivity", "mood", "ability", "housework", "Relations", "sleep", "Enjoyment"];
+    //    for (var i = 0; i < radioNameList.length; i++) {
+    //        isValid = $(".assessment-form .patient-form input[name='" + radioNameList[i] + "']").is(':checked');
+    //        if (!isValid) {
+    //            $(".assessment-form .patient-form input[name='" + radioNameList[i] + "']:eq(0)").focus();
+    //            return isValid;
+    //        }
+    //    }
+    //}
 
     return isValid;
 }

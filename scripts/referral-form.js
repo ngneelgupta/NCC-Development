@@ -38,9 +38,9 @@
             "othercondition": $(".personal-history-block .patient-form input[name='other-condition']").val(),
             "referralpastmedication": $(".personal-history-block .patient-form textarea[name='past-medication']").val(),
             "reasonreferral": $(".personal-history-block .patient-form textarea[name='reason-referral']").val(),
-            "currentcareplan": $(".personal-history-block .patient-form input[name='currently']:checked").parent().find('label').text() == "Yes" ? true : false,
-            "review": $(".personal-history-block .patient-form input[name='review']:checked").parent().find('label').text() == "Yes" ? true : false,
-            "initiate": $(".personal-history-block .patient-form input[name='initiate']:checked").parent().find('label').text() == "Yes" ? true : false,
+            "currentcareplan": $(".personal-history-block .patient-form input[name='currently']:checked").parent().find('label').text() === "Yes" ? true : false,
+            "review": $(".personal-history-block .patient-form input[name='review']:checked").parent().find('label').text() === "Yes" ? true : false,
+            "initiate": $(".personal-history-block .patient-form input[name='initiate']:checked").parent().find('label').text() === "Yes" ? true : false,
         };
 
         $(".practitioner-details-block").removeAttr('style');
@@ -143,13 +143,13 @@ function CheckPersonalDetailsFormValidate() {
     let isValid = true;
     $(".presonal-details-block .patient-form input").removeClass('error');
     $(".presonal-details-block .patient-form input:required").each(function () {
-        if ($(this).val() == "" || $(this).val() == null || $(this).val().length <= 0) {
+        if ($(this).val() === "" || $(this).val() === null || $(this).val().length <= 0) {
             $(this).focus();
             isValid = false;
             return false;
         }
 
-        else if ($(this).attr('type') == 'email') {
+        else if ($(this).attr('type') === 'email') {
             if (!validateEmail($(this).val().trim())) {
                 $(this).addClass("error");
                 $(this).focus();
@@ -158,7 +158,7 @@ function CheckPersonalDetailsFormValidate() {
             }
         }
 
-        else if ($(this).attr('name') == 'phone') {
+        else if ($(this).attr('name') === 'phone') {
             if (!validatephone($(this).val().trim())) {
                 $(this).addClass("error");
                 $(this).focus();
@@ -168,36 +168,36 @@ function CheckPersonalDetailsFormValidate() {
         }
     });
 
-    if (isValid) {
-        $(".presonal-details-block .patient-form select").each(function () {
-            if ($(this).val() == "" || $(this).val() == null) {
-                $(this).focus();
-                isValid = false;
-                return false;
-            }
-        });
-    }
+    //if (isValid) {
+    //    $(".presonal-details-block .patient-form select").each(function () {
+    //        if ($(this).val() === "" || $(this).val() === null) {
+    //            $(this).focus();
+    //            isValid = false;
+    //            return false;
+    //        }
+    //    });
+    //}
 
-    if (isValid) {
-        if ($(".presonal-details-block .patient-form textarea").val() == "" || $(".presonal-details-block .patient-form textarea").val().length <= 0) {
-            $(".presonal-details-block .patient-form textarea").focus();
-            isValid = false;
-        }
-    }
+    //if (isValid) {
+    //    if ($(".presonal-details-block .patient-form textarea").val() === "" || $(".presonal-details-block .patient-form textarea").val().length <= 0) {
+    //        $(".presonal-details-block .patient-form textarea").focus();
+    //        isValid = false;
+    //    }
+    //}
 
     return isValid;
 }
 
 function CheckPractitionerDetailsFormValidate() {
     let isValid = true;
-    if (!$(".practitioner-details-block .patient-form input#conditions").prop('checked')) {
-        $(".practitioner-details-block .patient-form input#conditions").focus();
-        isValid = false;
-        return isValid;
-    }
+    //if (!$(".practitioner-details-block .patient-form input#conditions").prop('checked')) {
+    //    $(".practitioner-details-block .patient-form input#conditions").focus();
+    //    isValid = false;
+    //    return isValid;
+    //}
 
     $(".practitioner-details-block .patient-form input:required").each(function () {
-        if ($(this).val() == "" || $(this).val() == null || $(this).val().length <= 0) {
+        if ($(this).val() === "" || $(this).val() === null || $(this).val().length <= 0) {
             $(this).focus();
             isValid = false;
             return false;

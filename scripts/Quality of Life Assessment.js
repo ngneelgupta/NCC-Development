@@ -69,9 +69,9 @@ function CheckFormValidate() {
     $(".assessment-form .patient-form input").removeClass('error');
     $(".form-accordian .card .card-header").removeAttr("style");
     $(".assessment-form .patient-form input:required").each(function () {
-        if ($(this).val() == "" || $(this).val() == null || $(this).val().length <= 0) {
+        if ($(this).val() === "" || $(this).val() === null || $(this).val().length <= 0) {
             $(this).closest('.card').find('.card-header').css("background", 'red');
-            if ($(this).attr('name') != "health") {
+            if ($(this).attr('name') !== "health") {
                 $(this).closest('.card').find('.card-header a').trigger('click');
             }
             $(this).addClass('error');
@@ -81,16 +81,16 @@ function CheckFormValidate() {
         }
     });
 
-    if (isValid) {
-        let radioNameList = ["employment", "self-care", "usual-activities", "discomfort", "depression"];
-        for (var i = 0; i < radioNameList.length; i++) {
-            isValid = $(".assessment-form .patient-form input[name='" + radioNameList[i] + "']").is(':checked');
-            if (!isValid) {
-                $(".assessment-form .patient-form input[name='" + radioNameList[i] + "']:eq(0)").focus();
-                return isValid;
-            }
-        }
-    }
+    //if (isValid) {
+    //    let radioNameList = ["employment", "self-care", "usual-activities", "discomfort", "depression"];
+    //    for (var i = 0; i < radioNameList.length; i++) {
+    //        isValid = $(".assessment-form .patient-form input[name='" + radioNameList[i] + "']").is(':checked');
+    //        if (!isValid) {
+    //            $(".assessment-form .patient-form input[name='" + radioNameList[i] + "']:eq(0)").focus();
+    //            return isValid;
+    //        }
+    //    }
+    //}
 
     return isValid;
 }

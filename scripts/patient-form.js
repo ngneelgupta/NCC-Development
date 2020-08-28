@@ -296,53 +296,53 @@ function CheckPersonalDetailsFormValidate() {
         }
     });
 
-    if (isValid) {
-        isValid = $(".presonal-details-block .patient-form input[name=example1]").is(":checked");
-        if (!isValid) {
-            $(".presonal-details-block .patient-form input#customRadio1").focus();
-        }
-    }
+    //if (isValid) {
+    //    isValid = $(".presonal-details-block .patient-form input[name=example1]").is(":checked");
+    //    if (!isValid) {
+    //        $(".presonal-details-block .patient-form input#customRadio1").focus();
+    //    }
+    //}
 
-    if (isValid) {
-        $(".presonal-details-block .patient-form select").each(function () {
-            if ($(this).val() == "" || $(this).val() == null) {
-                $(this).focus();
-                isValid = false;
-                return false;
-            }
-        });
-    }
+    //if (isValid) {
+    //    $(".presonal-details-block .patient-form select").each(function () {
+    //        if ($(this).val() == "" || $(this).val() == null) {
+    //            $(this).focus();
+    //            isValid = false;
+    //            return false;
+    //        }
+    //    });
+    //}
 
-    if (isValid) {
-        if ($(".presonal-details-block .patient-form textarea").val() == "" || $(".presonal-details-block .patient-form textarea").val().length <= 0) {
-            $(".presonal-details-block .patient-form textarea").focus();
-            isValid = false;
-        }
-    }
+    //if (isValid) {
+    //    if ($(".presonal-details-block .patient-form textarea").val() == "" || $(".presonal-details-block .patient-form textarea").val().length <= 0) {
+    //        $(".presonal-details-block .patient-form textarea").focus();
+    //        isValid = false;
+    //    }
+    //}
 
     return isValid;
 }
 
 function CheckHistoryBlockFormValidate() {
     let isValid = true;
-    if (isValid) {
-        isValid = $(".personal-history-block .patient-form input[name='alcohol']").is(":checked");
+    //if (isValid) {
+    //    isValid = $(".personal-history-block .patient-form input[name='alcohol']").is(":checked");
 
-        if (!isValid) {
-            $(".personal-history-block .patient-form input#alcohol-yes").focus();
-        }
-    }
+    //    if (!isValid) {
+    //        $(".personal-history-block .patient-form input#alcohol-yes").focus();
+    //    }
+    //}
 
     return isValid;
 }
 
 function CheckAdditionalInfoFormValidate() {
     let isValid = true;
-    if (!$(".additional-info-block .patient-form input[name=submitting]").prop('checked')) {
-        $(".additional-info-block .patient-form input[name=submitting]").focus();
-        isValid = false;
-        return isValid;
-    }
+    //if (!$(".additional-info-block .patient-form input[name=submitting]").prop('checked')) {
+    //    $(".additional-info-block .patient-form input[name=submitting]").focus();
+    //    isValid = false;
+    //    return isValid;
+    //}
 
     $(".additional-info-block .patient-form input:required").each(function () {
         if ($(this).val() == "" || $(this).val() == null || $(this).val().length <= 0) {
