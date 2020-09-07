@@ -9,7 +9,7 @@ namespace NCC.BusinessLogic.Models
         public int NodeId { get; set; }
         public string fullname { get; set; }
         public string surname { get; set; }
-        public DateTime dob { get; set; }
+        public DateTime? dob { get; set; }
         public string pain { get; set; }
         public string leastpain { get; set; }
         public string average { get; set; }
@@ -31,7 +31,7 @@ namespace NCC.BusinessLogic.Models
         public int NodeId { get; set; }
         public string fullname { get; set; }
         public string surname { get; set; }
-        public DateTime dob { get; set; }
+        public DateTime? dob { get; set; }
         public string HardWind { get; set; }
         public string dryness { get; set; }
         public string experience { get; set; }
@@ -60,7 +60,7 @@ namespace NCC.BusinessLogic.Models
         public int NodeId { get; set; }
         public string fullname { get; set; }
         public string surname { get; set; }
-        public DateTime dob { get; set; }
+        public DateTime? dob { get; set; }
         public string mobility { get; set; }
         public string selfcare  { get; set; }
         public string usualactivities { get; set; }
@@ -239,7 +239,7 @@ namespace NCC.BusinessLogic.Models
 
     public class AdditionalInformationListOfAllCurrentMedicalAndSpecialist
     {
-        public DateTime approximateDateOfLastConsultaion { get; set; }
+        public DateTime? approximateDateOfLastConsultaion { get; set; }
         public string phoneNumber { get; set; }
         public string practiceAddress { get; set; }
         public string practitionerName { get; set; }
