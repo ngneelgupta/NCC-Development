@@ -239,7 +239,7 @@ namespace NCC.BusinessLogic.Models
 
     public class AdditionalInformationListOfAllCurrentMedicalAndSpecialist
     {
-        public DateTime? approximateDateOfLastConsultaion { get; set; }
+        public DateTime approximateDateOfLastConsultaion { get; set; }
         public string phoneNumber { get; set; }
         public string practiceAddress { get; set; }
         public string practitionerName { get; set; }
