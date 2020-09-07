@@ -85,7 +85,7 @@ namespace NCC.BusinessLogic.Models
         public string givenname { get; set; }
         public string preferredname { get; set; }
         public string gender { get; set; }
-        public DateTime birthdate { get; set; }
+        public DateTime? birthdate { get; set; }
         public string phone { get; set; }
         public string email { get; set; }
         public bool straisislander { get; set; }
@@ -100,9 +100,9 @@ namespace NCC.BusinessLogic.Models
         public string workemail { get; set; }
         public string medicare { get; set; }
         public string refno { get; set; }
-        public DateTime medicareexpiry { get; set; }
+        public DateTime? medicareexpiry { get; set; }
         public string dva { get; set; }
-        public DateTime expirydate { get; set; }
+        public DateTime? expirydate { get; set; }
         public string nativelanguage { get; set; }
         public string certificate { get; set; }
         public List<EmergencyContact> emergencycontact { get; set; }
@@ -190,7 +190,7 @@ namespace NCC.BusinessLogic.Models
         public string healthlink_no { get; set; }
         public bool conditions { get; set; }
         public bool history { get; set; }
-        public DateTime date { get; set; }
+        public DateTime? date { get; set; }
     }
 
     public class ContactFormResult
