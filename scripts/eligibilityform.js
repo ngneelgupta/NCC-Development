@@ -8,7 +8,19 @@
         model.Email = $("#Email").val().trim();
         model.PhoneNumber = $("#PhoneNumber").val().trim();
         model.message = $("textarea").val().trim();
+        model.disease = $("#disease").val().trim();
+       
         
+       
+        if (model.disease === "" || model.disease === null) {
+            $("#disease").addClass("error");
+            IsOk = false;
+        }
+        else {
+            $("#disease").removeClass("error");
+
+        }
+
         if (model.ContactName === "" || model.ContactName === null) {
             $("#ContactName").addClass("error");
             IsOk = false;
@@ -67,7 +79,7 @@
             model.NodeId = $("#NodeId").val();
             $.ajax({
                 type: "post",
-                url: "/umbraco/surface/ContactForm/ContactUs",
+                url: "/umbraco/surface/ContactForm/eligibilityform",
                 dataType: "json",
                 data: model,
                 success: function (result) {
