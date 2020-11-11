@@ -704,6 +704,9 @@ namespace NCC.BusinessLogics
                     Clientemailtemplate = Clientemailtemplate.Replace("@surname", lastName);
                     Clientemailtemplate = Clientemailtemplate.Replace("@dob", dob != null ? dob.Value.ToString("yyyy-MM-dd") : "n/a");
 
+                    MailSender mail = new MailSender();
+                    mail.SendMail(receiverEmailId, Clientemailtemplate, subject, MailSenderDisplayName, MailSenderUserName, MailSenderPass, MailHost, PortNumber, EnableSsl);
+
 
                     return Json(new ContactFormResult()
                     {
