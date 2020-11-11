@@ -14,6 +14,7 @@
                 "discomfort": $(".assessment-form .patient-form input[name=discomfort]:checked").siblings().text(),
                 "depression": $(".assessment-form .patient-form input[name=depression]:checked").siblings().text(),
                 "health": $(".assessment-form .patient-form input[name=health]").val(),
+                "GlobalsettingId": $('#globalsettingId').val(),
                 "NodeId": $("#QualityOfLifeNodeId").val()
             };
 

@@ -203,6 +203,7 @@
 
             let formData = {
                 "NodeId": $("#PatientFormNodeId").val(),
+                "GlobalsettingId": $('#globalsettingId').val(),
                 "personalDetails": personalDetails,
                 "personalHistory": personalHistory,
                 "additionalInfo": additionalInfo
@@ -218,7 +219,8 @@
                 success: function (response) {
                     
                     if (response.result) {
-                        $('.loader').hide();
+                        $('.loader').hide();
+
                         $(".alert-success").text(response.message);
                         $(".alert-success").slideDown("slow");
                         setTimeout(function () {

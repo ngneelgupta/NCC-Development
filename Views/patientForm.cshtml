@@ -2,9 +2,12 @@
 @using ContentModels = Umbraco.Web.PublishedModels;
 @{
     Layout = "master.cshtml";
+    var Homenode = Model.Root();
+    var GlobalSetting = Homenode.FirstChild<SettingFolder>().FirstChild<GlobalSetting>() as GlobalSetting;
 }
 
 <input type="hidden" id="PatientFormNodeId" value="@Model.Id" />
+<input type="hidden" value="@GlobalSetting.Id" id="globalsettingId" />
 
 @section pageJs{
     <script src="/scripts/patient-form.js"></script>

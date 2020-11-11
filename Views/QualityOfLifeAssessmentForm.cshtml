@@ -2,6 +2,8 @@
 @using ContentModels = Umbraco.Web.PublishedModels;
 @{
     Layout = "master.cshtml";
+    var Homenode = Model.Root();
+    var GlobalSetting = Homenode.FirstChild<SettingFolder>().FirstChild<GlobalSetting>() as GlobalSetting;
 }
 
 <style>
@@ -21,6 +23,7 @@
 </style>
 
 <input type="hidden" id="QualityOfLifeNodeId" value="@Model.Id" />
+<input type="hidden" value="@GlobalSetting.Id" id="globalsettingId" />
 <!-- banner section -->
 <section class="patient-form-banner common-banner">
     <div class="container">

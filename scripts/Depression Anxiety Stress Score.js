@@ -29,6 +29,7 @@
                 "exertion": $(".assessment-form .patient-form input[name='exertion']:checked").siblings().text(),
                 "scared": $(".assessment-form .patient-form input[name='scared']:checked").siblings().text(),
                 "meaningless": $(".assessment-form .patient-form input[name='meaningless']:checked").siblings().text(),
+                "GlobalsettingId": $('#globalsettingId').val(),
                 "NodeId": $("#DASSNodeId").val()
             };
 

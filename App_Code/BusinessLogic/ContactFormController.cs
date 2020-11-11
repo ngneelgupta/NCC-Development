@@ -277,6 +277,46 @@ namespace NCC.BusinessLogics
                         patientNode.SetValue("patientSPersonalDetailsEmergencyContactsInformation", JsonConvert.SerializeObject(emergencycontact)); //NC
                         patientNode.SetValue("patientSPersonalDetailsEmploymentStatus", JsonConvert.SerializeObject(aboutNCC)); //NC
                         patientNode.SetValue("patientSPersonalDetailsOtherPleaseSpec", model.personalDetails.other);
+
+                        var GlobalsettingId = Umbraco.Content(model.GlobalsettingId);
+                        var NodeId = Umbraco.Content(model.NodeId);
+                        string MailSenderDisplayName = GlobalsettingId.GetProperty("mailSenderDisplayName").GetValue().ToString();
+                        string MailSenderUserName = GlobalsettingId.GetProperty("mailSenderUserName").GetValue().ToString();
+                        string MailSenderPass = GlobalsettingId.GetProperty("mailSenderPassword").GetValue().ToString();
+                        string MailHost = GlobalsettingId.GetProperty("mailHost").GetValue().ToString();
+                        int PortNumber = int.Parse(GlobalsettingId.GetProperty("portNumber").GetValue().ToString());
+                        bool EnableSsl = Convert.ToBoolean(GlobalsettingId.GetProperty("enableSsl").GetValue());
+
+                        string receiverEmailId = GlobalsettingId.GetProperty("receiverEmailId").GetValue().ToString();
+                        string name = model.personalDetails.givenname;
+                        string email = model.personalDetails.email;
+                        string phone = model.personalDetails.phone;
+                        DateTime? dob = model.personalDetails.birthdate;
+
+                        try
+                        {
+                            string subject = NodeId.GetProperty("patientFormEmailSubject").GetValue().ToString();
+                            var Clientemailtemplate = NodeId.GetProperty("patientFormEmailTemplate").GetValue().ToString();
+
+                            Clientemailtemplate = Clientemailtemplate.Replace("/@logo", "https://ncclinics.com.au/images/logo.png");
+                            Clientemailtemplate = Clientemailtemplate.Replace("@name", name);
+                            Clientemailtemplate = Clientemailtemplate.Replace("@email", email);
+                            Clientemailtemplate = Clientemailtemplate.Replace("@phone", phone);
+                            Clientemailtemplate = Clientemailtemplate.Replace("@dob", dob != null ? dob.Value.ToString("yyyy-MM-dd") : "n/a");
+
+                            //Useremailtemplate = Useremailtemplate.Replace("/@logo", "https://mintworxs.azurewebsites.net/media/o0dneckd/websitelogo.svg");
+                            //Useremailtemplate = Useremailtemplate.Replace("@username", name);
+
+                            MailSender mail = new MailSender();
+                            mail.SendMail(receiverEmailId, Clientemailtemplate, subject, MailSenderDisplayName, MailSenderUserName, MailSenderPass, MailHost, PortNumber, EnableSsl);
+
+                        }
+                        catch(Exception ex)
+                        {
+
+                        }
+
+
                     }
 
                     if (model.personalHistory != null)
@@ -417,6 +457,44 @@ namespace NCC.BusinessLogics
                         patientNode.SetValue("medicareNumber", model.personalDetails.medicare);
                         patientNode.SetValue("refNo", model.personalDetails.refno);
                         patientNode.SetValue("medicareExpiry", model.personalDetails.medicareexpiry);
+
+                        var GlobalsettingId = Umbraco.Content(model.GlobalsettingId);
+                        var NodeId = Umbraco.Content(model.NodeId);
+                        string MailSenderDisplayName = GlobalsettingId.GetProperty("mailSenderDisplayName").GetValue().ToString();
+                        string MailSenderUserName = GlobalsettingId.GetProperty("mailSenderUserName").GetValue().ToString();
+                        string MailSenderPass = GlobalsettingId.GetProperty("mailSenderPassword").GetValue().ToString();
+                        string MailHost = GlobalsettingId.GetProperty("mailHost").GetValue().ToString();
+                        int PortNumber = int.Parse(GlobalsettingId.GetProperty("portNumber").GetValue().ToString());
+                        bool EnableSsl = Convert.ToBoolean(GlobalsettingId.GetProperty("enableSsl").GetValue());
+
+                        string receiverEmailId = GlobalsettingId.GetProperty("receiverEmailId").GetValue().ToString();
+                        string name = model.personalDetails.givenname;
+                        string email = model.personalDetails.email;
+                        string phone = model.personalDetails.phone;
+                        DateTime? dob = model.personalDetails.birthdate;
+
+                        try
+                        {
+                            string subject = NodeId.GetProperty("referralFormEmailSubject").GetValue().ToString();
+                            var Clientemailtemplate = NodeId.GetProperty("referralFormEmailTemplate").GetValue().ToString();
+
+                            Clientemailtemplate = Clientemailtemplate.Replace("/@logo", "https://ncclinics.com.au/images/logo.png");
+                            Clientemailtemplate = Clientemailtemplate.Replace("@name", name);
+                            Clientemailtemplate = Clientemailtemplate.Replace("@email", email);
+                            Clientemailtemplate = Clientemailtemplate.Replace("@phone", phone);
+                            Clientemailtemplate = Clientemailtemplate.Replace("@dob", dob != null ? dob.Value.ToString("yyyy-MM-dd") : "n/a");
+
+                            //Useremailtemplate = Useremailtemplate.Replace("/@logo", "https://mintworxs.azurewebsites.net/media/o0dneckd/websitelogo.svg");
+                            //Useremailtemplate = Useremailtemplate.Replace("@username", name);
+
+                            MailSender mail = new MailSender();
+                            mail.SendMail(receiverEmailId, Clientemailtemplate, subject, MailSenderDisplayName, MailSenderUserName, MailSenderPass, MailHost, PortNumber, EnableSsl);
+
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
                     }
 
                     if (model.personalHistory != null)
@@ -492,6 +570,26 @@ namespace NCC.BusinessLogics
             {
                 if (model != null)
                 {
+                    // SMTP Detaiils
+                    var GlobalsettingId = Umbraco.Content(model.GlobalsettingId);
+                    var NodeId = Umbraco.Content(model.NodeId);
+                    string MailSenderDisplayName = GlobalsettingId.GetProperty("mailSenderDisplayName").GetValue().ToString();
+                    string MailSenderUserName = GlobalsettingId.GetProperty("mailSenderUserName").GetValue().ToString();
+                    string MailSenderPass = GlobalsettingId.GetProperty("mailSenderPassword").GetValue().ToString();
+                    string MailHost = GlobalsettingId.GetProperty("mailHost").GetValue().ToString();
+                    int PortNumber = int.Parse(GlobalsettingId.GetProperty("portNumber").GetValue().ToString());
+                    bool EnableSsl = Convert.ToBoolean(GlobalsettingId.GetProperty("enableSsl").GetValue());
+
+                    string receiverEmailId = GlobalsettingId.GetProperty("receiverEmailId").GetValue().ToString();
+                    string firstName = model.fullname;
+                    string lastName = model.surname;
+                    DateTime? dob = model.dob;
+
+
+                    string subject = NodeId.GetProperty("qualityOfLifeAssessmentFormEmailSubject").GetValue().ToString();
+                    var Clientemailtemplate = NodeId.GetProperty("qualityOfLifeAssesmentFormEmailTemplate").GetValue().ToString();
+
+
                     var contentService = Services.ContentService;
                     var resultNode = contentService.GetById(model.NodeId);
 
@@ -508,6 +606,12 @@ namespace NCC.BusinessLogics
                     patientNode.SetValue("healthToday", model.health);
 
                     contentService.SaveAndPublish(patientNode);
+
+                    Clientemailtemplate = Clientemailtemplate.Replace("/@logo", "https://ncclinics.com.au/images/logo.png");
+                    Clientemailtemplate = Clientemailtemplate.Replace("@fullname", firstName);
+                    Clientemailtemplate = Clientemailtemplate.Replace("@surname", lastName);
+                    Clientemailtemplate = Clientemailtemplate.Replace("@dob", dob != null ? dob.Value.ToString("yyyy-MM-dd") : "n/a");
+
 
                     return Json(new ContactFormResult()
                     {
@@ -541,6 +645,25 @@ namespace NCC.BusinessLogics
             {
                 if (model != null)
                 {
+                    // SMTP Detaiils
+                    var GlobalsettingId = Umbraco.Content(model.GlobalsettingId);
+                    var NodeId = Umbraco.Content(model.NodeId);
+                    string MailSenderDisplayName = GlobalsettingId.GetProperty("mailSenderDisplayName").GetValue().ToString();
+                    string MailSenderUserName = GlobalsettingId.GetProperty("mailSenderUserName").GetValue().ToString();
+                    string MailSenderPass = GlobalsettingId.GetProperty("mailSenderPassword").GetValue().ToString();
+                    string MailHost = GlobalsettingId.GetProperty("mailHost").GetValue().ToString();
+                    int PortNumber = int.Parse(GlobalsettingId.GetProperty("portNumber").GetValue().ToString());
+                    bool EnableSsl = Convert.ToBoolean(GlobalsettingId.GetProperty("enableSsl").GetValue());
+
+                    string receiverEmailId = GlobalsettingId.GetProperty("receiverEmailId").GetValue().ToString();
+                    string firstName = model.fullname;
+                    string lastName = model.surname;
+                    DateTime? dob = model.dob;
+
+                    string subject = NodeId.GetProperty("dASSFormEmailSubject").GetValue().ToString();
+                    var Clientemailtemplate = NodeId.GetProperty("dASSFormEmailTemplate").GetValue().ToString();
+
+
                     var contentService = Services.ContentService;
                     var resultNode = contentService.GetById(model.NodeId);
 
@@ -572,6 +695,12 @@ namespace NCC.BusinessLogics
                     patientNode.SetValue("iFeltThatLifeWasMeaningless", model.meaningless);
 
                     contentService.SaveAndPublish(patientNode);
+
+                    Clientemailtemplate = Clientemailtemplate.Replace("/@logo", "https://ncclinics.com.au/images/logo.png");
+                    Clientemailtemplate = Clientemailtemplate.Replace("@fullname", firstName);
+                    Clientemailtemplate = Clientemailtemplate.Replace("@surname", lastName);
+                    Clientemailtemplate = Clientemailtemplate.Replace("@dob", dob != null ? dob.Value.ToString("yyyy-MM-dd") : "n/a");
+
 
                     return Json(new ContactFormResult()
                     {
@@ -605,6 +734,25 @@ namespace NCC.BusinessLogics
             {
                 if (model != null)
                 {
+                    // SMTP Detaiils
+                    var GlobalsettingId = Umbraco.Content(model.GlobalsettingId);
+                    var NodeId = Umbraco.Content(model.NodeId);
+                    string MailSenderDisplayName = GlobalsettingId.GetProperty("mailSenderDisplayName").GetValue().ToString();
+                    string MailSenderUserName = GlobalsettingId.GetProperty("mailSenderUserName").GetValue().ToString();
+                    string MailSenderPass = GlobalsettingId.GetProperty("mailSenderPassword").GetValue().ToString();
+                    string MailHost = GlobalsettingId.GetProperty("mailHost").GetValue().ToString();
+                    int PortNumber = int.Parse(GlobalsettingId.GetProperty("portNumber").GetValue().ToString());
+                    bool EnableSsl = Convert.ToBoolean(GlobalsettingId.GetProperty("enableSsl").GetValue());
+
+                    string receiverEmailId = GlobalsettingId.GetProperty("receiverEmailId").GetValue().ToString();
+                    string firstName = model.fullname;
+                    string lastName = model.surname;
+                    DateTime? dob = model.dob;
+
+
+                    string subject = NodeId.GetProperty("briefPainInventoryFormEmailSubject").GetValue().ToString();
+                    var Clientemailtemplate = NodeId.GetProperty("briefPainInventoryFormEmailTemplate").GetValue().ToString();
+
                     var contentService = Services.ContentService;
                     var resultNode = contentService.GetById(model.NodeId);
 
@@ -629,6 +777,17 @@ namespace NCC.BusinessLogics
                     patientNode.SetValue("painMarker", model.bodyMaker);
 
                     contentService.SaveAndPublish(patientNode);
+
+                    Clientemailtemplate = Clientemailtemplate.Replace("/@logo", "https://ncclinics.com.au/images/logo.png");
+                    Clientemailtemplate = Clientemailtemplate.Replace("@fullname", firstName);
+                    Clientemailtemplate = Clientemailtemplate.Replace("@surname", lastName);
+                    Clientemailtemplate = Clientemailtemplate.Replace("@dob", dob != null ? dob.Value.ToString("yyyy-MM-dd") : "n/a");
+
+                    //Useremailtemplate = Useremailtemplate.Replace("/@logo", "https://mintworxs.azurewebsites.net/media/o0dneckd/websitelogo.svg");
+                    //Useremailtemplate = Useremailtemplate.Replace("@username", name);
+
+                    MailSender mail = new MailSender();
+                    mail.SendMail(receiverEmailId, Clientemailtemplate, subject, MailSenderDisplayName, MailSenderUserName, MailSenderPass, MailHost, PortNumber, EnableSsl);
 
                     return Json(new ContactFormResult()
                     {

@@ -67,6 +67,7 @@
 
             let formData = {
                 "NodeId": $("#ReferralFormNodeId").val(),
+                "GlobalsettingId": $('#globalsettingId').val(),
                 "personalDetails": personalDetails,
                 "personalHistory": personalHistory,
                 "practitionerDetails": practitionerDetails
@@ -82,7 +83,8 @@
                 success: function (response) {
                     
                     if (response.result) {
-                        $('.loader').hide();
+                        $('.loader').hide();
+
                         $(".alert-success").text(response.message);
                         $(".alert-success").slideDown("slow");
                         setTimeout(function () {

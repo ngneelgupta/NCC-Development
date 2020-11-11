@@ -24,6 +24,7 @@ namespace NCC.BusinessLogic.Models
         public string sleep { get; set; }
         public string Enjoyment { get; set; }
         public string bodyMaker { get; set; }
+        public string GlobalsettingId { get; set; }
     }
 
     public class DASSDataModel
@@ -53,6 +54,7 @@ namespace NCC.BusinessLogic.Models
         public string exertion { get; set; }
         public string scared { get; set; }
         public string meaningless { get; set; }
+        public string GlobalsettingId { get; set; }
     }
 
     public class QualityOfLifeAssessmentDataModel
@@ -67,11 +69,13 @@ namespace NCC.BusinessLogic.Models
         public string discomfort { get; set; }
         public string depression { get; set; }
         public string health { get; set; }
+        public string GlobalsettingId { get; set; }
     }
 
     public class RegisterDataModel
     {
         public int NodeId { get; set; }
+        public string GlobalsettingId { get; set; }
         public PersonalDetails personalDetails { get; set; }
         public PersonalHistory personalHistory { get; set; }
         public AdditionalInfo additionalInfo { get; set; }

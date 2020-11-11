@@ -22,6 +22,7 @@ $(function () {
                 "sleep": $(".assessment-form .patient-form input[name='sleep']:checked").siblings().text(),
                 "Enjoyment": $(".assessment-form .patient-form input[name='Enjoyment']:checked").siblings().text(),
                 "NodeId": $("#BriefInventoryNodeId").val(),
+                "GlobalsettingId": $('#globalsettingId').val(),
                 "bodyMaker":$("#bodyMaker").val()
             };
 
