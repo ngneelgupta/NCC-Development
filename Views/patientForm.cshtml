@@ -9,6 +9,17 @@
 <input type="hidden" id="PatientFormNodeId" value="@Model.Id" />
 <input type="hidden" value="@GlobalSetting.Id" id="globalsettingId" />
 
+@{
+    var siblings = Model.Siblings();
+    foreach (var item in siblings)
+    {
+        if (item.Name == "Patients")
+        {
+            <input type="hidden" value="@item.Id" id="patientNodeId" />
+        }
+    }
+}
+
 @section pageJs{
     <script src="/scripts/patient-form.js"></script>
 }

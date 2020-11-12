@@ -279,7 +279,8 @@ namespace NCC.BusinessLogics
                         patientNode.SetValue("patientSPersonalDetailsOtherPleaseSpec", model.personalDetails.other);
 
                         var GlobalsettingId = Umbraco.Content(model.GlobalsettingId);
-                        var NodeId = Umbraco.Content(model.NodeId);
+                        var NodeId = Umbraco.Content(model.PatientNodeId);
+
                         string MailSenderDisplayName = GlobalsettingId.GetProperty("mailSenderDisplayName").GetValue().ToString();
                         string MailSenderUserName = GlobalsettingId.GetProperty("mailSenderUserName").GetValue().ToString();
                         string MailSenderPass = GlobalsettingId.GetProperty("mailSenderPassword").GetValue().ToString();
@@ -313,7 +314,7 @@ namespace NCC.BusinessLogics
                         }
                         catch(Exception ex)
                         {
-
+                            Logger.Error(typeof(ContactFormController), " Mail Error", ex);
                         }
 
 
@@ -459,7 +460,7 @@ namespace NCC.BusinessLogics
                         patientNode.SetValue("medicareExpiry", model.personalDetails.medicareexpiry);
 
                         var GlobalsettingId = Umbraco.Content(model.GlobalsettingId);
-                        var NodeId = Umbraco.Content(model.NodeId);
+                        var NodeId = Umbraco.Content(model.PatientNodeId);
                         string MailSenderDisplayName = GlobalsettingId.GetProperty("mailSenderDisplayName").GetValue().ToString();
                         string MailSenderUserName = GlobalsettingId.GetProperty("mailSenderUserName").GetValue().ToString();
                         string MailSenderPass = GlobalsettingId.GetProperty("mailSenderPassword").GetValue().ToString();

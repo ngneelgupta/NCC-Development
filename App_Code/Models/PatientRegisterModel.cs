@@ -76,6 +76,7 @@ namespace NCC.BusinessLogic.Models
     {
         public int NodeId { get; set; }
         public string GlobalsettingId { get; set; }
+        public string PatientNodeId { get; set; }
         public PersonalDetails personalDetails { get; set; }
         public PersonalHistory personalHistory { get; set; }
         public AdditionalInfo additionalInfo { get; set; }

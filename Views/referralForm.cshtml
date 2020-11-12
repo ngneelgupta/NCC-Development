@@ -8,13 +8,23 @@
     var child = Model.Children;
 }
 
-@foreach(ReferralFormInformation data in child)
+@foreach (ReferralFormInformation data in child)
 {
 
 }
 
 <input type="hidden" id="ReferralFormNodeId" value="@Model.Id" />
 <input type="hidden" value="@GlobalSetting.Id" id="globalsettingId" />
+@{
+    var siblings = Model.Siblings();
+    foreach (var item in siblings)
+    {
+        if (item.Name == "Patients")
+        {
+            <input type="hidden" value="@item.Id" id="patientNodeId" />
+        }
+    }
+}
 
 @section pageJs{
     <script src="/scripts/referral-form.js"></script>

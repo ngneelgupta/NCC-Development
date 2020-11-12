@@ -68,6 +68,7 @@
             let formData = {
                 "NodeId": $("#ReferralFormNodeId").val(),
                 "GlobalsettingId": $('#globalsettingId').val(),
+                "PatientNodeId": $("#patientNodeId").val(),
                 "personalDetails": personalDetails,
                 "personalHistory": personalHistory,
                 "practitionerDetails": practitionerDetails

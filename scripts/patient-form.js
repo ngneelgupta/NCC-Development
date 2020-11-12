@@ -203,6 +203,7 @@
 
             let formData = {
                 "NodeId": $("#PatientFormNodeId").val(),
+                "PatientNodeId": $("#patientNodeId").val(),
                 "GlobalsettingId": $('#globalsettingId').val(),
                 "personalDetails": personalDetails,
                 "personalHistory": personalHistory,
