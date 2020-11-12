@@ -469,7 +469,7 @@ namespace NCC.BusinessLogics
                         bool EnableSsl = Convert.ToBoolean(GlobalsettingId.GetProperty("enableSsl").GetValue());
 
                         string receiverEmailId = GlobalsettingId.GetProperty("receiverEmailId").GetValue().ToString();
-                        string name = model.personalDetails.givenname;
+                        string name = $"{model.personalDetails.f_name} {model.personalDetails.l_name}";
                         string email = model.personalDetails.email;
                         string phone = model.personalDetails.phone;
                         DateTime? dob = model.personalDetails.birthdate;
